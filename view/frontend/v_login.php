@@ -30,7 +30,7 @@
                         <div class="card login-page bg-white shadow rounded border-0">
                             <div class="card-body">
                                 <h4 class="card-title text-center">Connexion</h4>
-                                <form class="login-form mt-4">
+                                <form class="login-form mt-4" action="index.php?action=login&connect=true" method="post">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
@@ -47,7 +47,7 @@
                                                 <label>Mot de passe <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="key" class="fea icon-sm icons"></i>
-                                                    <input type="password" class="form-control pl-5" placeholder="Mot de passe" required="">
+                                                    <input type="password" class="form-control pl-5" placeholder="Mot de passe" name="motDePasse" required="">
                                                 </div>
                                             </div>
                                         </div><!--end col-->
