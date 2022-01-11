@@ -80,7 +80,7 @@
                                 </li>  
                             </ul>
                         </li>
-                        <li class="has-submenu"><a href="#"><i class="mdi mdi-account"></i>Mon Compte</a></li>
+                        <li class="has-submenu"><a href="index.php?action=account"><i class="mdi mdi-account"></i>Mon Compte</a></li>
                         
                     </ul><!--end navigation menu-->
                 </div><!--end navigation-->
