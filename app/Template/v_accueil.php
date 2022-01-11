@@ -80,7 +80,21 @@
                                 </li>  
                             </ul>
                         </li>
-                        <li class="has-submenu"><a href="index.php?action=account"><i class="mdi mdi-account"></i>Mon Compte</a></li>
+
+                        <li class="has-submenu">
+                            <a href="javascript:void(0)"><i class="mdi mdi-account"></i></a><span class="menu-arrow"></span>
+                            <ul class="submenu megamenu">
+                                <li>
+                                    <ul>
+                                        <li><a class="dropdown-item text-dark" href="index.php?action=account"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a></li>
+                                        <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1){ ?>
+                                            <div class="dropdown-divider my-3 border-top"></div>
+                                            <li><a class="dropdown-item text-dark" href="index.php?action=account&disconnect=1"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Se déconnecter</a></li>
+                                        <?php } ?>
+                                    </ul>
+                                </li>  
+                            </ul>
+                        </li>
                         
                     </ul><!--end navigation menu-->
                 </div><!--end navigation-->

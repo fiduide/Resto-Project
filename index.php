@@ -21,6 +21,10 @@ try {
     switch ($action) {
         case 'account':
             $accountController = new AccountController();
+
+            if(isset($_GET['disconnect']) && $_GET['disconnect'] == 1){
+                $accountController->disconnectUtilisateur();
+            }
             if(isset($_POST['login']) && $_POST['login'] == 1){
                 $accountController->connectUtilisateur();
             } else {
