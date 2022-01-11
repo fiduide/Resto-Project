@@ -31,16 +31,13 @@
     
         <!-- Navbar STart -->
         <header id="topnav" class="defaultscroll sticky bg-white">
-            <div class="container">
+            <div class="container d-flex align-items-center justify-content-between">
                 <!-- Logo container-->
                 <div>
-                    <a class="logo" href="index.html">
-                        <img src="public/img/icon/logo.png" height="100" alt="pizza lab">
+                    <a class="logo" href="#">
+                        <img src="public/img/logo/logo_fond_vide.png" height="100" alt="pizza lab">
                     </a>
                 </div>                 
-                <div class="buy-button">
-                    <a href="index.php?action=account" class="btn btn-primary">Mon compte</a>
-                </div><!--end login button-->
                 <!-- End Logo container-->
                 <div class="menu-extras">
                     <div class="menu-item">
@@ -59,7 +56,7 @@
                 <div id="navigation">
                     <!-- Navigation Menu-->   
                     <ul class="navigation-menu">
-                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="#">Accueil</a></li>
                         <li class="has-submenu">
                             <a href="javascript:void(0)">Pizzeria</a><span class="menu-arrow"></span>
                             <ul class="submenu megamenu">
@@ -83,11 +80,9 @@
                                 </li>  
                             </ul>
                         </li>
+                        <li class="has-submenu"><a href="#"><i class="mdi mdi-account"></i>Mon Compte</a></li>
                         
                     </ul><!--end navigation menu-->
-                    <div class="buy-menu-btn d-none">
-                        <a href="index.html" target="_blank" class="btn btn-primary">Mon compte</a>
-                    </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
@@ -143,7 +138,7 @@
                             <div class="card-body content">
                                 <h5><a href="javascript:void(0)" class="card-title title text-dark">Pizza Only</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
-                                    <a href="index.html" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
+                                    <a href="#" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
                                 </div>
                             </div>
                             <div class="author">
@@ -162,7 +157,7 @@
                             <div class="card-body content">
                                 <h5><a href="javascript:void(0)" class="card-title title text-dark">Pizza & boisson</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
-                                    <a href="index.html" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
+                                    <a href="#" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
                                 </div>
                             </div>
                             <div class="author">
@@ -181,7 +176,7 @@
                             <div class="card-body content">
                                 <h5><a href="javascript:void(0)" class="card-title title text-dark">Pizza, boisson & dessert</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
-                                    <a href="index.html" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
+                                    <a href="#" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
                                 </div>
                             </div>
                             <div class="author">
