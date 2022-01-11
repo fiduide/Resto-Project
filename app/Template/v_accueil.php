@@ -31,16 +31,13 @@
     
         <!-- Navbar STart -->
         <header id="topnav" class="defaultscroll sticky bg-white">
-            <div class="container">
+            <div class="container d-flex align-items-center justify-content-between">
                 <!-- Logo container-->
                 <div>
                     <a class="logo" href="#">
-                        <img src="public/img/icon/logo.png" height="100" alt="pizza lab">
+                        <img src="public/img/logo/logo_fond_vide.png" height="100" alt="pizza lab">
                     </a>
                 </div>                 
-                <div class="buy-button">
-                    <a href="h#" target="_blank" class="btn btn-primary">Mon compte</a>
-                </div><!--end login button-->
                 <!-- End Logo container-->
                 <div class="menu-extras">
                     <div class="menu-item">
@@ -83,11 +80,9 @@
                                 </li>  
                             </ul>
                         </li>
+                        <li class="has-submenu"><a href="#"><i class="mdi mdi-account"></i>Mon Compte</a></li>
                         
                     </ul><!--end navigation menu-->
-                    <div class="buy-menu-btn d-none">
-                        <a href="#" target="_blank" class="btn btn-primary">Mon compte</a>
-                    </div><!--end login button-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
