@@ -39,7 +39,7 @@
                     </a>
                 </div>                 
                 <div class="buy-button">
-                    <a href="hindex.html" target="_blank" class="btn btn-primary">Mon compte</a>
+                    <a href="index.php?action=account" class="btn btn-primary">Mon compte</a>
                 </div><!--end login button-->
                 <!-- End Logo container-->
                 <div class="menu-extras">

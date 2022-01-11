@@ -1,6 +1,6 @@
 <?php
 
-namespace Pizza_lab\core\Database;
+namespace core\Database;
 
 class Database
 {

@@ -1,7 +1,7 @@
 <?php
-namespace Pizza_lab\app\Manager;
+namespace app\Manager;
 
-use Pizza_lab\core\Database\Database;
+use core\Database\Database;
 
 class UtilisateurManager
 {

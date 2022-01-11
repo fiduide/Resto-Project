@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use app\Controller\AccountController;
 use app\Controller\MainController;
@@ -17,13 +18,10 @@ try {
     $action = (isset($_GET['action'])) ? $_GET['action'] : "";
 
     switch ($action) {
-        case 'login':
+        case 'account':
             $accountController = new AccountController();
-            if(isset($_GET['connect']) && $_GET['connect'] == true){
-                $email = trim($_POST['email']);
-                $motDePasse = $_POST['motDePasse'];
-
-                // connectUtilisateur($email, $motDePasse);
+            if(isset($_POST['login']) && $_POST['login'] == 1){
+                $accountController->connectUtilisateur();
             } else {
                 $accountController->login();
             }

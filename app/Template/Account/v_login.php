@@ -8,29 +8,38 @@
         <!-- favicon -->
         <link rel="shortcut icon" href="images/favicon.ico">
         <!-- Bootstrap -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons -->
-        <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="public/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css">
         <!-- Main Css -->
-        <link href="assets/css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
-        <link href="assets/css/colors/default.css" rel="stylesheet" id="color-opt">
+        <link href="public/css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
+        <link href="public/css/colors/default.css" rel="stylesheet" id="color-opt">
     </head>
 
     <body>
         <div class="back-to-home rounded d-none d-sm-block">
             <a href="index.php" class="btn btn-icon btn-primary"><i data-feather="home" class="icons"></i></a>
         </div>
+
         <!-- Hero Start -->
-        <section class="bg-home bg-circle-gradiant d-flex align-items-center">
+        <section class="bg-home bg-circle-gradiant d-flex align-items-center">    
             <div class="bg-overlay bg-overlay-white"></div>
             <div class="container">
+                <?php if(isset($_POST['login']) && $_POST['login'] == 1){ ?>
+                    <div class="alert alert-danger text-center" role="alert">
+                        Les indentifiants transmis sont inconnus!
+                    </div>
+                <?php } ?>
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-8"> 
                         <div class="card login-page bg-white shadow rounded border-0">
                             <div class="card-body">
                                 <h4 class="card-title text-center">Connexion</h4>
-                                <form class="login-form mt-4" action="index.php?action=login&connect=true" method="post">
+                                <form class="login-form mt-4" action="index.php?action=account" method="post">
+
+                                    <input type="hidden" name="login" value="1">
+
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
@@ -76,12 +85,12 @@
         <!-- Hero End -->
 
         <!-- javascript -->
-        <script src="assets/js/jquery-3.5.1.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="public/js/jquery-3.5.1.min.js"></script>
+        <script src="public/js/bootstrap.bundle.min.js"></script>
         <!-- Icons -->
-        <script src="assets/js/feather.min.js"></script>
+        <script src="public/js/feather.min.js"></script>
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
         <!-- Main Js -->
-        <script src="assets/js/app.js"></script>
+        <script src="public/js/app.js"></script>
     </body>
 </html>
