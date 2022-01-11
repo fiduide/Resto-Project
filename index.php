@@ -3,6 +3,7 @@ session_start();
 
 use app\Controller\AccountController;
 use app\Controller\MainController;
+use app\Controller\ChoixController;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -27,7 +28,10 @@ try {
             }
 
             break;
-        
+        case 'choix':
+                $choixController = new ChoixController();
+                $choixController->affichage();
+                break;
         default:
             $mainController = new MainController();
             $mainController->index();

@@ -136,9 +136,9 @@
                             <div class="overlay rounded-top bg-dark"></div>
                             </div>
                             <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">Pizza Only</a></h5>
+                                <h5><a href="index.php?action=choix&menu=1" class="card-title title text-dark">Pizza Only</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
-                                    <a href="#" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
+                                    <a href="index.php?action=choix&menu=1" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
                                 </div>
                             </div>
                             <div class="author">
@@ -155,9 +155,9 @@
                             <div class="overlay rounded-top bg-dark"></div>
                             </div>
                             <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">Pizza & boisson</a></h5>
+                                <h5><a href="index.php?action=choix&menu=2" class="card-title title text-dark">Pizza & boisson</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
-                                    <a href="#" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
+                                    <a href="index.php?action=choix&menu=2" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
                                 </div>
                             </div>
                             <div class="author">
@@ -174,9 +174,9 @@
                             <div class="overlay rounded-top bg-dark"></div>
                             </div>
                             <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">Pizza, boisson & dessert</a></h5>
+                                <h5><a href="index.php?action=choix&menu=3" class="card-title title text-dark">Pizza, boisson & dessert</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
-                                    <a href="#" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
+                                    <a href="index.php?action=choix&menu=3" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
                                 </div>
                             </div>
                             <div class="author">
