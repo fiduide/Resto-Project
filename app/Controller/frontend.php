@@ -1,5 +1,5 @@
 <?php
-
+/*
 use Pizza_lab\model\UtilisateurManager;
 
 require_once("model/Manager.php");
@@ -31,3 +31,4 @@ function index()
 {
     require('view/frontend/v_index.php');
 }
+*/

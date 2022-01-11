@@ -1,10 +1,18 @@
 <?php
-namespace Pizza_lab\model;
+namespace Pizza_lab\app\Manager;
 
-require_once("model/Manager.php");
+use Pizza_lab\core\Database\Database;
 
-class UtilisateurManager extends Manager
+class UtilisateurManager
 {
+    public function __construct()
+    {
+        $this->pdo = (new Database())->pdo;
+
+        if(is_null($this->pdo)){
+            throw new \Exception("Erreur dans les identifiants de connexion à la BDD");
+        }
+    }
 
     /**
      * Récupère un utilisateur en fonction de son adresse email et de son mot de passe
@@ -15,8 +23,6 @@ class UtilisateurManager extends Manager
      */
     public function getUtilisateur(string $email, string $motDePasse): array
     {
-        $db = $this->dbConnect();
-
         $query = "SELECT *
             FROM utilisateur
             WHERE email LIKE :email
@@ -27,7 +33,7 @@ class UtilisateurManager extends Manager
             "motDePasse" => $motDePasse
         );
         
-        $stmt = $db->prepare($query);
+        $stmt = $this->pdo->prepare($query);
         $stmt->execute($arDataQuery);
 
         $utilisateur = $stmt->fetch();
