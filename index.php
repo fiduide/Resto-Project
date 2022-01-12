@@ -53,7 +53,7 @@ try {
             if(isset($_GET['add']) && $_GET['add'] == 1){
                 $checkoutController->addCheckout();
             }
-
+            break;
         case 'deleteProduit':
             $choixController = new ChoixController();
 
