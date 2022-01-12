@@ -66,7 +66,7 @@ class ChoixController extends MainController
                 $totalCommande = $totalCommande + $totalUneCommande;
     
                 $html .= '<tr>
-                <td class="h6"><a href="index.php?action=deleteProduit&type='.$commande_type.'&idProduit='.$uneCommande->getId().'" class="text-danger">X</a></td>
+                <td class="h6"><a href="index.php?action=deleteAllProduit&type='.$commande_type.'&idProduit='.$uneCommande->getId().'" class="text-danger">X</a></td>
                 <td>
                     <div class="d-flex align-items-center">
                         <img src="public/img/'.$commande_type.'/'.$uneCommande->getId().'.png" class="img-fluid avatar avatar-small rounded shadow" style="height:auto;" alt="">
@@ -74,7 +74,9 @@ class ChoixController extends MainController
                     </div>
                 </td>
                 <td class="text-center">'.$uneCommande->getPrix().'</td>
-                <td class="text-center">'.$quantity.'</td>
+                <td class="text-center"><a class="minus btn btn-icon btn-soft-primary font-weight-bold" href="index.php?action=deleteProduit&type='.$commande_type.'&idProduit='.$uneCommande->getId().'" class="text-danger">-</a>
+                <input type="text" step="1" min="0" name="" value='.$quantity.'  class="disable btn btn-icon btn-soft-primary font-weight-bold">
+                <a class="plus btn btn-icon btn-soft-primary font-weight-bold" href="index.php?action=ajoutProduit&type='.$commande_type.'&idProduit='.$uneCommande->getId().'" class="text-danger">+</a>
                 <td class="text-center font-weight-bold">'. $totalUneCommande .' €</td>
             </tr>';
             }
@@ -94,6 +96,26 @@ class ChoixController extends MainController
             }else{
                 unset($_SESSION['commande'][$type.'_'.$idProduit]);
             }
+            $this->getCommand();
+        }
+    } 
+
+    public function ajoutProduit($type, $idProduit) 
+    { 
+        if(isset($type) && isset($idProduit))
+        {
+            if($_SESSION['commande'][$type.'_'.$idProduit] > 0){
+                $_SESSION['commande'][$type.'_'.$idProduit]++ ;
+            }
+            $this->getCommand();
+        }
+    } 
+
+    public function deleteAllProduit($type, $idProduit) 
+    { 
+        if(isset($type) && isset($idProduit))
+        {
+            unset($_SESSION['commande'][$type.'_'.$idProduit]);
             $this->getCommand();
         }
     } 
