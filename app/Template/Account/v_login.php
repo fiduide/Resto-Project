@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
     <head>
         <meta charset="utf-8" />
@@ -62,7 +62,7 @@
                                         </div><!--end col-->
 
                                         <div class="col-12 text-center">
-                                            <p class="mb-0 mt-3"><small class="text-dark mr-2">Vous n'avez pas de compte ?</small> <a href="auth-signup-three.html" class="text-dark font-weight-bold">S'enregistrer</a></p>
+                                            <p class="mb-0 mt-3"><small class="text-dark mr-2">Vous n'avez pas de compte ?</small> <a href="v_register.html" class="text-dark font-weight-bold">S'enregistrer</a></p>
                                         </div><!--end col-->
                                     </div><!--end row-->
                                 </form>
