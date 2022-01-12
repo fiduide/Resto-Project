@@ -47,6 +47,21 @@ try {
                 }
 
                 break;
+
+        case 'paiementPage':
+            $choixController = new ChoixController();
+
+            $choixController->affichagePaiement();
+        
+            break;
+
+        case 'affichageProfil':
+            $choixController = new ChoixController();
+
+            $choixController->affichageProfil();
+        
+            break;
+
         case 'checkout' :
             $checkoutController = new CheckoutController();
 
@@ -54,6 +69,7 @@ try {
                 $checkoutController->addCheckout();
             }
             break;
+
         case 'deleteProduit':
             $choixController = new ChoixController();
 

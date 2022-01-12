@@ -68,7 +68,6 @@
     </section>
     <!--end section-->
     <!-- Hero End -->
-
     <!-- Profile Start -->
     <section class="section mt-60">
         <div class="container mt-lg-3">
@@ -78,7 +77,7 @@
                         <div class="widget">
                             <div class="row">
                                 <div class="col-6 mt-4 pt-2">
-                                    <a href="account-profile.html" class="accounts active rounded d-block shadow text-center py-3">
+                                    <a href="index.php?action=affichageProfil" class="accounts active rounded d-block shadow text-center py-3">
                                         <span class="pro-icons h3 text-muted"><i class="uil uil-dashboard"></i></span>
                                         <h6 class="title text-dark h6 my-0">Profil</h6>
                                     </a>
@@ -86,7 +85,7 @@
                                 <!--end col-->
 
                                 <div class="col-6 mt-4 pt-2">
-                                    <a href="account-payments.html" class="accounts rounded d-block shadow text-center py-3">
+                                    <a href="index.php?action=paiementPage" class="accounts rounded d-block shadow text-center py-3">
                                         <span class="pro-icons h3 text-muted"><i class="uil uil-transaction"></i></span>
                                         <h6 class="title text-dark h6 my-0">Paiement</h6>
                                     </a>
