@@ -89,13 +89,12 @@ class ChoixController extends MainController
     { 
         if(isset($type) && isset($idProduit))
         {
-        
-        var_dump($_SESSION['commande'][$type.'_'.$idProduit]);
-        var_dump($type);
-        //$_SESSION['commande'][$type.'_'.$idProduit] = 0;
-
-        //include(ROOT . "/app/Template/Menu/v_facture.php");
+            if($_SESSION['commande'][$type.'_'.$idProduit] > 1){
+                $_SESSION['commande'][$type.'_'.$idProduit]-- ;
+            }else{
+                unset($_SESSION['commande'][$type.'_'.$idProduit]);
+            }
+            $this->getCommand();
         }
-        
     } 
 }
