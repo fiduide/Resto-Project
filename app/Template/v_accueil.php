@@ -4,78 +4,11 @@
     <head>
         <meta charset="utf-8" />
         <title>Pizza Lab</title>
-        <!-- favicon -->
-        <link rel="shortcut icon" href="public/img/favicon.ico">
-        <!-- Bootstrap -->
-        <link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <!-- Icons -->
-        <link href="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/public/css/line.css">
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
-        <!-- Magnific -->
-        <link href="public/css/magnific-popup.css" rel="stylesheet" type="text/css" />
-        <!-- Slider -->
-        <link rel="stylesheet" href="public/css/owl.carousel.min.css"/>
-        <link rel="stylesheet" href="public/css/owl.theme.default.min.css"/>
-        <!-- FLEXSLIDER -->
-        <link href="public/css/flexslider.css" rel="stylesheet" type="text/css" />
-        <!-- Date picker -->
-        <link rel="stylesheet" href="public/css/flatpickr.min.css">
-        <!-- Main Css -->
-        <link href="public/css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
-        <link href="public/css/colors/default.css" rel="stylesheet" id="color-opt">
-
+        <?php include("app/Template/v_link.php"); ?>
     </head>
 
     <body>
-    
-        <!-- Navbar STart -->
-        <header id="topnav" class="defaultscroll sticky bg-white">
-            <div class="container d-flex align-items-center justify-content-between">
-                <!-- Logo container-->
-                <div>
-                    <a class="logo" href="#">
-                        <img src="public/img/logo/logo_fond_vide.png" height="100" alt="pizza lab">
-                    </a>
-                </div>                 
-                <!-- End Logo container-->
-                <div class="menu-extras">
-                    <div class="menu-item">
-                        <!-- Mobile menu toggle-->
-                        <a class="navbar-toggle">
-                            <div class="lines">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </a>
-                        <!-- End mobile menu toggle-->
-                    </div>
-                </div>
-        
-                <div id="navigation">
-                    <!-- Navigation Menu-->   
-                    <ul class="navigation-menu">
-                        <li class="has-submenu">
-                            <a href="javascript:void(0)"><i class="mdi mdi-account"></i></a><span class="menu-arrow"></span>
-                            <ul class="submenu megamenu">
-                                <li>
-                                    <ul>
-                                        <li><a class="dropdown-item text-dark" href="index.php?action=account"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a></li>
-                                        <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1){ ?>
-                                            <div class="dropdown-divider my-3 border-top"></div>
-                                            <li><a class="dropdown-item text-dark" href="index.php?action=account&disconnect=1"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Se déconnecter</a></li>
-                                        <?php } ?>
-                                    </ul>
-                                </li>  
-                            </ul>
-                        </li>
-                    </ul><!--end navigation menu-->
-                </div><!--end navigation-->
-            </div><!--end container-->
-        </header><!--end header-->
-        <!-- Navbar End -->
-        
+        <?php include("app/Template/v_menu.php"); ?>
         <!-- Hero Start -->
         <section class="main-slider">
             <ul class="slides"> 
@@ -84,7 +17,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-7 col-md-7">
                                 <div class="title-heading position-relative mt-4" style="z-index: 1;">
-                                    <h1 class="heading mb-3">Pizza Lab, the best or nothing</h1>
+                                    <h1 class="heading mb-3">Pizza Lab</h1>
                                     <p class="para-desc">Commander en ligne ou consommer au sein de notre restaurant.</p>
                                 </div>
                             </div>
@@ -110,7 +43,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
                         <div class="section-title mb-4 pb-2">
-                            <h4 class="title mb-4">Nos menus</h4>
+                            <h4 class="title mb-4">Nos meilleures pizzas</h4>
                             <p class="text-muted para-desc mx-auto mb-0">Nos pizzas sont préparées sur <span class="text-primary font-weight-bold">place</span> et sont généreusement <span class="text-primary font-weight-bold">garnies</span>.</p>
                         </div>
                     </div><!--end col-->
@@ -120,18 +53,18 @@
                     <div class="col-lg-4 col-md-6 mt-4 pt-2">
                         <div class="card blog rounded border-0 shadow">
                             <div class="position-relative">
-                                <img src="public/img/restaurant/bg01.jpg" class="card-img-top rounded-top" alt="...">
+                                <img src="public/img/Pizza/2.png" class="card-img-top rounded-top" alt="...">
                             <div class="overlay rounded-top bg-dark"></div>
                             </div>
                             <div class="card-body content">
-                                <h5><a href="index.php?action=choix&menu=1" class="card-title title text-dark">Pizza Only</a></h5>
+                                <h5><a href="index.php?action=choix" class="card-title title text-dark">Chèvre</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
-                                    <a href="index.php?action=choix&menu=1" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
+                                    <a href="index.php?action=choix" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
                                 </div>
                             </div>
                             <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> L'espagnole</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> chorizo, moules, tomates cerise,...</small>
+                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Chèvre</small>
+                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> Sauce Tomate, Fromage de chèvre</small>
                             </div>
                         </div>
                     </div><!--end col-->
@@ -139,18 +72,18 @@
                     <div class="col-lg-4 col-md-6 mt-4 pt-2">
                         <div class="card blog rounded border-0 shadow">
                             <div class="position-relative">
-                                <img src="public/img/restaurant/bg01.jpg" class="card-img-top rounded-top" alt="...">
+                                <img src="public/img/Pizza/3.png" class="card-img-top rounded-top" alt="...">
                             <div class="overlay rounded-top bg-dark"></div>
                             </div>
                             <div class="card-body content">
-                                <h5><a href="index.php?action=choix&menu=2" class="card-title title text-dark">Pizza & boisson</a></h5>
+                                <h5><a href="index.php?action=choix&menu=2" class="card-title title text-dark">Calzone</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
                                     <a href="index.php?action=choix&menu=2" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
                                 </div>
                             </div>
                             <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Pepperoni</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> pepperoni, epice, mozzarella,...</small>
+                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Calzone</small>
+                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> Sauce Tomate, Jambon</small>
                             </div>
                         </div>
                     </div><!--end col-->
@@ -158,18 +91,18 @@
                     <div class="col-lg-4 col-md-6 mt-4 pt-2">
                         <div class="card blog rounded border-0 shadow">
                             <div class="position-relative">
-                                <img src="public/img/restaurant/bg01.jpg" class="card-img-top rounded-top" alt="...">
+                                <img src="public/img/Pizza/4.png" class="card-img-top rounded-top" alt="...">
                             <div class="overlay rounded-top bg-dark"></div>
                             </div>
                             <div class="card-body content">
-                                <h5><a href="index.php?action=choix&menu=3" class="card-title title text-dark">Pizza, boisson & dessert</a></h5>
+                                <h5><a href="index.php?action=choix&menu=3" class="card-title title text-dark">Chèvre miel</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
                                     <a href="index.php?action=choix&menu=3" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
                                 </div>
                             </div>
                             <div class="author">
-                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Kebab</small>
-                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> Kebab,...</small>
+                                <small class="text-light user d-block"><i class="mdi mdi-account"></i> Chèvre miel</small>
+                                <small class="text-light date"><i class="mdi mdi-calendar-check"></i> Crème fraiche, Fromage de chèvre, Miel</small>
                             </div>
                         </div>
                     </div><!--end col-->

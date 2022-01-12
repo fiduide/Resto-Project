@@ -34,7 +34,16 @@ try {
             break;
         case 'choix':
                 $choixController = new ChoixController();
-                $choixController->affichage();
+
+                if(isset($_GET['command']) && $_GET['command'] == 1){
+                   if(isset($_POST['pizza']) && isset($_POST['boisson']) && isset($_POST['dessert']) ){
+                        $choixController->addCommand($_POST['pizza'], $_POST['boisson'], $_POST['dessert']);
+                   }
+                    $choixController->getCommand();
+                }else{
+                    $choixController->affichage();
+                }
+
                 break;
         default:
             $mainController = new MainController();

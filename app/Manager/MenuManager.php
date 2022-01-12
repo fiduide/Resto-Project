@@ -23,19 +23,21 @@ class MenuManager
     {
 
         $statement = "SELECT
-                            p.id_plat,
-                            p.nom_plat,
+                            p.id,
+                            p.nom,
+                            p.prix,
                             GROUP_CONCAT(ig.nom_ingredient) AS ingredient
                         FROM
-                            `plat` AS p
-                        INNER JOIN plat_ingredient AS PI
+                            `pizza` AS p
+                        INNER JOIN pizza_ingredient AS PI
                         ON
-                            p.id_plat = PI.id_plat
+                            p.id = PI.id_plat
                         INNER JOIN ingredient AS ig
                         ON
                             PI.id_ingredient = ig.id_ingredient
                         GROUP BY
-                            p.id_plat";
+                            p.id
+                        ORDER BY p.id";
         $pizzas = $this->pdo->query($statement);
         $pizzas = $pizzas->fetchAll();
 
@@ -46,8 +48,9 @@ class MenuManager
     {
 
         $statements = "SELECT
-                            id_boisson,
-                            nom_boisson
+                            id,
+                            nom,
+                            prix
                         FROM
                             `boisson`";
         $boissons = $this->pdo->query($statements);
@@ -60,13 +63,55 @@ class MenuManager
     {
 
         $statementss = "SELECT
-                            id_dessert,
-                            nom_dessert
+                            id,
+                            nom,
+                            prix
                         FROM
                             `dessert`";
         $desserts = $this->pdo->query($statementss);
         $desserts = $desserts->fetchAll();
 
         return $desserts;
+    }
+
+
+     /**
+     * Page d'article affichant les données en fonction de l'id de la pizza sélectionné
+     * @return void
+     */
+    public function getOnePizza($id) : array
+    {
+            $statement = "SELECT * FROM pizza WHERE id = $id";
+            $query = $this->pdo->query($statement);
+
+            $pizza = $query->fetch();
+            $query->closeCursor();
+            return $pizza;
+    }
+     /**
+     * Page d'article affichant les données en fonction de l'id de la boisson sélectionné
+     * @return void
+     */
+    public function getOneBoisson($id) : array
+    {
+            $statement = "SELECT * FROM boisson WHERE id = $id";
+            $query = $this->pdo->query($statement);
+
+            $boisson = $query->fetch();
+            $query->closeCursor();
+            return $boisson;
+    }
+     /**
+     * Page d'article affichant les données en fonction de l'id de la dessert sélectionné
+     * @return void
+     */
+    public function getOneDessert($id) : array
+    {
+            $statement = "SELECT * FROM dessert WHERE id = $id";
+            $query = $this->pdo->query($statement);
+
+            $dessert = $query->fetch();
+            $query->closeCursor();
+            return $dessert;
     }
 }

@@ -4,81 +4,11 @@
     <head>
         <meta charset="utf-8" />
         <title>Pizza Lab - Plats</title>
-        <!-- favicon -->
-        <link rel="shortcut icon" href="public/img/favicon.ico">
-        <!-- Bootstrap -->
-        <link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <!-- Icons -->
-        <link href="public/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/public/css/line.css">
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
-        <!-- Slider -->               
-        <link rel="stylesheet" href="public/css/owl.carousel.min.css"/> 
-        <link rel="stylesheet" href="public/css/owl.theme.default.min.css"/> 
-        <!-- Main Css -->
-        <link href="public/css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
-        <link href="public/css/colors/default.css" rel="stylesheet" id="color-opt">
-
+        <?php include("app/Template/v_link.php"); ?>
     </head>
 
     <body>
-        <!-- Loader -->
-        <!-- <div id="preloader">
-            <div id="status">
-                <div class="spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Loader -->
-
-        <!-- Navbar STart -->
-        <header id="topnav" class="defaultscroll sticky bg-white">
-            <div class="container d-flex align-items-center justify-content-between">
-                <!-- Logo container-->
-                <div>
-                    <a class="logo" href="#">
-                        <img src="public/img/logo/logo_fond_vide.png" height="100" alt="pizza lab">
-                    </a>
-                </div>                 
-                <!-- End Logo container-->
-                <div class="menu-extras">
-                    <div class="menu-item">
-                        <!-- Mobile menu toggle-->
-                        <a class="navbar-toggle">
-                            <div class="lines">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </a>
-                        <!-- End mobile menu toggle-->
-                    </div>
-                </div>
-        
-                <div id="navigation">
-                    <!-- Navigation Menu-->   
-                    <ul class="navigation-menu">
-                        <li class="has-submenu">
-                            <a href="javascript:void(0)"><i class="mdi mdi-account"></i></a><span class="menu-arrow"></span>
-                            <ul class="submenu megamenu">
-                                <li>
-                                    <ul>
-                                        <li><a class="dropdown-item text-dark" href="index.php?action=account"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a></li>
-                                        <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1){ ?>
-                                            <div class="dropdown-divider my-3 border-top"></div>
-                                            <li><a class="dropdown-item text-dark" href="index.php?action=account&disconnect=1"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Se déconnecter</a></li>
-                                        <?php } ?>
-                                    </ul>
-                                </li>  
-                            </ul>
-                        </li>
-                    </ul><!--end navigation menu-->
-                </div><!--end navigation-->
-            </div><!--end container-->
-        </header><!--end header-->
-        <!-- Navbar End -->
+        <?php include("app/Template/v_menu.php"); ?>
         <!-- Showcase Start -->
         <section class="section pt-0 bg-light">
             <div class="container mt-100 mt-60">
@@ -103,7 +33,7 @@
                             </li><!--end nav item-->
                             
                             <li class="nav-item">
-                                <a class="nav-link rounded <?php if(isset($_GET['menu']) && $_GET['menu'] == 1) { ?> disabled d-none <?php } ?>" id="pills-smart-tab" data-toggle="pill" href="#pills-smart" role="tab" aria-controls="pills-smart" aria-selected="false">
+                                <a class="nav-link rounded" id="pills-smart-tab" data-toggle="pill" href="#pills-smart" role="tab" aria-controls="pills-smart" aria-selected="false">
                                     <div class="text-center py-2">
                                         <h6 class="mb-0">Boissons</h6>
                                     </div>
@@ -111,7 +41,7 @@
                             </li><!--end nav item-->
                             
                             <li class="nav-item">
-                                <a class="nav-link rounded <?php if(isset($_GET['menu']) && ($_GET['menu'] == 1 || $_GET['menu'] == 2)) { ?> disabled d-none <?php } ?>" id="pills-apps-tab" data-toggle="pill" href="#pills-apps" role="tab" aria-controls="pills-apps" aria-selected="false">
+                                <a class="nav-link rounded" id="pills-apps-tab" data-toggle="pill" href="#pills-apps" role="tab" aria-controls="pills-apps" aria-selected="false">
                                     <div class="text-center py-2">
                                         <h6 class="mb-0">Désserts</h6>
                                     </div>
@@ -123,48 +53,61 @@
                 
                 <div class="row">
                     <div class="col-12 mt-4 pt-2">
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-cloud" role="tabpanel" aria-labelledby="pills-cloud-tab">
-                                <div class="row align-items-center">
-                                   <?php foreach ($pizzas as $pizza) {
-                                       echo "<center>";
-                                       echo "<img style='height: 300px;width: 370px' src='public/img/pizza/".$pizza['id_plat'].".png'>";
-                                       echo "<br>";
-                                       echo $pizza['nom_plat'] . "<br>";echo "<i>";
-                                       echo "<p><u>Ingrédients :</u></p>";
-                                       echo $pizza['ingredient']. "<br></p>";
-                                       echo "</i>";
-                                       echo "<a class='btn btn-pills btn-primary' href=". $pizza['id_plat'] . ">Sélectionner</a>";
-                                       echo "</center>";
-                                   } ?>
-                                </div><!--end row-->
-                            </div><!--end teb pane-->
+                        <form method="POST" class="text-center" action="index.php?action=choix&command=1">
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-cloud" role="tabpanel" aria-labelledby="pills-cloud-tab">
+                                    <div class="row align-items-center">
+                                    <?php foreach ($pizzas as $pizza) {
+                                        echo "<div class='col-4 text-center mt-5'>";
+                                        echo "<img style='height: 300px;width: 370px' src='public/img/pizza/".$pizza['id'].".png'>";
+                                        echo "<br>";
+                                        echo $pizza['nom'] . "<br>";echo "<i>";
+                                        echo "<p><u>Ingrédients :</u></p>";
+                                        echo str_replace(",", ", ", $pizza['ingredient']). "<br></p>";
+                                        echo $pizza['prix']. "€<br></p>";
+                                        
+                                        echo "</i>";
+                                        echo '<input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo '<input type="text" step="1" min="0" name="pizza['.$pizza['id'].']" value="0"  class="btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo '<input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo "</div>";
+                                    } ?>
+                                    </div><!--end row-->
+                                </div><!--end teb pane-->
 
-                            <div class="tab-pane fade" id="pills-smart" role="tabpanel" aria-labelledby="pills-smart-tab">
-                                <div class="row align-items-center">
-                                <?php foreach ($boissons as $boisson) {
-                                       echo "<center>";
-                                       echo "<img style='height: 200px;width: 370px' src='public/img/boisson/".$boisson['id_boisson'].".png'>";
-                                       echo "<br>";
-                                       echo $boisson['nom_boisson'] . "<br>";
-                                       echo "<a class='btn btn-pills btn-primary' href=". $boisson['id_boisson'] . ">Sélectionner</a>";
-                                       echo "</center>";
-                                   } ?>
-                                </div>    <!--end row-->
-                            </div><!--end teb pane-->
+                                <div class="tab-pane fade" id="pills-smart" role="tabpanel" aria-labelledby="pills-smart-tab">
+                                    <div class="row align-items-center">
+                                    <?php foreach ($boissons as $boisson) {
+                                        echo "<div class='col-4 text-center mt-5'>";
+                                        echo "<img style='height: 200px;width: 370px' src='public/img/boisson/".$boisson['id'].".png'>";
+                                        echo "<br>";
+                                        echo $boisson['nom'] . "<br>";
+                                        echo $boisson['prix']. "€<br></p>";
+                                        echo '<input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo '<input type="text" step="1" min="0" name="boisson['.$boisson['id'].']" value="0"  class="btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo '<input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo "</div>";
+                                    } ?>
+                                    </div>    <!--end row-->
+                                </div><!--end teb pane-->
 
-                            <div class="tab-pane fade" id="pills-apps" role="tabpanel" aria-labelledby="pills-apps-tab">
-                                <div class="row align-items-center">
-                                <?php foreach ($desserts as $dessert) {
-                                       echo "<center>";
-                                       echo "<img style='height: 250px;width: 370px' src='public/img/dessert/".$dessert['id_dessert'].".png'>";
-                                       echo "<br>";
-                                       echo $dessert['nom_dessert'] . "<br>";
-                                       echo "<a class='btn btn-pills btn-primary' href=". $dessert['id_dessert'] . ">Sélectionner</a>";
-                                       echo "</center>";
-                                   } ?>
-                                </div>    <!--end row-->
-                            </div><!--end teb pane-->
+                                <div class="tab-pane fade" id="pills-apps" role="tabpanel" aria-labelledby="pills-apps-tab">
+                                    <div class="row align-items-center">
+                                    <?php foreach ($desserts as $dessert) {
+                                        echo "<div class='col-4 text-center mt-5'>";
+                                        echo "<img style='height: 250px;width: 370px' src='public/img/dessert/".$dessert['id'].".png'>";
+                                        echo "<br>";
+                                        echo $dessert['nom'] . "<br>";
+                                        echo $dessert['prix']. "€<br></p>";
+                                        echo '<input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo '<input type="text" step="1" min="0" name="dessert['.$dessert['id'].']" value="0"  class="btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo '<input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo "</div>";
+                                    } ?>
+                                    </div>    <!--end row-->
+                                </div><!--end teb pane-->
+                                <button type="submit" class="btn btn-primary mt-5">Ajouter à ma commande </button>
+                            </form>
                         </div><!--end tab content-->
                     </div><!--end col-->
                 </div><!--end row-->
@@ -243,5 +186,20 @@
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
         <!-- Main Js -->
         <script src="public/js/app.js"></script>
+
+        <script>
+            
+            $('.plus').click(function () {
+                if ($(this).prev().val() < 10) {
+                    $(this).prev().val(+$(this).prev().val() + 1);
+                }
+            });
+            $('.minus').click(function () {
+                if ($(this).next().val() > 0) {
+                    if ($(this).next().val() > 0) $(this).next().val(+$(this).next().val() - 1);
+                }
+            });
+        
+        </script>
     </body>
 </html>
