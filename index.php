@@ -4,6 +4,7 @@ session_start();
 use app\Controller\AccountController;
 use app\Controller\MainController;
 use app\Controller\ChoixController;
+use app\Controller\CheckoutController;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -50,20 +51,46 @@ try {
             }
 
             break;
+        case 'checkout':
+            $checkoutController = new CheckoutController();
 
+            if (isset($_GET['add']) && $_GET['add'] == 1) {
+                $checkoutController->addCheckout();
+            }
+            break;
         case 'deleteProduit':
             $choixController = new ChoixController();
 
             if (isset($_GET['type']) && isset($_GET['idProduit'])) {
-                //if(isset($_POST['pizza']) && isset($_POST['boisson']) && isset($_POST['dessert']) ){
                 $choixController->deleteProduit($_GET['type'], $_GET['idProduit']);
-                //}
-                //$choixController->getCommand();
             } else {
                 $choixController->affichage();
             }
 
             break;
+
+        case 'ajoutProduit':
+            $choixController = new ChoixController();
+
+            if (isset($_GET['type']) && isset($_GET['idProduit'])) {
+                $choixController->ajoutProduit($_GET['type'], $_GET['idProduit']);
+            } else {
+                $choixController->affichage();
+            }
+
+            break;
+
+        case 'deleteAllProduit':
+            $choixController = new ChoixController();
+
+            if (isset($_GET['type']) && isset($_GET['idProduit'])) {
+                $choixController->deleteAllProduit($_GET['type'], $_GET['idProduit']);
+            } else {
+                $choixController->affichage();
+            }
+
+            break;
+
 
         default:
             $mainController = new MainController();

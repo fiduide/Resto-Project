@@ -29,6 +29,26 @@
  *     18.  Footer               *
  ================================*/
 @import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,700&display=swap");
+
+.transitionMovement {
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-name: upAndDown;
+}
+
+@keyframes upAndDown {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(20%);
+  }
+}
+
+
+
 h1 {
   font-size: 42px !important;
 }
