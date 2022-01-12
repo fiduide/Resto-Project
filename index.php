@@ -3,6 +3,7 @@ session_start();
 
 use app\Controller\AccountController;
 use app\Controller\MainController;
+use app\Controller\ChoixController;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -32,7 +33,19 @@ try {
             }
 
             break;
-        
+        case 'choix':
+                $choixController = new ChoixController();
+
+                if(isset($_GET['command']) && $_GET['command'] == 1){
+                   if(isset($_POST['pizza']) && isset($_POST['boisson']) && isset($_POST['dessert']) ){
+                        $choixController->addCommand($_POST['pizza'], $_POST['boisson'], $_POST['dessert']);
+                   }
+                    $choixController->getCommand();
+                }else{
+                    $choixController->affichage();
+                }
+
+                break;
         default:
             $mainController = new MainController();
             $mainController->index();

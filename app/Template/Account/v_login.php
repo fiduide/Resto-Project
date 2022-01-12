@@ -5,18 +5,8 @@
     <head>
         <meta charset="utf-8" />
         <title>Pizza Lab - Connexion</title>
-        <!-- favicon -->
-        <link rel="shortcut icon" href="images/favicon.ico">
-        <!-- Bootstrap -->
-        <link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <!-- Icons -->
-        <link href="public/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css">
-        <!-- Main Css -->
-        <link href="public/css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
-        <link href="public/css/colors/default.css" rel="stylesheet" id="color-opt">
+        <?php include("app/Template/v_link.php"); ?>
     </head>
-
     <body>
         <div class="back-to-home rounded d-none d-sm-block">
             <a href="index.php" class="btn btn-icon btn-primary"><i data-feather="home" class="icons"></i></a>
