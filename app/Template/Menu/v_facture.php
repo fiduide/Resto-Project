@@ -14,7 +14,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h4 class="title"> Réserver dès maintenant votre menu </h4>
+                            <h4 class="title"> Voici votre panier </h4>
                             <div class="page-next">
                             </div>
                         </div>
