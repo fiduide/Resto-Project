@@ -106,7 +106,12 @@
                                     } ?>
                                     </div>    <!--end row-->
                                 </div><!--end teb pane-->
-                                <button type="submit" class="btn btn-primary mt-5">Ajouter à ma commande </button>
+                                <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1){ ?>
+                                    <button type="submit" class="btn btn-primary mt-5">Ajouter à ma commande</button>
+                                <?php }else{ ?>
+                                    <button type="button" class="btn btn-primary mt-5" disabled>Vous n'êtes pas connecté</button>
+                                <?php } ?>
+
                             </form>
                         </div><!--end tab content-->
                     </div><!--end col-->
