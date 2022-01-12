@@ -17,7 +17,7 @@ class AccountController extends MainController
 
     public function profile()
     {
-        
+        include(ROOT . "/app/Template/Account/v_profile.php");
     }
 
     public function resetPassword()

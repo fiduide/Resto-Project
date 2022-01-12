@@ -56,7 +56,7 @@
                 <div id="navigation">
                     <!-- Navigation Menu-->   
                     <ul class="navigation-menu">
-                        <li><a href="#">Accueil</a></li>
+                        <li><a href="index.php">Accueil</a></li>
                         <li class="has-submenu">
                             <a href="javascript:void(0)">Pizzeria</a><span class="menu-arrow"></span>
                             <ul class="submenu megamenu">
@@ -86,10 +86,12 @@
                             <ul class="submenu megamenu">
                                 <li>
                                     <ul>
-                                        <li><a class="dropdown-item text-dark" href="index.php?action=account"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a></li>
                                         <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1){ ?>
+                                            <li><a class="dropdown-item text-dark" href="index.php?action=account"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a></li>
                                             <div class="dropdown-divider my-3 border-top"></div>
                                             <li><a class="dropdown-item text-dark" href="index.php?action=account&disconnect=1"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Se déconnecter</a></li>
+                                        <?php } else { ?>
+                                            <li><a class="dropdown-item text-dark" href="index.php?action=account"><i class="uil uil-user align-middle mr-1"></i> Se connecter</a></li>
                                         <?php } ?>
                                     </ul>
                                 </li>  

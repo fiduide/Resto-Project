@@ -19,10 +19,12 @@ class UtilisateurManager
      *
      * @param string $email
      * @param string $motDePasse
-     * @return array
+     * @return Utilisateur|null
      */
     public function getUtilisateur(string $email, string $motDePasse): array
     {
+        $utilisateur = null;
+        
         $query = "SELECT *
             FROM utilisateur
             WHERE email LIKE :email
@@ -38,10 +40,6 @@ class UtilisateurManager
 
         $utilisateur = $stmt->fetch();
         $stmt->closeCursor();
-
-        if(!$utilisateur){
-            $utilisateur = array();
-        }
 
         return $utilisateur;
     }

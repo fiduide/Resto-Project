@@ -23,8 +23,9 @@ try {
 
             if(isset($_GET['disconnect']) && $_GET['disconnect'] == 1){
                 $accountController->disconnectUtilisateur();
-            }
-            if(isset($_POST['login']) && $_POST['login'] == 1){
+            } else if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1){
+                $accountController->profile();
+            } else if(isset($_POST['login']) && $_POST['login'] == 1){
                 $accountController->connectUtilisateur();
             } else {
                 $accountController->login();
