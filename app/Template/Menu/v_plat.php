@@ -60,47 +60,32 @@
                 <div id="navigation">
                     <!-- Navigation Menu-->   
                     <ul class="navigation-menu">
-                        <li><a href="#">Accueil</a></li>
                         <li class="has-submenu">
-                            <a href="javascript:void(0)">Pizzeria</a><span class="menu-arrow"></span>
+                            <a href="javascript:void(0)"><i class="mdi mdi-account"></i></a><span class="menu-arrow"></span>
                             <ul class="submenu megamenu">
                                 <li>
                                     <ul>
-                                        <li><a href="index-saas.html">Pizza</a></li>
-                                        <li><a href="index-classic-saas.html">Pizza & boissons</a></li>
-                                        <li><a href="index-agency.html">Pizza, boisson & dessert</a></li>
+                                        <li><a class="dropdown-item text-dark" href="index.php?action=account"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a></li>
+                                        <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1){ ?>
+                                            <div class="dropdown-divider my-3 border-top"></div>
+                                            <li><a class="dropdown-item text-dark" href="index.php?action=account&disconnect=1"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Se déconnecter</a></li>
+                                        <?php } ?>
                                     </ul>
                                 </li>  
                             </ul>
                         </li>
-        
-                        <li class="has-submenu">
-                            <a href="javascript:void(0)">Restaurant</a><span class="menu-arrow"></span>
-                            <ul class="submenu megamenu">
-                                <li>
-                                    <ul>
-                                        <li><a href="index-saas.html">Réserver une tâble</a></li>
-                                    </ul>
-                                </li>  
-                            </ul>
-                        </li>
-                        <li class="has-submenu"><a href="index.php?action=account"><i class="mdi mdi-account"></i>Mon Compte</a></li>
-                        
                     </ul><!--end navigation menu-->
                 </div><!--end navigation-->
             </div><!--end container-->
         </header><!--end header-->
         <!-- Navbar End -->
-
-      
-       
-
         <!-- Showcase Start -->
         <section class="section pt-0 bg-light">
             <div class="container mt-100 mt-60">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
                         <div class="section-title mb-4 pb-2">
+                            <br>
                             <h4 class="title mb-4"><span class="text-primary">Nos</span> Plats</h4>
                         </div>
                     </div><!--end col-->
@@ -142,21 +127,42 @@
                             <div class="tab-pane fade show active" id="pills-cloud" role="tabpanel" aria-labelledby="pills-cloud-tab">
                                 <div class="row align-items-center">
                                    <?php foreach ($pizzas as $pizza) {
-                                       echo $pizza['nom_plat'] . "=> ";
-                                       echo $pizza['ingredient']. "<br>";
+                                       echo "<center>";
+                                       echo "<img style='height: 300px;width: 370px' src='public/img/pizza/".$pizza['id_plat'].".png'>";
+                                       echo "<br>";
+                                       echo $pizza['nom_plat'] . "<br>";echo "<i>";
+                                       echo "<p><u>Ingrédients :</u></p>";
+                                       echo $pizza['ingredient']. "<br></p>";
+                                       echo "</i>";
+                                       echo "<a class='btn btn-pills btn-primary' href=". $pizza['id_plat'] . ">Sélectionner</a>";
+                                       echo "</center>";
                                    } ?>
                                 </div><!--end row-->
                             </div><!--end teb pane-->
 
                             <div class="tab-pane fade" id="pills-smart" role="tabpanel" aria-labelledby="pills-smart-tab">
                                 <div class="row align-items-center">
-                                    <?php echo "affichage boisson"; ?>
+                                <?php foreach ($boissons as $boisson) {
+                                       echo "<center>";
+                                       echo "<img style='height: 200px;width: 370px' src='public/img/boisson/".$boisson['id_boisson'].".png'>";
+                                       echo "<br>";
+                                       echo $boisson['nom_boisson'] . "<br>";
+                                       echo "<a class='btn btn-pills btn-primary' href=". $boisson['id_boisson'] . ">Sélectionner</a>";
+                                       echo "</center>";
+                                   } ?>
                                 </div>    <!--end row-->
                             </div><!--end teb pane-->
 
                             <div class="tab-pane fade" id="pills-apps" role="tabpanel" aria-labelledby="pills-apps-tab">
                                 <div class="row align-items-center">
-                                    <?php echo "affichage Dessert"; ?>
+                                <?php foreach ($desserts as $dessert) {
+                                       echo "<center>";
+                                       echo "<img style='height: 250px;width: 370px' src='public/img/dessert/".$dessert['id_dessert'].".png'>";
+                                       echo "<br>";
+                                       echo $dessert['nom_dessert'] . "<br>";
+                                       echo "<a class='btn btn-pills btn-primary' href=". $dessert['id_dessert'] . ">Sélectionner</a>";
+                                       echo "</center>";
+                                   } ?>
                                 </div>    <!--end row-->
                             </div><!--end teb pane-->
                         </div><!--end tab content-->
@@ -176,158 +182,6 @@
         </div>
         <!--Shape End-->
 
-        <!-- Price Start -->
-        <section class="section">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 text-center">
-                        <div class="section-title mb-4 pb-2">
-                            <h4 class="title mb-4">Choose The Pricing Plan</h4>
-                            <p class="text-muted para-desc mb-0 mx-auto">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-
-                <div class="row align-items-center">
-                    <div class="col-md-4 col-12 mt-4 pt-2">
-                        <div class="card pricing-rates bg-light py-5 border-0 rounded text-center">
-                            <div class="card-body">
-                                <h6 class="title font-weight-bold text-uppercase text-primary mb-4">Free</h6>
-                                <div class="d-flex justify-content-center mb-4">
-                                    <span class="h4 mb-0 mt-2">$</span>
-                                    <span class="price h1 mb-0">0</span>
-                                    <span class="h4 align-self-end mb-1">/mo</span>
-                                </div>
-
-                                <ul class="list-unstyled mb-0 pl-0">
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span>Full Access</li>
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span>Enhanced Security</li>
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span>Source Files</li>
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span>1 Domain Free</li>
-                                </ul>
-                                <a href="javascript:void(0)" class="btn btn-primary mt-4">Buy Now</a>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-md-4 col-12 mt-4 pt-2">
-                        <div class="card pricing-rates starter-plan bg-light py-5 border-0 rounded text-center">
-                            <div class="card-body">
-                                <h6 class="title font-weight-bold text-uppercase text-primary mb-4">Starter</h6>
-                                <div class="d-flex justify-content-center mb-4">
-                                    <span class="h4 mb-0 mt-2">$</span>
-                                    <span class="price h1 mb-0">39</span>
-                                    <span class="h4 align-self-end mb-1">/mo</span>
-                                </div>
-                                
-                                <ul class="list-unstyled mb-0 pl-0">
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span>Full Access</li>
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span>Source Files</li>
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span>Free Appointments</li>
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span>Enhanced Security</li>
-                                </ul>
-                                <a href="javascript:void(0)" class="btn btn-primary mt-4">Get Started</a>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-
-                    <div class="col-md-4 col-12 mt-4 pt-2">
-                        <div class="card pricing-rates bg-light py-5 border-0 rounded text-center">
-                            <div class="card-body">
-                                <h6 class="title font-weight-bold text-uppercase text-primary mb-4">Professional</h6>
-                                <div class="d-flex justify-content-center mb-4">
-                                    <span class="h4 mb-0 mt-2">$</span>
-                                    <span class="price h1 mb-0">59</span>
-                                    <span class="h4 align-self-end mb-1">/mo</span>
-                                </div>
-
-                                <ul class="list-unstyled mb-0 pl-0">
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span>Full Access</li>
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span>Enhanced Security</li>
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span>Source Files</li>
-                                    <li class="h6 text-muted mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span>1 Domain Free</li>
-                                </ul>
-                                <a href="javascript:void(0)" class="btn btn-primary mt-4">Try It Now</a>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </section><!--end section-->
-        <!-- Price End -->
-
-        <!-- Testi n Download cta start -->
-        <section class="section pt-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div id="customer-testi" class="owl-carousel owl-theme">
-                            <div class="card customer-testi border-0 text-center">
-                                <div class="card-body">
-                                    <img src="public/img/client/01.jpg" class="img-fluid avatar avatar-small rounded-circle mx-auto shadow" alt="">
-                                    <p class="text-muted mt-4">" It seems that only fragments of the original text remain in the Lorem Ipsum texts used today. "</p>
-                                    <h6 class="text-primary">- Thomas Israel</h6>
-                                </div>
-                            </div>
-
-                            <div class="card customer-testi border-0 text-center">
-                                <div class="card-body">
-                                    <img src="public/img/client/02.jpg" class="img-fluid avatar avatar-small rounded-circle mx-auto shadow" alt="">
-                                    <p class="text-muted mt-4">" The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century. "</p>
-                                    <h6 class="text-primary">- Carl Oliver</h6>
-                                </div>
-                            </div>
-
-                            <div class="card customer-testi border-0 text-center">
-                                <div class="card-body">
-                                    <img src="public/img/client/03.jpg" class="img-fluid avatar avatar-small rounded-circle mx-auto shadow" alt="">
-                                    <p class="text-muted mt-4">" One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others. "</p>
-                                    <h6 class="text-primary">- Barbara McIntosh</h6>
-                                </div>
-                            </div>
-
-                            <div class="card customer-testi border-0 text-center">
-                                <div class="card-body">
-                                    <img src="public/img/client/04.jpg" class="img-fluid avatar avatar-small rounded-circle mx-auto shadow" alt="">
-                                    <p class="text-muted mt-4">" Thus, Lorem Ipsum has only limited suitability as a visual filler for German texts. "</p>
-                                    <h6 class="text-primary">- Jill Webb</h6>
-                                </div>
-                            </div>
-
-                            <div class="card customer-testi border-0 text-center">
-                                <div class="card-body">
-                                    <img src="public/img/client/05.jpg" class="img-fluid avatar avatar-small rounded-circle mx-auto shadow" alt="">
-                                    <p class="text-muted mt-4">" There is now an abundance of readable dummy texts. These are usually used when a text is required. "</p>
-                                    <h6 class="text-primary">- Dean Tolle</h6>
-                                </div>
-                            </div>
-
-                            <div class="card customer-testi border-0 text-center">
-                                <div class="card-body">
-                                    <img src="public/img/client/06.jpg" class="img-fluid avatar avatar-small rounded-circle mx-auto shadow" alt="">
-                                    <p class="text-muted mt-4">" According to most sources, Lorum Ipsum can be traced back to a text composed by Cicero. "</p>
-                                    <h6 class="text-primary">- Christa Smith</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-
-                <div class="row mt-md-5 pt-md-3 mt-4 pt-2 mt-sm-0 pt-sm-0 justify-content-center">
-                    <div class="col-12 text-center">
-                        <div class="section-title">
-                            <h4 class="title mb-4">Get the App now !</h4>
-                            <p class="text-muted para-desc mx-auto">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                            <div class="mt-4">
-                                <a href="javascript:void(0)" class="btn btn-primary mt-2 mr-2"><i class="mdi mdi-apple"></i> App Store</a>
-                                <a href="javascript:void(0)" class="btn btn-outline-primary mt-2"><i class="mdi mdi-google-play"></i> Play Store</a>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </section><!--end section-->
-        <!-- Testi n Download cta End -->
 
         <!-- Shape Start -->
         <div class="position-relative">
@@ -338,83 +192,17 @@
             </div>
         </div>
         <!--Shape End-->
-
-        <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
-                        <a href="#" class="logo-footer">
-                            <img src="public/img/logo-light.png" height="24" alt="">
-                        </a>
-                        <p class="mt-4">Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                        <ul class="list-unstyled social-icon social mb-0 mt-4">
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
-                        </ul><!--end icon-->
-                    </div><!--end col-->
-                    
-                    <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Company</h5>
-                        <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="page-aboutus.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> About us</a></li>
-                            <li><a href="page-services.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Services</a></li>
-                            <li><a href="page-team.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Team</a></li>
-                            <li><a href="page-pricing.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Pricing</a></li>
-                            <li><a href="page-portfolio-modern.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Project</a></li>
-                            <li><a href="page-jobs.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Careers</a></li>
-                            <li><a href="page-blog-grid.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Blog</a></li>
-                            <li><a href="auth-cover-login.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Login</a></li>
-                        </ul>
-                    </div><!--end col-->
-                    
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Usefull Links</h5>
-                        <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="page-terms.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Terms of Services</a></li>
-                            <li><a href="page-privacy.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Privacy Policy</a></li>
-                            <li><a href="documentation.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Documentation</a></li>
-                            <li><a href="changelog.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Changelog</a></li>
-                            <li><a href="components.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Components</a></li>
-                        </ul>
-                    </div><!--end col-->
-
-                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <h5 class="text-light footer-head">Newsletter</h5>
-                        <p class="mt-4">Sign up and receive the latest tips via email.</p>
-                        <form>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="foot-subscribe form-group">
-                                        <label>Write your email <span class="text-danger">*</span></label>
-                                        <div class="position-relative">
-                                            <i data-feather="mail" class="fea icon-sm icons"></i>
-                                            <input type="email" name="email" id="emailsubscribe" class="form-control pl-5 rounded" placeholder="Your email : " required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <input type="submit" id="submitsubscribe" name="send" class="btn btn-soft-primary btn-block" value="Subscribe">
-                                </div>
-                            </div>
-                        </form>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </footer><!--end footer-->
         <footer class="footer footer-bar">
             <div class="container text-center">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="text-sm-left">
-                            <p class="mb-0">© 2019-20 Landrick. Design with <i class="mdi mdi-heart text-danger"></i> by <a href="http://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
+                            <p class="mb-0">© 2022 PIZZA LAB.</p>
                         </div>
                     </div><!--end col-->
 
                     <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <ul class="list-unstyled payment-cards text-sm-right mb-0">
+                        <ul class="list-unstyled text-sm-right mb-0">
                             <li class="list-inline-item"><a href="javascript:void(0)"><img src="public/img/payments/american-ex.png" class="avatar avatar-ex-sm" title="American Express" alt=""></a></li>
                             <li class="list-inline-item"><a href="javascript:void(0)"><img src="public/img/payments/discover.png" class="avatar avatar-ex-sm" title="Discover" alt=""></a></li>
                             <li class="list-inline-item"><a href="javascript:void(0)"><img src="public/img/payments/master-card.png" class="avatar avatar-ex-sm" title="Master Card" alt=""></a></li>
@@ -436,9 +224,20 @@
         <script src="public/js/bootstrap.bundle.min.js"></script>
         <script src="public/js/jquery.easing.min.js"></script>
         <script src="public/js/scrollspy.min.js"></script>
+        <!-- Magnific Popup -->
+        <script src="public/js/jquery.magnific-popup.min.js"></script> 
+        <script src="public/js/magnific.init.js"></script> 
         <!-- SLIDER -->
         <script src="public/js/owl.carousel.min.js "></script>
-        <script src="public/js/owl.init.js "></script>
+        <script src="public/js/owl.init.js "></script>  
+        <!--FLEX SLIDER-->
+        <script src="public/js/jquery.flexslider-min.js"></script>
+        <script src="public/js/flexslider.init.js"></script>
+        <!-- Datepicker -->
+        <script src="public/js/flatpickr.min.js"></script>
+        <script src="public/js/flatpickr.init.js"></script>
+        <!-- Contact -->
+        <script src="public/js/contact.js"></script>
         <!-- Icons -->
         <script src="public/js/feather.min.js"></script>
         <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>

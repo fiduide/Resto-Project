@@ -19,6 +19,8 @@ class ChoixController extends MainController
 
         $menuManager = new MenuManager();
         $pizzas = $menuManager->getPizza();
+        $boissons = $menuManager->getBoisson();
+        $desserts = $menuManager->getDessert();
 
         include(ROOT . "/app/Template/Menu/v_plat.php");
     }

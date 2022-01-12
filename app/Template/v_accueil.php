@@ -56,31 +56,6 @@
                 <div id="navigation">
                     <!-- Navigation Menu-->   
                     <ul class="navigation-menu">
-                        <li><a href="#">Accueil</a></li>
-                        <li class="has-submenu">
-                            <a href="javascript:void(0)">Pizzeria</a><span class="menu-arrow"></span>
-                            <ul class="submenu megamenu">
-                                <li>
-                                    <ul>
-                                        <li><a href="index-saas.html">Pizza</a></li>
-                                        <li><a href="index-classic-saas.html">Pizza & boissons</a></li>
-                                        <li><a href="index-agency.html">Pizza, boisson & dessert</a></li>
-                                    </ul>
-                                </li>  
-                            </ul>
-                        </li>
-        
-                        <li class="has-submenu">
-                            <a href="javascript:void(0)">Restaurant</a><span class="menu-arrow"></span>
-                            <ul class="submenu megamenu">
-                                <li>
-                                    <ul>
-                                        <li><a href="index-saas.html">Réserver une tâble</a></li>
-                                    </ul>
-                                </li>  
-                            </ul>
-                        </li>
-
                         <li class="has-submenu">
                             <a href="javascript:void(0)"><i class="mdi mdi-account"></i></a><span class="menu-arrow"></span>
                             <ul class="submenu megamenu">
@@ -95,7 +70,6 @@
                                 </li>  
                             </ul>
                         </li>
-                        
                     </ul><!--end navigation menu-->
                 </div><!--end navigation-->
             </div><!--end container-->

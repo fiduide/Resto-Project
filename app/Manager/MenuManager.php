@@ -41,4 +41,32 @@ class MenuManager
 
         return $pizzas;
     }
+
+    public function getBoisson(): array
+    {
+
+        $statements = "SELECT
+                            id_boisson,
+                            nom_boisson
+                        FROM
+                            `boisson`";
+        $boissons = $this->pdo->query($statements);
+        $boissons = $boissons->fetchAll();
+
+        return $boissons;
+    }
+
+    public function getDessert(): array
+    {
+
+        $statementss = "SELECT
+                            id_dessert,
+                            nom_dessert
+                        FROM
+                            `dessert`";
+        $desserts = $this->pdo->query($statementss);
+        $desserts = $desserts->fetchAll();
+
+        return $desserts;
+    }
 }
