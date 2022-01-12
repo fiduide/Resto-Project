@@ -81,25 +81,16 @@ class ChoixController extends MainController
         include(ROOT . "/app/Template/Menu/v_facture.php");
     }
 
-   /*public function deleteProduit($type, $idProduit){
-        $_SESSION['commande'][$type."_".$idProduit];
-
-        unset($_SESSION['type']);
-        unset($_SESSION['idProduit']);
-        include(ROOT . "/app/Template/Menu/v_facture.php");
-    }*/
-
     public function deleteProduit($type, $idProduit) 
     { 
         if(isset($type) && isset($idProduit))
         {
-        /* création d'un tableau temporaire de stockage des articles à suprimer */ 
-        $article_suprimer = array("idProduit"=>array(),"type"=>array()); 
         
-        /* Option : on peut maintenant supprimer notre panier temporaire: */ 
-        unset($article_suprimer); 
+        var_dump($_SESSION['commande'][$type.'_'.$idProduit]);
+        var_dump($type);
+        //$_SESSION['commande'][$type.'_'.$idProduit] = 0;
 
-        include(ROOT . "/app/Template/Menu/v_facture.php");
+        //include(ROOT . "/app/Template/Menu/v_facture.php");
         }
         
     } 
