@@ -2,6 +2,9 @@
 namespace app\Manager;
 
 use core\Database\Database;
+use app\Entity\Menu\Pizza;
+use app\Entity\Menu\Boisson;
+use app\Entity\Menu\Dessert;
 
 class MenuManager
 {
@@ -38,7 +41,7 @@ class MenuManager
                         GROUP BY
                             p.id
                         ORDER BY p.id";
-        $pizzas = $this->pdo->query($statement);
+        $pizzas = $this->pdo->query($statement, \PDO::FETCH_CLASS, 'app\Entity\Menu\Pizza');
         $pizzas = $pizzas->fetchAll();
 
         return $pizzas;
@@ -53,7 +56,7 @@ class MenuManager
                             prix
                         FROM
                             `boisson`";
-        $boissons = $this->pdo->query($statements);
+        $boissons = $this->pdo->query($statements, \PDO::FETCH_CLASS, 'app\Entity\Menu\Boisson');
         $boissons = $boissons->fetchAll();
 
         return $boissons;
@@ -62,13 +65,13 @@ class MenuManager
     public function getDessert(): array
     {
 
-        $statementss = "SELECT
+        $statements = "SELECT
                             id,
                             nom,
                             prix
                         FROM
                             `dessert`";
-        $desserts = $this->pdo->query($statementss);
+        $desserts = $this->pdo->query($statements, \PDO::FETCH_CLASS, 'app\Entity\Menu\Dessert');
         $desserts = $desserts->fetchAll();
 
         return $desserts;
@@ -79,10 +82,10 @@ class MenuManager
      * Page d'article affichant les données en fonction de l'id de la pizza sélectionné
      * @return void
      */
-    public function getOnePizza($id) : array
+    public function getOnePizza($id) : Pizza
     {
             $statement = "SELECT * FROM pizza WHERE id = $id";
-            $query = $this->pdo->query($statement);
+            $query = $this->pdo->query($statement , \PDO::FETCH_CLASS, 'app\Entity\Menu\Pizza');
 
             $pizza = $query->fetch();
             $query->closeCursor();
@@ -92,10 +95,10 @@ class MenuManager
      * Page d'article affichant les données en fonction de l'id de la boisson sélectionné
      * @return void
      */
-    public function getOneBoisson($id) : array
+    public function getOneBoisson($id) : Boisson
     {
             $statement = "SELECT * FROM boisson WHERE id = $id";
-            $query = $this->pdo->query($statement);
+            $query = $this->pdo->query($statement, \PDO::FETCH_CLASS, 'app\Entity\Menu\Boisson');
 
             $boisson = $query->fetch();
             $query->closeCursor();
@@ -105,10 +108,10 @@ class MenuManager
      * Page d'article affichant les données en fonction de l'id de la dessert sélectionné
      * @return void
      */
-    public function getOneDessert($id) : array
+    public function getOneDessert($id) : Dessert
     {
             $statement = "SELECT * FROM dessert WHERE id = $id";
-            $query = $this->pdo->query($statement);
+            $query = $this->pdo->query($statement, \PDO::FETCH_CLASS, 'app\Entity\Menu\Dessert');
 
             $dessert = $query->fetch();
             $query->closeCursor();
