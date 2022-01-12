@@ -1,46 +1,54 @@
 <?php
+
 namespace app\Entity;
 
 use core\Entity\DefaultEntity;
+use DateTime;
 
 class Utilisateur extends DefaultEntity
 {
-    
+    public function __construct(array $data = [])
+    {
+        parent::__construct($data);
+
+        $this->date_register = new \DateTime($this->date_register);
+    }
+
     /**
      * @var integer
      */
     private int $id_utilisateur;
-    
+
     /**
-     * @var \DateTime
+     * @var \DateTime|string
      */
-    private \DateTime $date_register;
-    
+    private \DateTime|string $date_register;
+
     /**
      * @var string
      */
     private string $nom;
-    
+
     /**
      * @var string
      */
     private string $prenom;
-    
+
     /**
      * @var string
      */
     private string $telephone;
-    
+
     /**
      * @var string
      */
     private string $email;
-    
+
     /**
      * @var string
      */
     private string $mot_de_passe;
-    
+
     /**
      * @var integer
      */
@@ -51,7 +59,7 @@ class Utilisateur extends DefaultEntity
      * Get the value of id_utilisateur
      *
      * @return  integer
-     */ 
+     */
     public function getId_utilisateur()
     {
         return $this->id_utilisateur;
@@ -61,7 +69,7 @@ class Utilisateur extends DefaultEntity
      * Get the value of date_register
      *
      * @return  \DateTime
-     */ 
+     */
     public function getDate_register()
     {
         return $this->date_register;
@@ -70,13 +78,13 @@ class Utilisateur extends DefaultEntity
     /**
      * Set the value of date_register
      *
-     * @param  \DateTime  $date_register
+     * @param  string  $date_register
      *
      * @return  self
-     */ 
-    public function setDate_register(\DateTime $date_register)
+     */
+    public function setDate_register(string $date_register)
     {
-        $this->date_register = $date_register;
+        $this->date_register = new \DateTime($date_register);
 
         return $this;
     }
@@ -85,7 +93,7 @@ class Utilisateur extends DefaultEntity
      * Get the value of nom
      *
      * @return  string
-     */ 
+     */
     public function getNom()
     {
         return $this->nom;
@@ -97,7 +105,7 @@ class Utilisateur extends DefaultEntity
      * @param  string  $nom
      *
      * @return  self
-     */ 
+     */
     public function setNom(string $nom)
     {
         $this->nom = $nom;
@@ -109,7 +117,7 @@ class Utilisateur extends DefaultEntity
      * Get the value of prenom
      *
      * @return  string
-     */ 
+     */
     public function getPrenom()
     {
         return $this->prenom;
@@ -121,7 +129,7 @@ class Utilisateur extends DefaultEntity
      * @param  string  $prenom
      *
      * @return  self
-     */ 
+     */
     public function setPrenom(string $prenom)
     {
         $this->prenom = $prenom;
@@ -133,7 +141,7 @@ class Utilisateur extends DefaultEntity
      * Get the value of telephone
      *
      * @return  string
-     */ 
+     */
     public function getTelephone()
     {
         return $this->telephone;
@@ -145,7 +153,7 @@ class Utilisateur extends DefaultEntity
      * @param  string  $telephone
      *
      * @return  self
-     */ 
+     */
     public function setTelephone(string $telephone)
     {
         $this->telephone = $telephone;
@@ -157,7 +165,7 @@ class Utilisateur extends DefaultEntity
      * Get the value of email
      *
      * @return  string
-     */ 
+     */
     public function getEmail()
     {
         return $this->email;
@@ -169,7 +177,7 @@ class Utilisateur extends DefaultEntity
      * @param  string  $email
      *
      * @return  self
-     */ 
+     */
     public function setEmail(string $email)
     {
         $this->email = $email;
@@ -181,7 +189,7 @@ class Utilisateur extends DefaultEntity
      * Get the value of mot_de_passe
      *
      * @return  string
-     */ 
+     */
     public function getMot_de_passe()
     {
         return $this->mot_de_passe;
@@ -193,7 +201,7 @@ class Utilisateur extends DefaultEntity
      * @param  string  $mot_de_passe
      *
      * @return  self
-     */ 
+     */
     public function setMot_de_passe(string $mot_de_passe)
     {
         $this->mot_de_passe = $mot_de_passe;
@@ -205,7 +213,7 @@ class Utilisateur extends DefaultEntity
      * Get the value of niveau_acces
      *
      * @return  integer
-     */ 
+     */
     public function getNiveau_acces()
     {
         return $this->niveau_acces;
@@ -217,11 +225,39 @@ class Utilisateur extends DefaultEntity
      * @param  integer  $niveau_acces
      *
      * @return  self
-     */ 
+     */
     public function setNiveau_acces($niveau_acces)
     {
         $this->niveau_acces = $niveau_acces;
 
         return $this;
+    }
+
+    /**
+     * Retourne le libellé lié à un niveau d'accès
+     *
+     * @param integer $niveau_acces
+     * @return string
+     */
+    public function getNiveau_accesLibelle(): string
+    {
+        switch ($this->niveau_acces) {
+            case 1:
+                $libelle = "Client";
+                break;
+            case 2:
+                $libelle = "Administrateur";
+                break;
+            default:
+                $libelle = "Inconnu";
+                break;
+        }
+
+        return $libelle;
+    }
+
+    public function getDate_registerFR(): string
+    {
+        return $this->date_register->format("d/m/Y");
     }
 }
