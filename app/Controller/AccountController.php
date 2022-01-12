@@ -63,7 +63,7 @@ class AccountController extends MainController
             $_SESSION['acces'] = $utilisateur['niveau_acces'];
             $_SESSION['id_utilisateur'] = $utilisateur['id_utilisateur'];
 
-            header("Location: index.php");
+            header("Location: index.php?connect=1");
         } else {
             include(ROOT . "/app/Template/Account/v_login.php");
         }
@@ -88,6 +88,6 @@ class AccountController extends MainController
 
         session_destroy();
 
-        header("Location: index.php");
+        header("Location: index.php?disconnect=1");
     }
 }

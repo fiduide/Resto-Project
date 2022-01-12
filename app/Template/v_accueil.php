@@ -294,6 +294,7 @@
         </div>
         <!--end container-->
         <!-- Contact End -->
+
     </section>
     <!--end section-->
     <!-- News End -->
@@ -304,6 +305,9 @@
     <!-- Back to top -->
     <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
     <!-- Back to top -->
+
+    <div id="toastContainer" aria-live="polite" aria-atomic="true" style="position: absolute; min-height: 100px; min-width: 300px; z-index: 999">
+    </div>
 
     <!-- javascript -->
     <script src="public/js/jquery-3.5.1.min.js"></script>
@@ -329,6 +333,46 @@
     <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
     <!-- Main Js -->
     <script src="public/js/app.js"></script>
+    <script>
+
+        var search_params = new URLSearchParams(window.location.search);
+
+        if(search_params.has('disconnect')) {
+            var params = search_params.get('disconnect');
+            console.log(params);
+            Notify("Vous êtes maintennant déconnecté", "primary");
+
+        }else if(search_params.has('connect')){
+            var params = search_params.get('connect');
+            console.log(params)
+            Notify("Vous êtes maintennant connecté", "primary");
+        }
+
+        function Notify(message, stats){
+            $(document).ready(function () {
+                $("#toastContainer").append(`
+                    <div class="toast fade" style="position: fixed; bottom: 100px; right: 30px; z-index: 1;  min-width:300px;">
+                        <div class="toast-header">
+                            <img src="public/img/logo/logo_fond_vide.png" style="width: 50px"class="rounded mr-2" alt="...">
+                        <strong class="mr-auto">Pizza Lab</strong>
+                        <small>moins d'une minute</small>
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="toast-body text-center">
+                        ${message}
+                        </div>
+                    </div>
+                </div>
+                `)
+                $('.toast').addClass('show');
+                setTimeout(() => {
+                    $('.toast').toggle('fade hide');
+                }, 3000);
+            });
+        }
+    </script>
 </body>
 
 </html>
