@@ -1,7 +1,7 @@
 <?php
 namespace App\Entity\Menu;
-
-class Dessert
+use core\Entity\DefaultEntity;
+class Dessert extends DefaultEntity
 {
 
     /**
@@ -13,11 +13,67 @@ class Dessert
      * @var string
      */
     private string $nom;
+    /**
+     * @var string
+     */
+    private string $prix;
 
 
-    public function __construct($id, $nom)
+    /**
+     * Get the value of nom
+     *
+     * @return  string
+     */ 
+    public function getNom()
     {
-        $this->id = $id;
+        return $this->nom;
+    }
+
+    /**
+     * Get the value of id
+     *
+     * @return  int
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of nom
+     *
+     * @param  string  $nom
+     *
+     * @return  self
+     */ 
+    public function setNom(string $nom)
+    {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of prix
+     *
+     * @return  string
+     */ 
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set the value of prix
+     *
+     * @param  string  $prix
+     *
+     * @return  self
+     */ 
+    public function setPrix(string $prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
     }
 }

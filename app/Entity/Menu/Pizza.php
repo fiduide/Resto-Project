@@ -1,8 +1,7 @@
 <?php
 namespace App\Entity\Menu;
 use core\Entity\DefaultEntity;
-
-class Boisson extends DefaultEntity
+class Pizza extends DefaultEntity
 {
 
     /**
@@ -18,8 +17,14 @@ class Boisson extends DefaultEntity
     /**
      * @var string
      */
+    private string $ingredient;
+
+    /**
+     * @var string
+     */
     private string $prix;
 
+    
 
     /**
      * Get the value of id
@@ -42,6 +47,16 @@ class Boisson extends DefaultEntity
     }
 
     /**
+     * Get the value of ingredient
+     *
+     * @return  string
+     */ 
+    public function getIngredient()
+    {
+        return $this->ingredient;
+    }
+
+    /**
      * Set the value of nom
      *
      * @param  string  $nom
@@ -51,6 +66,20 @@ class Boisson extends DefaultEntity
     public function setNom(string $nom)
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of ingredient
+     *
+     * @param  string  $ingredient
+     *
+     * @return  self
+     */ 
+    public function setIngredient(string $ingredient)
+    {
+        $this->ingredient = $ingredient;
 
         return $this;
     }

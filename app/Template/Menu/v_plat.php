@@ -59,16 +59,16 @@
                                     <div class="row align-items-center">
                                     <?php foreach ($pizzas as $pizza) {
                                         echo "<div class='col-4 text-center mt-5'>";
-                                        echo "<img style='height: 300px;width: 370px' src='public/img/pizza/".$pizza['id'].".png'>";
+                                        echo "<img style='height: 300px;width: 370px' src='public/img/pizza/".$pizza->getId().".png'>";
                                         echo "<br>";
-                                        echo $pizza['nom'] . "<br>";echo "<i>";
+                                        echo $pizza->getNom() . "<br>";echo "<i>";
                                         echo "<p><u>Ingrédients :</u></p>";
-                                        echo str_replace(",", ", ", $pizza['ingredient']). "<br></p>";
-                                        echo $pizza['prix']. "€<br></p>";
+                                        echo str_replace(",", ", ", $pizza->getIngredient()). "<br></p>";
+                                        echo $pizza->getPrix(). "€<br></p>";
                                         
                                         echo "</i>";
                                         echo '<input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">';
-                                        echo '<input type="text" step="1" min="0" name="pizza['.$pizza['id'].']" value="0"  class="disable btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo '<input type="text" step="1" min="0" name="pizza['.$pizza->getId().']" value="0"  class="disable btn btn-icon btn-soft-primary font-weight-bold">';
                                         echo '<input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">';
                                         echo "</div>";
                                     } ?>
@@ -79,12 +79,12 @@
                                     <div class="row align-items-center">
                                     <?php foreach ($boissons as $boisson) {
                                         echo "<div class='col-4 text-center mt-5'>";
-                                        echo "<img style='height: 200px;width: 370px' src='public/img/boisson/".$boisson['id'].".png'>";
+                                        echo "<img style='height: 200px;width: 370px' src='public/img/boisson/".$boisson->getId().".png'>";
                                         echo "<br>";
-                                        echo $boisson['nom'] . "<br>";
-                                        echo $boisson['prix']. "€<br></p>";
+                                        echo $boisson->getNom() . "<br>";
+                                        echo $boisson->getPrix(). "€<br></p>";
                                         echo '<input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">';
-                                        echo '<input type="text" step="1" min="0" name="boisson['.$boisson['id'].']" value="0"  class="btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo '<input type="text" step="1" min="0" name="boisson['.$boisson->getId().']" value="0"  class="btn btn-icon btn-soft-primary font-weight-bold">';
                                         echo '<input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">';
                                         echo "</div>";
                                     } ?>
@@ -95,12 +95,12 @@
                                     <div class="row align-items-center">
                                     <?php foreach ($desserts as $dessert) {
                                         echo "<div class='col-4 text-center mt-5'>";
-                                        echo "<img style='height: 250px;width: 370px' src='public/img/dessert/".$dessert['id'].".png'>";
+                                        echo "<img style='height: 250px;width: 370px' src='public/img/dessert/".$dessert->getId().".png'>";
                                         echo "<br>";
-                                        echo $dessert['nom'] . "<br>";
-                                        echo $dessert['prix']. "€<br></p>";
+                                        echo $dessert->getNom() . "<br>";
+                                        echo $dessert->getPrix(). "€<br></p>";
                                         echo '<input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">';
-                                        echo '<input type="text" step="1" min="0" name="dessert['.$dessert['id'].']" value="0"  class="btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo '<input type="text" step="1" min="0" name="dessert['.$dessert->getId().']" value="0"  class="btn btn-icon btn-soft-primary font-weight-bold">';
                                         echo '<input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">';
                                         echo "</div>";
                                     } ?>

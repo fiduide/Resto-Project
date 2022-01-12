@@ -4,6 +4,7 @@ session_start();
 use app\Controller\AccountController;
 use app\Controller\MainController;
 use app\Controller\ChoixController;
+use app\Controller\CheckoutController;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -46,6 +47,12 @@ try {
                 }
 
                 break;
+        case 'checkout' :
+            $checkoutController = new CheckoutController();
+
+            if(isset($_GET['add']) && $_GET['add'] == 1){
+                $checkoutController->addCheckout();
+            }
 
         case 'deleteProduit':
             $choixController = new ChoixController();
