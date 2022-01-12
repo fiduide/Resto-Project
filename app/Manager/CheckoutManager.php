@@ -24,28 +24,44 @@ class CheckoutManager
      */
     public function AddCheckout(array $data)
     {
-            $checkout = new Checkout($_SESSION['commande']);
-            $articleId = $this->model->save($checkout());
+        //INSERT COMMAND
+        $statementArt = "INSERT INTO commande (id_utilisateur, etat, date_order)
+        VALUES (:id_user, :etat, :date_order)";
 
+        $prepare = $this->pdo->prepare($statementArt);
+        
+        $prepare->execute($data);
 
+        return $this->pdo->lastInsertId();
+    }
 
+    public function AddCheckoutPizza(array $data)
+    {
+        //INSERT COMMAND
+        $statementArt = "INSERT INTO commande_pizza (id_commande, id_pizza, quantite)
+        VALUES (:id_commande, :id_pizza, :quantite)";
 
+        $prepare = $this->pdo->prepare($statementArt);
+        $prepare->execute($data);
+    }
 
-            //INSERT COMMAND
-            $statementArt = "INSERT INTO article (title, content, categorie_id, user_id)
-                               VALUES (:title, :content, :categorie_id, 1)";
+    public function AddCheckoutBoisson(array $data)
+    {
+        //INSERT COMMAND
+        $statementArt = "INSERT INTO commande_boisson (id_commande, id_boisson, quantite)
+        VALUES (:id_commande, :id_boisson, :quantite)";
 
-            $prepare = $this->pdo->prepare($statementArt);
-            // On utilise l'objet article comme une fonction en ajoutant des () après la variable
-            $prepare->execute($article());
+        $prepare = $this->pdo->prepare($statementArt);
+        $prepare->execute($data);
+    }
 
-            $id = $this->pdo->lastInsertId();
-      
-        $statementCat = "SELECT * FROM categorie";
-        $query = $this->pdo->query($statementCat, \PDO::FETCH_CLASS, "App\Entity\Categorie");
-        $cats = $query->fetchAll();
+    public function AddCheckoutDessert(array $data)
+    {
+        //INSERT COMMAND
+        $statementArt = "INSERT INTO commande_dessert (id_commande, id_dessert, quantite)
+        VALUES (:id_commande, :id_dessert, :quantite)";
 
-
-        return $pizzas;
+        $prepare = $this->pdo->prepare($statementArt);
+        $prepare->execute($data);
     }
 }

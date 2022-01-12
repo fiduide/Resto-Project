@@ -100,9 +100,9 @@ class Checkout extends DefaultEntity {
 
     public function __invoke() {
         return [
-            "id_utilisateur" => $this->id_user,
-            "content" => $this->content,
-            "categorie_id" => $this->categorie_id
+            "id_user" => $this->id_user,
+            "etat" => $this->etat,
+            "date_order" => $this->date_order->format("Y-m-d H:i:s")
         ];
     }
 }

@@ -58,4 +58,21 @@ class UtilisateurManager extends Database
 
         return $utilisateur;
     }
+
+    public function save(array $data): int
+    {
+        $query = "INSERT INTO utilisateur
+            SET date_register = :date_register,
+                nom = :nom,
+                prenom = :prenom,
+                telephone = :telephone,
+                email = :email,
+                mot_de_passe = :mot_de_passe,
+                niveau_acces = :niveau_acces;";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute($data);
+
+        return $this->pdo->lastInsertId();
+    }
 }
