@@ -40,7 +40,7 @@ class UtilisateurManager extends Database
     }
 
     /**
-     * Undocumented function
+     * Récupère un utilisateur par son identifiant
      *
      * @param integer $id
      * @return Utilisateur
@@ -59,6 +59,12 @@ class UtilisateurManager extends Database
         return $utilisateur;
     }
 
+    /**
+     * Créé un nouvel utilisateur
+     *
+     * @param array $data
+     * @return integer
+     */
     public function save(array $data): int
     {
         $query = "INSERT INTO utilisateur
