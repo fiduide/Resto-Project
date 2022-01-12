@@ -25,11 +25,15 @@ try {
         case 'account':
             $accountController = new AccountController();
 
-            if(isset($_GET['disconnect']) && $_GET['disconnect'] == 1){
+            if (isset($_GET['disconnect']) && $_GET['disconnect'] == 1) {
                 $accountController->disconnectUtilisateur();
-            } else if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1){
+            } else if (isset($_GET['register']) && $_GET['register'] == 1) {
+                $accountController->register();
+            } else if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1) {
                 $accountController->profile();
-            } else if(isset($_POST['login']) && $_POST['login'] == 1){
+            } else if (isset($_POST['register']) && $_POST['register'] == 1) {
+                $accountController->createUtilisateur();
+            } else if (isset($_POST['login']) && $_POST['login'] == 1) {
                 $accountController->connectUtilisateur();
             } else {
                 $accountController->login();
@@ -37,31 +41,47 @@ try {
 
             break;
         case 'choix':
-                $choixController = new ChoixController();
+            $choixController = new ChoixController();
 
-                if(isset($_GET['command']) && $_GET['command'] == 1){
-                   if(isset($_POST['pizza']) && isset($_POST['boisson']) && isset($_POST['dessert']) ){
-                        $choixController->addCommand($_POST['pizza'], $_POST['boisson'], $_POST['dessert']);
-                   }
-                    $choixController->getCommand();
-                }else{
-                    $choixController->affichage();
+            if (isset($_GET['command']) && $_GET['command'] == 1) {
+                if (isset($_POST['pizza']) && isset($_POST['boisson']) && isset($_POST['dessert'])) {
+                    $choixController->addCommand($_POST['pizza'], $_POST['boisson'], $_POST['dessert']);
                 }
+                $choixController->getCommand();
+            } else {
+                $choixController->affichage();
+            }
 
                 break;
-        case 'checkout' :
+
+        case 'paiementPage':
+            $choixController = new ChoixController();
+
+            $choixController->affichagePaiement();
+        
+            break;
+
+        case 'affichageProfil':
+            $choixController = new ChoixController();
+
+            $choixController->affichageProfil();
+        
+            break;
+
+        case 'checkout':
             $checkoutController = new CheckoutController();
 
-            if(isset($_GET['add']) && $_GET['add'] == 1){
+            if (isset($_GET['add']) && $_GET['add'] == 1) {
                 $checkoutController->addCheckout();
             }
             break;
+
         case 'deleteProduit':
             $choixController = new ChoixController();
 
-            if(isset($_GET['type']) && isset($_GET['idProduit'])){
-                    $choixController->deleteProduit($_GET['type'], $_GET['idProduit']);
-            }else{
+            if (isset($_GET['type']) && isset($_GET['idProduit'])) {
+                $choixController->deleteProduit($_GET['type'], $_GET['idProduit']);
+            } else {
                 $choixController->affichage();
             }
 
@@ -70,9 +90,9 @@ try {
         case 'ajoutProduit':
             $choixController = new ChoixController();
 
-            if(isset($_GET['type']) && isset($_GET['idProduit'])){
-                    $choixController->ajoutProduit($_GET['type'], $_GET['idProduit']);
-            }else{
+            if (isset($_GET['type']) && isset($_GET['idProduit'])) {
+                $choixController->ajoutProduit($_GET['type'], $_GET['idProduit']);
+            } else {
                 $choixController->affichage();
             }
 
@@ -81,9 +101,9 @@ try {
         case 'deleteAllProduit':
             $choixController = new ChoixController();
 
-            if(isset($_GET['type']) && isset($_GET['idProduit'])){
-                    $choixController->deleteAllProduit($_GET['type'], $_GET['idProduit']);
-            }else{
+            if (isset($_GET['type']) && isset($_GET['idProduit'])) {
+                $choixController->deleteAllProduit($_GET['type'], $_GET['idProduit']);
+            } else {
                 $choixController->affichage();
             }
 
@@ -93,6 +113,8 @@ try {
             $adminController = new AdminController();
             $adminController->affichage();
             break;
+
+
         default:
             $mainController = new MainController();
             $mainController->index();

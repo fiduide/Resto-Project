@@ -2,7 +2,9 @@
 
 namespace app\Controller;
 
+use app\Entity\Utilisateur;
 use app\Manager\UtilisateurManager;
+use DateTime;
 
 class AccountController extends MainController
 {
@@ -13,6 +15,7 @@ class AccountController extends MainController
 
     public function register()
     {
+        include(ROOT . "/app/Template/Account/v_register.php");
     }
 
     public function profile()
@@ -24,6 +27,27 @@ class AccountController extends MainController
 
     public function resetPassword()
     {
+    }
+
+    public function createUtilisateur()
+    {
+        $utilisateurManager = new UtilisateurManager();
+
+        $_POST['date_register'] = (new DateTime)->format("Y-m-d H:i:s");
+        $_POST['niveau_acces'] = 1;
+
+        $utilisateur = new Utilisateur($_POST);
+
+        $id = $utilisateurManager->save($utilisateur());
+
+        if ($id > 0) {
+            $utilisateur = $utilisateurManager->find($id);
+
+            $_SESSION['isConnected'] = 1;
+            $_SESSION['acces'] = $utilisateur->getNiveau_acces();
+            $_SESSION['id_utilisateur'] = $utilisateur->getId_utilisateur();
+        }
+        header("Location: index.php");
     }
 
     public function connectUtilisateur()
