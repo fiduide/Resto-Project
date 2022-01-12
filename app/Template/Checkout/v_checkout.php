@@ -20,7 +20,8 @@
                                 <i class="text-primary mdi mdi-thumb-up align-middle h1 mb-0"></i>
                             </div>
                             <h1 class="my-4 font-weight-bold">Merci pour votre commande</h1>
-                            <p class="text-muted para-desc mx-auto">Un message vous sera envoyé une fois que votre commande sera prête</p>
+                            <p class="text-muted para-desc mx-auto">Un message vous sera envoyé une fois que votre commande sera prête<br>
+                            Un email récapitulatif vous sera envoyé sous peu</p>
                             <a href="index.php" class="btn btn-primary mt-3">Retourner à l'accueil</a>
                         </div>
                     </div><!--end col-->

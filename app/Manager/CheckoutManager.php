@@ -22,27 +22,29 @@ class CheckoutManager
      *
      * @return boolean
      */
-    public function AddCheckout()
+    public function AddCheckout(array $data)
     {
+            $checkout = new Checkout($_SESSION['commande']);
+            $articleId = $this->model->save($checkout());
 
-        $statement = "SELECT
-                            p.id,
-                            p.nom,
-                            p.prix,
-                            GROUP_CONCAT(ig.nom_ingredient) AS ingredient
-                        FROM
-                            `pizza` AS p
-                        INNER JOIN pizza_ingredient AS PI
-                        ON
-                            p.id = PI.id_plat
-                        INNER JOIN ingredient AS ig
-                        ON
-                            PI.id_ingredient = ig.id_ingredient
-                        GROUP BY
-                            p.id
-                        ORDER BY p.id";
-        $pizzas = $this->pdo->query($statement, \PDO::FETCH_CLASS, 'app\Entity\Menu\Pizza');
-        $pizzas = $pizzas->fetchAll();
+
+
+
+
+            //INSERT COMMAND
+            $statementArt = "INSERT INTO article (title, content, categorie_id, user_id)
+                               VALUES (:title, :content, :categorie_id, 1)";
+
+            $prepare = $this->pdo->prepare($statementArt);
+            // On utilise l'objet article comme une fonction en ajoutant des () après la variable
+            $prepare->execute($article());
+
+            $id = $this->pdo->lastInsertId();
+      
+        $statementCat = "SELECT * FROM categorie";
+        $query = $this->pdo->query($statementCat, \PDO::FETCH_CLASS, "App\Entity\Categorie");
+        $cats = $query->fetchAll();
+
 
         return $pizzas;
     }
