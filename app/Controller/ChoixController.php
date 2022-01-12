@@ -62,7 +62,7 @@ class ChoixController extends MainController
                 $totalCommande = $totalCommande + $totalUneCommande;
     
                 $html .= '<tr>
-                <td class="h6"><a href="javascript:void(0)" class="text-danger">X</a></td>
+                <td class="h6"><a href="index.php?action=deleteProduit&type='.$commande_type.'&idProduit='.$uneCommande['id'].'" class="text-danger">X</a></td>
                 <td>
                     <div class="d-flex align-items-center">
                         <img src="public/img/'.$commande_type.'/'.$uneCommande['id'].'.png" class="img-fluid avatar avatar-small rounded shadow" style="height:auto;" alt="">
@@ -79,5 +79,11 @@ class ChoixController extends MainController
         }
         
         include(ROOT . "/app/Template/Menu/v_facture.php");
+    }
+
+    public function deleteProduit($type, $idProduit){
+        // $_SESSION['commande'][$type."_".$idProduit];
+        //unset();
+        //include(ROOT . "/app/Template/Menu/v_facture.php");
     }
 }

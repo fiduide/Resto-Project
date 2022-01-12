@@ -68,7 +68,7 @@
                                         
                                         echo "</i>";
                                         echo '<input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">';
-                                        echo '<input type="text" step="1" min="0" name="pizza['.$pizza['id'].']" value="0"  class="btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo '<input type="text" step="1" min="0" name="pizza['.$pizza['id'].']" value="0"  class="disable btn btn-icon btn-soft-primary font-weight-bold">';
                                         echo '<input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">';
                                         echo "</div>";
                                     } ?>
