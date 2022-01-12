@@ -1,45 +1,60 @@
 <?php
+
 namespace app\Manager;
 
+use app\Entity\Utilisateur;
 use core\Database\Database;
 
-class UtilisateurManager
+class UtilisateurManager extends Database
 {
-    public function __construct()
-    {
-        $this->pdo = (new Database())->pdo;
-
-        if(is_null($this->pdo)){
-            throw new \Exception("Erreur dans les identifiants de connexion à la BDD");
-        }
-    }
-
     /**
      * Récupère un utilisateur en fonction de son adresse email et de son mot de passe
      *
      * @param string $email
      * @param string $motDePasse
-     * @return Utilisateur|null
+     * @return array
      */
     public function getUtilisateur(string $email, string $motDePasse): array
     {
-        $utilisateur = null;
-        
         $query = "SELECT *
             FROM utilisateur
             WHERE email LIKE :email
                 AND mot_de_passe = :motDePasse;";
-        
+
         $arDataQuery = array(
             ":email" => $email,
             "motDePasse" => $motDePasse
         );
-        
+
         $stmt = $this->pdo->prepare($query);
         $stmt->execute($arDataQuery);
 
         $utilisateur = $stmt->fetch();
         $stmt->closeCursor();
+
+        if (!$utilisateur) {
+            $utilisateur = array();
+        }
+
+        return $utilisateur;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param integer $id
+     * @return Utilisateur
+     */
+    public function find(int $id): Utilisateur
+    {
+        $stmt = "SELECT * 
+            FROM utilisateur
+            WHERE id_utilisateur = $id;";
+
+        $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "app\Entity\Utilisateur");
+
+        $utilisateur = $query->fetch();
+        $query->closeCursor();
 
         return $utilisateur;
     }
