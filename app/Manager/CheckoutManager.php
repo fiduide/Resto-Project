@@ -5,6 +5,7 @@ use core\Database\Database;
 use app\Entity\Checkout;
 use app\Entity\Menu\Boisson;
 use app\Entity\Menu\Dessert;
+use app\Entity\Menu\Pizza;
 
 class CheckoutManager
 {

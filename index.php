@@ -5,6 +5,8 @@ use app\Controller\AccountController;
 use app\Controller\MainController;
 use app\Controller\ChoixController;
 use app\Controller\CheckoutController;
+use app\Controller\AdminController;
+
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -87,7 +89,10 @@ try {
 
             break;
             
-
+        case 'adminBoard':
+            $adminController = new AdminController();
+            $adminController->affichage();
+            break;
         default:
             $mainController = new MainController();
             $mainController->index();

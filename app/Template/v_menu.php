@@ -41,12 +41,15 @@
                             <ul class="submenu megamenu">
                                 <li>
                                     <ul>
-                                        <li><a class="dropdown-item text-dark" href="index.php?action=account"><i class="uil uil-user align-middle mr-1"></i> Mon compte</a></li>
-                                        <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1){ ?>
+                                        <li><a class="dropdown-item text-dark" href="index.php?action=account"><i class="mdi mdi-account align-middle mr-1"></i> Mon compte</a></li>
+                                        <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1){?>
                                             <div class="dropdown-divider my-3 border-top"></div>
-                                            <li><a class="dropdown-item text-dark" href="index.php?action=choix&command=1"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Mon Panier</a></li>
-                                            <li><a class="dropdown-item text-dark" href="index.php?action=account&disconnect=1"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Se déconnecter</a></li>
-                                        <?php } ?>
+                                            <li><a class="dropdown-item text-dark" href="index.php?action=choix&command=1"><i class="mdi mdi-basket align-middle mr-1"></i> Mon Panier</a></li>
+                                            <li><a class="dropdown-item text-dark" href="index.php?action=account&disconnect=1"><i class="mdi mdi-login-variant align-middle mr-1"></i> Se déconnecter</a></li>
+                                        <?php }if(isset($_SESSION['acces']) && $_SESSION['acces'] == 2){ ?>
+                                            <div class="dropdown-divider my-3 border-top"></div>
+                                            <li><a class="dropdown-item text-dark" href="index.php?action=adminBoard"><i class="mdi mdi-cog align-middle mr-1"></i> Administration</a></li>
+                                            <?php } ?>
                                     </ul>
                                 </li>  
                             </ul>
