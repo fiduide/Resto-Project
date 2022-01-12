@@ -68,7 +68,7 @@
                                         
                                         echo "</i>";
                                         echo '<input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">';
-                                        echo '<input type="text" step="1" min="0" name="pizza['.$pizza['id'].']" value="0"  class="btn btn-icon btn-soft-primary font-weight-bold">';
+                                        echo '<input type="text" step="1" min="0" name="pizza['.$pizza['id'].']" value="0"  class="disable btn btn-icon btn-soft-primary font-weight-bold">';
                                         echo '<input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">';
                                         echo "</div>";
                                     } ?>
@@ -106,7 +106,12 @@
                                     } ?>
                                     </div>    <!--end row-->
                                 </div><!--end teb pane-->
-                                <button type="submit" class="btn btn-primary mt-5">Ajouter à ma commande </button>
+                                <?php if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1){ ?>
+                                    <button type="submit" class="btn btn-primary mt-5">Ajouter à ma commande</button>
+                                <?php }else{ ?>
+                                    <button type="button" class="btn btn-primary mt-5" disabled>Vous n'êtes pas connecté</button>
+                                <?php } ?>
+
                             </form>
                         </div><!--end tab content-->
                     </div><!--end col-->

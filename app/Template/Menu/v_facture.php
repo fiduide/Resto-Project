@@ -14,7 +14,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
                         <div class="page-next-level">
-                            <h4 class="title"> Réserver dès maintenant votre menu </h4>
+                            <h4 class="title"> Voici votre panier </h4>
                             <div class="page-next">
                             </div>
                         </div>
@@ -34,7 +34,9 @@
         <!-- Start -->
         <section class="section">
             <div class="container">
-                <div class="row">
+            
+                <div class="row align-items-center justify-content-center">
+                <a class="col-6 text-center mb-5" href="index.php?action=choix"><button class="btn btn-primary">Ajouter des produits</button></a>
                     <div class="col-12">
                         <div class="table-responsive bg-white shadow">
                             <table class="table table-center table-padding mb-0">

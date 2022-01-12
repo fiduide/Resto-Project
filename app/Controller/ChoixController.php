@@ -23,19 +23,19 @@ class ChoixController extends MainController
             $_SESSION['commande'] = array();
         }
 
-        foreach ($pizzas as $pizza) {
-            if($pizza != 0){
-                $_SESSION['commande']['pizza_'.$pizza] = $pizza;
+        foreach ($pizzas as $id => $quantity) {
+            if($quantity != 0){
+                $_SESSION['commande']['pizza_'.$id] = $quantity;
             }
         }
-        foreach ($boissons as $boisson) {
-            if($boisson != 0){
-                $_SESSION['commande']['boisson_'.$boisson] = $boisson;
+        foreach ($boissons as $id => $quantity) {
+            if($quantity != 0){
+                $_SESSION['commande']['boisson_'.$id] = $quantity;
             }
         }
-        foreach ($desserts as $dessert) {
-            if($dessert != 0){
-                $_SESSION['commande']['dessert_'.$dessert] = $dessert;
+        foreach ($desserts as $id => $quantity) {
+            if($quantity != 0){
+                $_SESSION['commande']['dessert_'.$id] = $quantity;
             }
         }
     }
@@ -45,7 +45,7 @@ class ChoixController extends MainController
         $totalCommande = 0;
 
         if(isset($_SESSION['commande'])){
-            foreach ($_SESSION['commande'] as $commande => $value) {
+            foreach ($_SESSION['commande'] as $commande => $quantity) {
                 $menuManager = new MenuManager();
                 $str = preg_split("/_/", $commande);
                 $commande_type = $str[0];
@@ -58,11 +58,11 @@ class ChoixController extends MainController
                 }else if($commande_type == "dessert"){
                     $uneCommande = $menuManager->getOneDessert($commande_id);
                 }
-                $totalUneCommande = $value * $uneCommande['prix'];
+                $totalUneCommande = $quantity * $uneCommande['prix'];
                 $totalCommande = $totalCommande + $totalUneCommande;
     
                 $html .= '<tr>
-                <td class="h6"><a href="javascript:void(0)" class="text-danger">X</a></td>
+                <td class="h6"><a href="index.php?action=deleteProduit&type='.$commande_type.'&idProduit='.$uneCommande['id'].'" class="text-danger">X</a></td>
                 <td>
                     <div class="d-flex align-items-center">
                         <img src="public/img/'.$commande_type.'/'.$uneCommande['id'].'.png" class="img-fluid avatar avatar-small rounded shadow" style="height:auto;" alt="">
@@ -70,7 +70,7 @@ class ChoixController extends MainController
                     </div>
                 </td>
                 <td class="text-center">'.$uneCommande['prix'].'</td>
-                <td class="text-center">'.$value.'</td>
+                <td class="text-center">'.$quantity.'</td>
                 <td class="text-center font-weight-bold">'. $totalUneCommande .' €</td>
             </tr>';
             }
@@ -79,5 +79,11 @@ class ChoixController extends MainController
         }
         
         include(ROOT . "/app/Template/Menu/v_facture.php");
+    }
+
+    public function deleteProduit($type, $idProduit){
+        // $_SESSION['commande'][$type."_".$idProduit];
+        //unset();
+        //include(ROOT . "/app/Template/Menu/v_facture.php");
     }
 }
