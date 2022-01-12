@@ -10,7 +10,7 @@ class DefaultEntity
      *
      * @param array $data
      */
-    public function __construct(array $data = [])
+    public function __construct(array|Object $data = [])
     {
         $this->hydrate($data);
     }
@@ -21,7 +21,7 @@ class DefaultEntity
      * @param array $data
      * @return void
      */
-    public function hydrate(array $data)
+    public function hydrate(array|Object $data)
     {
         foreach ($data as $key => $value) {
             $method = "set" . ucfirst($key);

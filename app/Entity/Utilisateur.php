@@ -11,7 +11,22 @@ class Utilisateur extends DefaultEntity
     {
         parent::__construct($data);
 
-        $this->date_register = new \DateTime($this->date_register);
+        if (is_string($this->date_register)) {
+            $this->date_register = new \DateTime($this->date_register);
+        }
+    }
+
+    public function __invoke()
+    {
+        return [
+            "date_register" => $this->date_register->format("Y-m-d H:i:s"),
+            "nom" => $this->nom,
+            "prenom" => $this->prenom,
+            "telephone" => $this->telephone,
+            "email" => $this->email,
+            "mot_de_passe" => $this->mot_de_passe,
+            "niveau_acces" => $this->niveau_acces
+        ];
     }
 
     /**

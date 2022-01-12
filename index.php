@@ -22,11 +22,15 @@ try {
         case 'account':
             $accountController = new AccountController();
 
-            if(isset($_GET['disconnect']) && $_GET['disconnect'] == 1){
+            if (isset($_GET['disconnect']) && $_GET['disconnect'] == 1) {
                 $accountController->disconnectUtilisateur();
-            } else if(isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1){
+            } else if (isset($_GET['register']) && $_GET['register'] == 1) {
+                $accountController->register();
+            } else if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1) {
                 $accountController->profile();
-            } else if(isset($_POST['login']) && $_POST['login'] == 1){
+            } else if (isset($_POST['register']) && $_POST['register'] == 1) {
+                $accountController->createUtilisateur();
+            } else if (isset($_POST['login']) && $_POST['login'] == 1) {
                 $accountController->connectUtilisateur();
             } else {
                 $accountController->login();
@@ -34,28 +38,28 @@ try {
 
             break;
         case 'choix':
-                $choixController = new ChoixController();
+            $choixController = new ChoixController();
 
-                if(isset($_GET['command']) && $_GET['command'] == 1){
-                   if(isset($_POST['pizza']) && isset($_POST['boisson']) && isset($_POST['dessert']) ){
-                        $choixController->addCommand($_POST['pizza'], $_POST['boisson'], $_POST['dessert']);
-                   }
-                    $choixController->getCommand();
-                }else{
-                    $choixController->affichage();
+            if (isset($_GET['command']) && $_GET['command'] == 1) {
+                if (isset($_POST['pizza']) && isset($_POST['boisson']) && isset($_POST['dessert'])) {
+                    $choixController->addCommand($_POST['pizza'], $_POST['boisson'], $_POST['dessert']);
                 }
+                $choixController->getCommand();
+            } else {
+                $choixController->affichage();
+            }
 
-                break;
+            break;
 
         case 'deleteProduit':
             $choixController = new ChoixController();
 
-            if(isset($_GET['type']) && isset($_GET['idProduit'])){
+            if (isset($_GET['type']) && isset($_GET['idProduit'])) {
                 //if(isset($_POST['pizza']) && isset($_POST['boisson']) && isset($_POST['dessert']) ){
-                    $choixController->deleteProduit($_GET['type'], $_GET['idProduit']);
+                $choixController->deleteProduit($_GET['type'], $_GET['idProduit']);
                 //}
                 //$choixController->getCommand();
-            }else{
+            } else {
                 $choixController->affichage();
             }
 
