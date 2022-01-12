@@ -3,7 +3,7 @@
             <div class="container d-flex align-items-center justify-content-between">
                 <!-- Logo container-->
                 <div>
-                    <a class="logo" href="#">
+                    <a class="logo" href="index.php">
                         <img src="public/img/logo/logo_fond_vide.png" height="100" alt="pizza lab">
                     </a>
                 </div>                 
