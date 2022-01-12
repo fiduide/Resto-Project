@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Entity;
 
 class DefaultEntity
@@ -24,8 +25,8 @@ class DefaultEntity
     {
         foreach ($data as $key => $value) {
             $method = "set" . ucfirst($key);
-            
-            if(method_exists($this, $method)){
+
+            if (method_exists($this, $method)) {
                 $this->$method($value);
             }
         }
