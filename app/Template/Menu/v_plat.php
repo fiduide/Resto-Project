@@ -49,7 +49,7 @@
                         <li class="nav-item">
                             <a class="nav-link rounded" id="pills-apps-tab" data-toggle="pill" href="#pills-apps" role="tab" aria-controls="pills-apps" aria-selected="false">
                                 <div class="text-center py-2">
-                                    <h6 class="mb-0">Désserts</h6>
+                                    <h6 class="mb-0">Desserts</h6>
                                 </div>
                             </a>
                             <!--end nav link-->
