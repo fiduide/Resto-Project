@@ -119,48 +119,49 @@
                                             <input type="hidden" name="niveau_acces" value="<?php echo $utilisateur->getNiveau_acces();?>">
                                             <input type="hidden" name="date_register" value="<?php echo $utilisateur->getDate_register()->format("Y-m-d H:i:s");?>">
                                             <input type="hidden" name="statut_account" value="<?php echo $utilisateur->getStatut_account();?>">
+                                            
                                             <div class="row mt-4">
-                                                    <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label>Nom</label>
-                                                        <div class="position-relative">
-                                                            <i data-feather="user" class="fea icon-sm icons"></i>
-                                                            <input name="nom" id="first" type="text" class="form-control pl-5" placeholder="Nom :" required="">
-                                                        </div>
-                                                    </div>
-                                                </div><!--end col-->
                                                 <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label>Prénom</label>
-                                                        <div class="position-relative">
-                                                            <i data-feather="user-check" class="fea icon-sm icons"></i>
-                                                            <input name="prenom" id="last" type="text" class="form-control pl-5" placeholder="Prénom :" required="">
-                                                        </div>
+                                                <div class="form-group">
+                                                    <label>Nom</label>
+                                                    <div class="position-relative">
+                                                        <i data-feather="user" class="fea icon-sm icons"></i>
+                                                        <input name="nom" id="first" type="text" class="form-control pl-5" placeholder="Nom :" required="">
                                                     </div>
-                                                </div><!--end col-->
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label>Email</label>
-                                                        <div class="position-relative">
-                                                            <i data-feather="mail" class="fea icon-sm icons"></i>
-                                                            <input name="email" id="email" type="email" class="form-control pl-5" placeholder="email :" required="">
-                                                        </div>
-                                                    </div> 
-                                                </div><!--end col-->
-
-                                                <div class="col-lg-12">
-                                                    <div class="form-group">
-                                                        <label>Téléphone :</label>
-                                                        <div class="position-relative">
-                                                            <i data-feather="phone" class="fea icon-sm icons"></i>
-                                                            <input name="telephone" id="number" type="text" class="form-control pl-5" placeholder="Téléphone :" required="">
-                                                        </div>
+                                                </div>
+                                            </div><!--end col-->
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Prénom</label>
+                                                    <div class="position-relative">
+                                                        <i data-feather="user-check" class="fea icon-sm icons"></i>
+                                                        <input name="prenom" id="last" type="text" class="form-control pl-5" placeholder="Prénom :" required="">
                                                     </div>
-                                                </div><!--end col-->
+                                                </div>
+                                            </div><!--end col-->
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <div class="position-relative">
+                                                        <i data-feather="mail" class="fea icon-sm icons"></i>
+                                                        <input name="email" id="email" type="email" class="form-control pl-5" placeholder="email :" required="">
+                                                    </div>
+                                                </div> 
+                                            </div><!--end col-->
 
-                                                <div class="col-lg-12 mt-2 mb-0">
-                                                </div><!--end col-->
-                                            </div><!--end row-->
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label>Téléphone :</label>
+                                                    <div class="position-relative">
+                                                        <i data-feather="phone" class="fea icon-sm icons"></i>
+                                                        <input name="telephone" id="number" type="text" class="form-control pl-5" placeholder="Téléphone :" required="">
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-->
+
+                                            <div class="col-lg-12 mt-2 mb-0">
+                                            </div><!--end col-->
+                                        </div><!--end row-->
                                     </div><!--end col-->
                                     <div class="col-md-6 mt-4 pt-2"> 
                                     <h5 style="color:white" >I</h5>
