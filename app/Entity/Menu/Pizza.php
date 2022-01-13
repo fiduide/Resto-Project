@@ -1,6 +1,9 @@
 <?php
+
 namespace App\Entity\Menu;
+
 use core\Entity\DefaultEntity;
+
 class Pizza extends DefaultEntity
 {
 
@@ -17,20 +20,18 @@ class Pizza extends DefaultEntity
     /**
      * @var string
      */
-    private string $ingredient;
-
-    /**
-     * @var string
-     */
     private string $prix;
 
-    
+    /**
+     * @var array
+     */
+    private array $ingredients;
 
     /**
      * Get the value of id
      *
      * @return  int
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -40,20 +41,10 @@ class Pizza extends DefaultEntity
      * Get the value of nom
      *
      * @return  string
-     */ 
+     */
     public function getNom()
     {
         return $this->nom;
-    }
-
-    /**
-     * Get the value of ingredient
-     *
-     * @return  string
-     */ 
-    public function getIngredient()
-    {
-        return $this->ingredient;
     }
 
     /**
@@ -62,7 +53,7 @@ class Pizza extends DefaultEntity
      * @param  string  $nom
      *
      * @return  self
-     */ 
+     */
     public function setNom(string $nom)
     {
         $this->nom = $nom;
@@ -71,24 +62,10 @@ class Pizza extends DefaultEntity
     }
 
     /**
-     * Set the value of ingredient
-     *
-     * @param  string  $ingredient
-     *
-     * @return  self
-     */ 
-    public function setIngredient(string $ingredient)
-    {
-        $this->ingredient = $ingredient;
-
-        return $this;
-    }
-
-    /**
      * Get the value of prix
      *
      * @return  string
-     */ 
+     */
     public function getPrix()
     {
         return $this->prix;
@@ -100,11 +77,51 @@ class Pizza extends DefaultEntity
      * @param  string  $prix
      *
      * @return  self
-     */ 
+     */
     public function setPrix(string $prix)
     {
         $this->prix = $prix;
 
         return $this;
+    }
+
+    /**
+     * Get the value of ingredients
+     *
+     * @return  array
+     */
+    public function getIngredients()
+    {
+        return $this->ingredients;
+    }
+
+    /**
+     * Set the value of ingredients
+     *
+     * @param  array  $ingredients
+     *
+     * @return  self
+     */
+    public function setIngredients(array $ingredients)
+    {
+        $this->ingredients = $ingredients;
+
+        return $this;
+    }
+
+    /**
+     * Retourne la liste des ingédients d'une pizza
+     *
+     * @return string
+     */
+    public function getListIngredient(): string
+    {
+        $arIngredient = array();
+
+        foreach ($this->ingredients as $ingredient) {
+            $arIngredient[] = $ingredient->getNom_ingredient();
+        }
+
+        return implode(", ", $arIngredient);
     }
 }
