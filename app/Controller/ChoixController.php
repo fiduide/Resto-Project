@@ -2,8 +2,6 @@
 
 namespace app\Controller;
 
-use app\Manager\MenuManager;
-
 use app\Entity\Menu\Pizza;
 use app\Entity\Menu\Boisson;
 use app\Entity\Menu\Dessert;
@@ -60,7 +58,6 @@ class ChoixController extends MainController
 
         if (isset($_SESSION['commande'])) {
             foreach ($_SESSION['commande'] as $commande => $quantity) {
-                $menuManager = new MenuManager();
                 $str = preg_split("/_/", $commande);
                 if($str[0] != "total"){
                     $commande_type = $str[0];
