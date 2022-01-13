@@ -26,4 +26,22 @@ class DessertManager extends Database
 
         return $dessert;
     }
+
+    /**
+     * Récupère les informations de tous les desserts
+     *
+     * @param integer $id
+     * @return array
+     */
+    public function findAll(): array
+    {
+        $query = "SELECT *
+            FROM dessert;";
+
+        $stmt = $this->pdo->query($query, \PDO::FETCH_CLASS, "app\Entity\Menu\Dessert");
+
+        $desserts = $stmt->fetchAll();
+
+        return $desserts;
+    }
 }
