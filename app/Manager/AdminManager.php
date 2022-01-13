@@ -6,6 +6,8 @@ use core\Database\Database;
 use app\Entity\Menu\Boisson;
 use app\Entity\Menu\Dessert;
 use app\Entity\Menu\Pizza;
+use app\Manager\Menu\IngredientManager;
+use app\Manager\Menu\PizzaManager;
 
 class AdminManager
 {
@@ -34,6 +36,21 @@ class AdminManager
         $prepare->execute($obj);
     }
 
+    /**
+     * Modification des items
+     *
+     * @return boolean
+     */
+    public function addItem($table, $nom, $prix)
+    {
+        $obj = [':nom' => $nom, ':prix' => $prix];
+        $statementArt = "INSERT INTO $table SET
+                             nom = :nom,
+                             prix = :prix";
+        $prepare = $this->pdo->prepare($statementArt);
+        $prepare->execute($obj);
+    }
+
 
     /**
      * Modification des pizzas
@@ -42,12 +59,14 @@ class AdminManager
      */
     public function updatePizza($id, $nom, $prix, $ingredient)
     {
-        $statementArt = "UPDATE pizza SET
-                             nom = $nom,
-                             prix = $prix
-                             WHERE id = $id";
+        $pizzaManager = new PizzaManager();
+        $pizzaManager->updatePizza($id, $nom, $prix);
 
-        $prepare = $this->pdo->prepare($statementArt, \PDO::FETCH_ASSOC);
-        $prepare->execute();
+        $ingredientManager = new IngredientManager();
+        $ingredientManager->deletePizzaIngredient($id);
+
+        foreach ($ingredient as $id_ingredient => $value) {
+            $ingredientManager->insertIngredientInPizza($id, $id_ingredient);
+        }
     }
 }

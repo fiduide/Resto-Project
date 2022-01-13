@@ -5,6 +5,7 @@ namespace app\Controller;
 use app\Manager\AdminManager;
 use app\Manager\CommandeManager;
 use app\Manager\Menu\PizzaManager;
+use app\Manager\Menu\IngredientManager;
 use app\Manager\Menu\BoissonManager;
 use app\Manager\Menu\DessertManager;
 
@@ -22,7 +23,7 @@ class AdminController extends MainController
       $listPizza = $this->getListPizza();
       $listBoisson = $this->getListBoisson();
       $listDessert = $this->getListDessert();
-
+      $listIngredient = $this->getListIngredient();
       include(ROOT . "/app/Template/Dashboard/v_dashboard.php");
    }
 
@@ -93,8 +94,38 @@ class AdminController extends MainController
    {
       $adminManager = new AdminManager();
       if (isset($_POST) && !empty($_POST)) {
-         $adminManager->updateItem($_GET['type'], $_GET['itemId'], $_POST['nom'], $_POST['prix']);
+         if ($_GET['type'] == "pizza") {
+            $adminManager->updatePizza($_GET['itemId'], $_POST['nom'], $_POST['prix'], $_POST['ingredient']);
+         } else {
+            $adminManager->updateItem($_GET['type'], $_GET['itemId'], $_POST['nom'], $_POST['prix']);
+         }
+
          header("Location: index.php?action=adminBoard&success=1");
       }
+   }
+
+   public function addItem()
+   {
+      $pizzaManager = new PizzaManager();
+      $adminManager = new AdminManager();
+      if (isset($_POST) && !empty($_POST) && !empty($_POST['nom']) && !empty($_POST['prix'])) {
+         if ($_GET['type'] == "pizza") {
+            $pizzaManager->addPizza($_POST['nom'], $_POST['prix'], $_POST['ingredient']);
+         } else {
+
+            $adminManager->addItem($_GET['type'], $_POST['nom'], $_POST['prix']);
+         }
+
+         header("Location: index.php?action=adminBoard&successAdd=1");
+      } else {
+         header("Location: index.php?action=adminBoard&errorAdd=1");
+      }
+   }
+
+   public function getListIngredient()
+   {
+      $ingredientManager = new IngredientManager();
+      $listIngredient = $ingredientManager->findAll();
+      return $listIngredient;
    }
 }
