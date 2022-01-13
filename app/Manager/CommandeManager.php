@@ -94,7 +94,12 @@ class CommandeManager extends Database
         $arCommande = $stmt->fetchAll();
 
         foreach ($arCommande as $commande) {
+
             $id_commande = $commande->getId_commande();
+
+            //Initialisation de l'utilisateur
+            $utilisateur = (new UtilisateurManager)->find($commande->getId_utilisateur());
+            $commande->setUtilisateur($utilisateur);
 
             // Initialisation de la variable $commande_pizza
             $commande_pizza = (new CommandePizzaManager)->find($id_commande);

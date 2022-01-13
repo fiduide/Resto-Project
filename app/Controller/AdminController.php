@@ -13,7 +13,6 @@ class AdminController extends MainController
       $countAllCommand = $this->getCountAllCommand();
       $countInProgressCommand = $this->getCountInProgressCommand();
       $total = $this->getTotalCommand();
-
       include(ROOT . "/app/Template/Dashboard/v_dashboard.php");
    }
 
