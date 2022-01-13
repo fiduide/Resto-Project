@@ -61,7 +61,7 @@
                                 </a><!--end nav link-->
                             </li><!--end nav item-->
                             <li class="nav-item mt-2">
-                                <a class="nav-link rounded" id="menu-modif" data-toggle="pill" href="#menu" role="tab" aria-controls="menu" aria-selected="false">
+                                <a class="nav-link rounded" id="gestion" data-toggle="pill" href="#gestionUtilisateurs" role="tab" aria-controls="menu" aria-selected="false">
                                     <div class="text-left py-1 px-3">
                                         <h6 class="mb-0"><i class="uil uil-list-ul h5 align-middle mr-2 mb-0"></i> Gestions utilisateurs</h6>
                                     </div>
@@ -185,6 +185,13 @@
                                            <?php } ?>
                                         </tbody>
                                     </table>
+                                </div>
+                            </div><!--end teb pane-->
+
+                            
+                            <div class="tab-pane fade bg-white shadow rounded p-4" id="gestionUtilisateurs" role="tabpanel" aria-labelledby="gestionUtilisateurs">
+                                <div class="widget">
+                                    METTRE CRUD UTILSIATEURS HERE
                                 </div>
                             </div><!--end teb pane-->
                         </div>
