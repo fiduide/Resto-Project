@@ -46,7 +46,7 @@
                                         <!--end col-->
                                         <div class="col-md-5 text-md-right text-center">
                                             <ul class="list-unstyled social-icon social mb-0 mt-4">
-                                                <li class="list-inline-item"><a href="account-setting.html" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Settings"><i data-feather="tool" class="fea icon-sm fea-social"></i></a></li>
+                                                <li class="list-inline-item"><a href="index.php?action=account&parametre=1" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Settings"><i data-feather="tool" class="fea icon-sm fea-social"></i></a></li>
                                             </ul>
                                             <!--end icon-->
                                         </div>
@@ -93,7 +93,7 @@
                                 <!--end col-->
 
                                 <div class="col-6 mt-4 pt-2">
-                                    <a href="account-setting.html" class="accounts rounded d-block shadow text-center py-3">
+                                    <a href="index.php?action=account&parametre=1" class="accounts rounded d-block shadow text-center py-3">
                                         <span class="pro-icons h3 text-muted"><i class="uil uil-setting"></i></span>
                                         <h6 class="title text-dark h6 my-0">Paramètres</h6>
                                     </a>

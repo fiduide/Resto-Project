@@ -80,4 +80,42 @@ class UtilisateurManager extends Database
 
         return $this->pdo->lastInsertId();
     }
+
+    /**
+     * Créé un nouvel utilisateur
+     *
+     * @param array $data
+     * @return integer identifiant de l'utilisateur créé
+     */
+    public function update(array $data, int $id, string $new_password, string $new_password2)
+    {
+        if($new_password === $new_password2){
+            $query = "UPDATE utilisateur
+            SET id_utilisateur = : $id,
+                nom = :nom,
+                prenom = :prenom,
+                telephone = :telephone,
+                email = :email,
+                date_register = :date_register,
+                mot_de_passe = :mot_de_passe,
+                niveau_acces = :niveau_acces,
+            WHERE  id_utilisateur = $id";
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute($data);
+        } 
+    }
+
+    /**
+     * Suprimer un utilisateur
+     *
+     */
+    public function deleteAccountClient(int $id)
+    {
+            $query = "DELETE FROM utilisateur
+            WHERE  id_utilisateur = $id";
+
+        $stmt = $this->pdo->execute($query);
+        //$result->execute($stmt);
+    }
 }
