@@ -277,6 +277,7 @@
         </section><!--end section-->
         <!-- End -->
         <!-- Wishlist Popup End -->
+        <?php include("app/Template/v_footer.php"); ?>
         <script>
             $('.plus').click(function () {
                 if ($(this).prev().val() < 999) {

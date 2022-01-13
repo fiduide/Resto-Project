@@ -29,5 +29,6 @@
             </div> <!--end container-->
         </section><!--end section-->
         <!-- Hero End -->
+        <?php include("app/Template/v_footer.php"); ?>
     </body>
 </html>
