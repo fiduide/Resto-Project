@@ -61,7 +61,7 @@ try {
                 $choixController->affichage();
             }
 
-                break;
+            break;
 
         case 'checkout':
             $checkoutController = new CheckoutController();
@@ -76,12 +76,12 @@ try {
 
             if (isset($_POST['statut_message']) && $_POST['statut_message'] == 1) {
                 if (isset($_POST['name']) && $_POST['name'] && $_POST['comments']) {
-                $nom = $_POST['name'];
-                $mail = $_POST['name'];
-                $message = $_POST['comments'];
+                    $nom = $_POST['name'];
+                    $mail = $_POST['name'];
+                    $message = $_POST['comments'];
 
-                $sendMail->sendMailTo($nom, $mail, $message);
-                }else{
+                    $sendMail->sendMailTo($nom, $mail, $message);
+                } else {
                     header("Location: index.php?forgetThing");
                 }
             }
@@ -119,16 +119,16 @@ try {
             }
 
             break;
-            
+
         case 'adminBoard':
             $adminController = new AdminController();
-            if(isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "postCommand" )
-            {
+            if (isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "postCommand") {
                 $adminController->setCommandDelivered($_GET['commandId']);
-            }
-            else if(isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "waitingCommand")
-            {
+            } else if (isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "waitingCommand") {
                 $adminController->setCommandWaiting($_GET['commandId']);
+            } else if (isset($_GET['admin']) && isset($_GET['itemId']) && isset($_GET['type']) && $_GET['admin'] == "updateItem") {
+                //action = adminBoard & admin = updateItem & type = dessert & itemId
+                $adminController->updateItem($_GET['type'], $_GET['itemId']);
             }
             $adminController->affichage();
             break;

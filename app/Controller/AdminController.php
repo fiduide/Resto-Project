@@ -2,6 +2,7 @@
 
 namespace app\Controller;
 
+use app\Manager\AdminManager;
 use app\Manager\CommandeManager;
 use app\Manager\Menu\PizzaManager;
 use app\Manager\Menu\BoissonManager;
@@ -86,5 +87,14 @@ class AdminController extends MainController
       $dessertManager = new DessertManager();
       $list = $dessertManager->findAll();
       return $list;
+   }
+
+   public function updateItem()
+   {
+      $adminManager = new AdminManager();
+      if (isset($_POST) && !empty($_POST)) {
+         $adminManager->updateItem($_GET['type'], $_GET['itemId'], $_POST['nom'], $_POST['prix']);
+         header("Location: index.php?action=adminBoard&success=1");
+      }
    }
 }

@@ -63,7 +63,7 @@
                         <li class="nav-item mt-2">
                             <a class="nav-link rounded" id="menu-modif" data-toggle="pill" href="#menu" role="tab" aria-controls="menu" aria-selected="false">
                                 <div class="text-left py-1 px-3">
-                                    <h6 class="mb-0"><i class="uil uil-list-ul h5 align-middle mr-2 mb-0"></i> Modification de la carte</h6>
+                                    <h6 class="mb-0"><i class="uil uil-list-ul h5 align-middle mr-2 mb-0"></i> Gestion de la carte</h6>
                                 </div>
                             </a>
                             <!--end nav link-->
@@ -136,7 +136,7 @@
                                             <td><?php echo $commande->getDate_orderFR(); ?></td>
                                             <?php
                                             if ($commande->getEtat() == 0) {
-                                                echo '<td class="text-warning">En attente</td>';
+                                                echo '<td class="text-danger">En attente</td>';
                                             } else {
                                                 echo '<td class="text-success">Livrée</td>';
                                             }
@@ -259,12 +259,42 @@
                                                         <?php foreach ($listPizza as $pizza) { ?>
                                                             <tr>
                                                                 <th scope="row"><?php echo $pizza->getNom(); ?> </th>
-                                                                <td><?php echo $pizza->getListIngredient(); ?></td>
+                                                                <td class="text-small"><i><?php echo $pizza->getListIngredient(); ?></i></td>
                                                                 <td><?php echo $pizza->getPrix(); ?>€</td>
                                                                 <td>
-
+                                                                    <a class="btn btn-soft-primary" data-toggle="modal" data-target="#pizza_<?= $pizza->getId(); ?>">Modifier</a>
                                                                 </td>
                                                             </tr>
+                                                            <!-- Modal -->
+                                                            <!-- Wishlist Popup Start -->
+                                                            <div class="modal fade" id="pizza_<?php echo $pizza->getId(); ?>" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content rounded shadow-lg border-0 ">
+                                                                        <div class="modal-header">
+                                                                            <div class="modal-title"><?php echo $pizza->getNom(); ?></div>
+                                                                            <div><b><i>n° :<?php echo $pizza->getId(); ?></i></b></div>
+                                                                        </div>
+                                                                        <div class="modal-body py-3 pb-3">
+                                                                            <form action="index.php?action=adminBoard&admin=updateItem&type=pizza&itemId=<?= $pizza->getId() ?>" method="POST">
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text" id="basic-addon1">Nom</span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="nom" name="nom" aria-describedby="basic-addon1" value="<?php echo $pizza->getNom(); ?>">
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text" id="basic-addon1">Prix</span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" placeholder="Prix" aria-label="prix" id="prix" name="prix" aria-describedby="basic-addon1" value="<?php echo $pizza->getPrix(); ?>">
+                                                                                </div>
+                                                                                <button type="submit" class="btn btn-soft-primary">Valider ma modification</button><br>
+                                                                                <small style="font-size:9px"><i>*Attention toutes modifications est irréversible</i></small>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         <?php } ?>
                                                     </tbody>
                                                 </table>
@@ -287,9 +317,39 @@
                                                                 <th scope="row"><?php echo ucfirst(strtolower($boisson->getNom())); ?> </th>
                                                                 <td><?php echo $boisson->getPrix(); ?>€</td>
                                                                 <td>
-
+                                                                    <a class="btn btn-soft-primary" data-toggle="modal" data-target="#boisson_<?= $boisson->getId(); ?>">Modifier</a>
                                                                 </td>
                                                             </tr>
+                                                            <!-- Modal -->
+                                                            <!-- Wishlist Popup Start -->
+                                                            <div class="modal fade" id="boisson_<?php echo $boisson->getId(); ?>" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content rounded shadow-lg border-0 ">
+                                                                        <div class="modal-header">
+                                                                            <div class="modal-title"><?php echo $boisson->getNom(); ?></div>
+                                                                            <div><b><i>n° :<?php echo $boisson->getId(); ?></i></b></div>
+                                                                        </div>
+                                                                        <div class="modal-body py-3 pb-3">
+                                                                            <form action="index.php?action=adminBoard&admin=updateItem&type=boisson&itemId=<?= $boisson->getId() ?>" method="POST">
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text" id="basic-addon1">Nom</span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="nom" name="nom" aria-describedby="basic-addon1" value="<?php echo $boisson->getNom(); ?>">
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text" id="basic-addon1">Prix</span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" placeholder="Prix" aria-label="prix" id="prix" name="prix" aria-describedby="basic-addon1" value="<?php echo $boisson->getPrix(); ?>">
+                                                                                </div>
+                                                                                <button type="submit" class="btn btn-soft-primary">Valider ma modification</button><br>
+                                                                                <small style="font-size:9px"><i>*Attention toutes modifications est irréversible</i></small>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         <?php } ?>
                                                     </tbody>
                                                 </table>
@@ -312,9 +372,39 @@
                                                                 <th scope="row"><?php echo ucfirst(strtolower($dessert->getNom())); ?> </th>
                                                                 <td><?php echo $dessert->getPrix(); ?>€</td>
                                                                 <td>
-
+                                                                    <a class="btn btn-soft-primary" data-toggle="modal" data-target="#dessert_<?= $dessert->getId(); ?>">Modifier</a>
                                                                 </td>
                                                             </tr>
+                                                            <!-- Modal -->
+                                                            <!-- Wishlist Popup Start -->
+                                                            <div class="modal fade" id="dessert_<?php echo $dessert->getId(); ?>" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content rounded shadow-lg border-0 ">
+                                                                        <div class="modal-header">
+                                                                            <div class="modal-title"><?php echo $dessert->getNom(); ?></div>
+                                                                            <div><b><i>n° :<?php echo $dessert->getId(); ?></i></b></div>
+                                                                        </div>
+                                                                        <div class="modal-body py-3 pb-3">
+                                                                            <form action="index.php?action=adminBoard&admin=updateItem&type=dessert&itemId=<?= $dessert->getId() ?>" method="POST">
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text" id="basic-addon1">Nom</span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="nom" name="nom" aria-describedby="basic-addon1" value="<?php echo $dessert->getNom(); ?>">
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text" id="basic-addon1">Prix</span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" placeholder="Prix" aria-label="prix" id="prix" name="prix" aria-describedby="basic-addon1" value="<?php echo $dessert->getPrix(); ?>">
+                                                                                </div>
+                                                                                <button type="submit" class="btn btn-soft-primary">Valider ma modification</button><br>
+                                                                                <small style="font-size:9px"><i>*Attention toutes modifications est irréversible</i></small>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         <?php } ?>
                                                     </tbody>
                                                 </table>
@@ -347,6 +437,13 @@
                 if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
             }
         });
+        var search_params = new URLSearchParams(window.location.search);
+
+        if (search_params.has('success')) {
+            var params = search_params.get('success');
+            console.log(params);
+            Notify("Votre modification a été acceptée", "primary");
+        }
     </script>
 </body>
 
