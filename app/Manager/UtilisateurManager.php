@@ -50,7 +50,6 @@ class UtilisateurManager extends Database
         $stmt = "SELECT * 
             FROM utilisateur
             WHERE id_utilisateur = $id;";
-
         $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "app\Entity\Utilisateur");
 
         $utilisateur = $query->fetch();
@@ -63,7 +62,7 @@ class UtilisateurManager extends Database
      * Créé un nouvel utilisateur
      *
      * @param array $data
-     * @return integer
+     * @return integer identifiant de l'utilisateur créé
      */
     public function save(array $data): int
     {

@@ -71,7 +71,7 @@
                             </table>
                         </div>
                         <div class="mt-4 pt-2 text-right">
-                            <a href="index.php?action=checkout&add=1" class="btn btn-primary">Procéder au paiement</a>
+                            <a href="index.php?action=checkout&add=1" class="btn btn-primary <?php if($totalCommande == 0){ ?> disabled <?php } ?>">Procéder au paiement</a>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
