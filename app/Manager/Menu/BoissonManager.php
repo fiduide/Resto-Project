@@ -26,4 +26,23 @@ class BoissonManager extends Database
 
         return $boisson;
     }
+
+
+    /**
+     * Récupère les information de toutes les boissons
+     *
+     * @param integer $id
+     * @return array
+     */
+    public function findAll(): array
+    {
+        $query = "SELECT *
+            FROM boisson;";
+
+        $stmt = $this->pdo->query($query, \PDO::FETCH_CLASS, "app\Entity\Menu\Boisson");
+
+        $boissons = $stmt->fetchAll();
+
+        return $boissons;
+    }
 }

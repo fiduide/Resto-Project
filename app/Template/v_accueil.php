@@ -303,20 +303,18 @@
     <!--end footer-->
     <!-- Footer End -->
     <script>
-
         var search_params = new URLSearchParams(window.location.search);
 
-        if(search_params.has('disconnect')) {
+        if (search_params.has('disconnect')) {
             var params = search_params.get('disconnect');
             console.log(params);
             Notify("Vous êtes maintennant déconnecté", "primary");
 
-        }else if(search_params.has('connect')){
+        } else if (search_params.has('connect')) {
             var params = search_params.get('connect');
             console.log(params)
             Notify("Vous êtes maintennant connecté", "primary");
-        }
-        else if(search_params.has('registered')){
+        } else if (search_params.has('registered')) {
             var params = search_params.get('registered');
             console.log(params)
             Notify("Vous êtes maintennant inscrit et connecté", "primary");
