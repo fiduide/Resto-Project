@@ -85,7 +85,7 @@
                                 <!--end col-->
 
                                 <div class="col-6 mt-4 pt-2">
-                                    <a href="index.php?action=paiementPage" class="accounts rounded d-block shadow text-center py-3">
+                                    <a href="index.php?action=account&payment=1" class="accounts rounded d-block shadow text-center py-3">
                                         <span class="pro-icons h3 text-muted"><i class="uil uil-transaction"></i></span>
                                         <h6 class="title text-dark h6 my-0">Paiement</h6>
                                     </a>
@@ -151,22 +151,22 @@
 
                                 <?php foreach ($commandes as $commande) { ?>
                                     <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
-                                        <img src="images/job/Circleci.svg" class="avatar avatar-ex-sm" alt="">
+                                        <!--<img src="images/job/Circleci.svg" class="avatar avatar-ex-sm" alt="">-->
                                         <div class="media-body content ml-3">
                                             <h4 class="title mb-0"><?php echo $commande->getDate_orderFR(); ?></h4>
 
                                             <?php if (!empty($commande->getCommande_pizza())) { ?>
-                                                <p class="text-primary mb-0">Pizza(s)</p>
+                                                <p class="text-primary mb-0"><i class="mdi mdi-pizza"></i> Pizza(s)</p>
                                                 <p class="text-muted"><?php echo $commande->getPizzaList(); ?></p>
                                             <?php } ?>
 
                                             <?php if (!empty($commande->getCommande_boisson())) { ?>
-                                                <p class="text-primary mb-0">Boisson(s)</p>
+                                                <p class="text-primary mb-0"><i class="mdi mdi-bottle-soda-classic"></i> Boisson(s)</p>
                                                 <p class="text-muted"><?php echo $commande->getBoissonList(); ?></p>
                                             <?php } ?>
 
                                             <?php if (!empty($commande->getCommande_dessert())) { ?>
-                                                <p class="text-primary mb-0">Dessert(s)</p>
+                                                <p class="text-primary mb-0"><i class="mdi mdi-ice-cream"></i> Dessert(s)</p>
                                                 <p class="text-muted"><?php echo $commande->getDessertList(); ?></p>
                                             <?php } ?>
                                         </div>
