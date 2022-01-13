@@ -306,7 +306,7 @@
     <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
     <!-- Back to top -->
 
-    <div id="toastContainer" aria-live="polite" aria-atomic="true" style="position: absolute; min-height: 100px; min-width: 300px; z-index: 999">
+    <div id="toastContainer" aria-live="polite" aria-atomic="true" style="position: absolute;min-width: 300px; z-index: 999">
     </div>
 
     <!-- javascript -->
