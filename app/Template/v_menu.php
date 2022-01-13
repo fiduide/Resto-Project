@@ -26,8 +26,12 @@
              <!-- Navigation Menu-->
              <ul class="navigation-menu">
                  <li class="has-submenu"><a href="index.php?action=choix">Notre Carte</a></li>
-                 <li class="has-submenu"><a href="#" class="text-dark" data-toggle="modal" data-target="#pop_reservation"><i class="mdi mdi-calendar-month"></i> Reserver une table</a></li>
-                 <li class="has-submenu">
+                
+                <?php if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1) { ?>
+                    <li class="has-submenu"><a href="#" class="text-dark" data-toggle="modal" data-target="#pop_reservation"><i class="mdi mdi-calendar-month"></i> Reserver une table</a></li>
+                <?php } ?>
+                
+                <li class="has-submenu">
                      <a href="javascript:void(0)"><i class="mdi mdi-account"></i></a><span class="menu-arrow"></span>
                      <ul class="submenu megamenu">
                          <li>
