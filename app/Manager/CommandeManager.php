@@ -27,22 +27,20 @@ class CommandeManager extends Database
         $commande = $stmt->fetch();
         $stmt->closeCursor();
 
-        $id_commande = $commande->getId_commande();
-
         // Initialisation de la variable $utilisateur
-        $utilisateur = (new UtilisateurManager)->find($id);
+        $utilisateur = (new UtilisateurManager)->find($commande->getId_utilisateur());
         $commande->setUtilisateur($utilisateur);
 
         // Initialisation de la variable $commande_pizza
-        $commande_pizza = (new CommandePizzaManager)->find($id_commande);
+        $commande_pizza = (new CommandePizzaManager)->find($id);
         $commande->setCommande_pizza($commande_pizza);
 
         // Initialisation de la variable $commande_boisson
-        $commande_boisson = (new CommandeBoissonManager)->find($id_commande);
+        $commande_boisson = (new CommandeBoissonManager)->find($id);
         $commande->setCommande_boisson($commande_boisson);
 
         // Initialisation de la variable $commande_dessert
-        $commande_dessert = (new CommandeDessertManager)->find($id_commande);
+        $commande_dessert = (new CommandeDessertManager)->find($id);
         $commande->setCommande_dessert($commande_dessert);
 
         return $commande;
