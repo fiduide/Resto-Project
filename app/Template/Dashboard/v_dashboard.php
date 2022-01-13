@@ -261,6 +261,7 @@
                                                                 <th scope="row"><?php echo $pizza->getNom(); ?> </th>
                                                                 <td class="text-small"><i><?php echo $pizza->getListIngredient(); ?></i></td>
                                                                 <td><?php echo $pizza->getPrix(); ?>€</td>
+
                                                                 <td>
                                                                     <a class="btn btn-soft-primary" data-toggle="modal" data-target="#pizza_<?= $pizza->getId(); ?>">Modifier</a>
                                                                 </td>
@@ -288,6 +289,15 @@
                                                                                     </div>
                                                                                     <input type="text" class="form-control" placeholder="Prix" aria-label="prix" id="prix" name="prix" aria-describedby="basic-addon1" value="<?php echo $pizza->getPrix(); ?>">
                                                                                 </div>
+
+                                                                                <?php
+                                                                                foreach ($pizza->getIngredients() as $ingredient) {
+                                                                                    echo '<div class="form-group form-check">
+                                                                                            <input type="checkbox" class="form-check-input" id="' . $ingredient->getId_ingredient() . '">
+                                                                                            <label class="form-check-label" for="exampleCheck1">' . $ingredient->getNom_ingredient() . '</label>
+                                                                                        </div>';
+                                                                                }
+                                                                                ?>
                                                                                 <button type="submit" class="btn btn-soft-primary">Valider ma modification</button><br>
                                                                                 <small style="font-size:9px"><i>*Attention toutes modifications est irréversible</i></small>
                                                                             </form>
