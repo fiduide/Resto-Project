@@ -166,9 +166,9 @@
 
                                                     <div class="col-md-6 text-right">
                                                         <?php if ($commande->getEtat() == 0) { ?>
-                                                            <span class="badge badge-pill badge-warning">En cours</span>
+                                                            <span class="badge badge-pill badge-soft-warning">En cours</span>
                                                         <?php } else { ?>
-                                                            <span class="badge badge-pill badge-success">Terminée</span>
+                                                            <span class="badge badge-pill badge-soft-success">Terminée</span>
                                                         <?php } ?>
                                                     </div>
                                                 </div>
