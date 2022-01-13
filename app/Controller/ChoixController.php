@@ -7,6 +7,8 @@ use app\Manager\MenuManager;
 use app\Entity\Menu\Pizza;
 use app\Entity\Menu\Boisson;
 use app\Entity\Menu\Dessert;
+use app\Manager\Menu\BoissonManager;
+use app\Manager\Menu\DessertManager;
 use app\Manager\Menu\PizzaManager;
 
 class ChoixController extends MainController
@@ -15,11 +17,14 @@ class ChoixController extends MainController
 
     public function affichage()
     {
-        $menuManager = new MenuManager();
         $pizzaManager = new PizzaManager();
         $pizzas = $pizzaManager->findAll();
-        $boissons = $menuManager->getBoisson();
-        $desserts = $menuManager->getDessert();
+
+        $boissonManager = new BoissonManager();
+        $boissons = $boissonManager->findAll();
+
+        $dessertManager = new DessertManager();
+        $desserts = $dessertManager->findAll();
 
         include(ROOT . "/app/Template/Menu/v_plat.php");
     }
@@ -62,12 +67,16 @@ class ChoixController extends MainController
                     $commande_id = $str[1];
                 
     
+                    $pizzaManager = new PizzaManager();
+                    $boissonManager = new BoissonManager();
+                    $dessertManager = new DessertManager();
+
                     if ($commande_type == "pizza") {
-                        $uneCommande = $menuManager->getOnePizza($commande_id);
+                        $uneCommande = $pizzaManager->find($commande_id);
                     } else if ($commande_type == "boisson") {
-                        $uneCommande = $menuManager->getOneBoisson($commande_id);
+                        $uneCommande = $boissonManager->find($commande_id);
                     } else if ($commande_type == "dessert") {
-                        $uneCommande = $menuManager->getOneDessert($commande_id);
+                        $uneCommande = $dessertManager->find($commande_id);
                     }
                     
                     $totalUneCommande = $quantity * $uneCommande->getPrix();
