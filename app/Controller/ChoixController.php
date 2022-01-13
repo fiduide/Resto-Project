@@ -122,18 +122,4 @@ class ChoixController extends MainController
             $this->getCommand();
         }
     }
-
-    public function affichagePaiement()
-    {
-        $menuManager = new MenuManager();
-
-        include(ROOT . "/app/Template/Account/v_paiement.php");
-    }
-
-    public function affichageProfil()
-    {
-        $menuManager = new MenuManager();
-
-        include(ROOT . "/app/Template/Account/v_profile.php");
-    }
 }

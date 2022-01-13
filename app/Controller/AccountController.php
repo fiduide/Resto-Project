@@ -95,4 +95,13 @@ class AccountController extends MainController
 
         header("Location: index.php?disconnect=1");
     }
+
+
+    public function affichagePaiement()
+    {
+        $utilisateurManager = new UtilisateurManager();
+        $utilisateur = $utilisateurManager->find($_SESSION['id_utilisateur']);
+        
+        include(ROOT . "/app/Template/Account/v_paiement.php");
+    }
 }

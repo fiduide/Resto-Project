@@ -39,8 +39,8 @@
                                 <div class="col-lg-10 col-md-9">
                                     <div class="row align-items-end">
                                         <div class="col-md-7 text-md-left text-center mt-4 mt-sm-0">
-                                            <h3 class="title mb-0"><?php ?></h3>
-                                            <small class="text-muted h6 mr-2"><?php ?></small>
+                                            <h3 class="title mb-0"><?php echo $utilisateur->getNom() . " " . $utilisateur->getPrenom(); ?></h3>
+                                            <small class="text-muted h6 mr-2"><?php echo $utilisateur->getNiveau_accesLibelle(); ?></small>
                                         </div>
                                         <!--end col-->
                                         <div class="col-md-5 text-md-right text-center">
@@ -77,7 +77,7 @@
                         <div class="widget">
                             <div class="row">
                                 <div class="col-6 mt-4 pt-2">
-                                    <a href="index.php?action=affichageProfil&nom='<?php $nom ?>'&prenom='<?php $prenom ?>'&niveau='<?php $niveau ?>'" class="accounts  rounded d-block shadow text-center py-3">
+                                    <a href="index.php?action=account" class="accounts  rounded d-block shadow text-center py-3">
                                         <span class="pro-icons h3 text-muted"><i class="uil uil-dashboard"></i></span>
                                         <h6 class="title text-dark h6 my-0">Profil</h6>
                                     </a>
@@ -85,7 +85,7 @@
                                 <!--end col-->
 
                                 <div class="col-6 mt-4 pt-2">
-                                    <a href="index.php?action=paiementPage&nom='<?php $nom ?>'&prenom='<?php $prenom ?>'&niveau='<?php $niveau ?>'" class="accounts active rounded d-block shadow text-center py-3">
+                                    <a href="index.php?action=account&payment=1" class="accounts active rounded d-block shadow text-center py-3">
                                         <span class="pro-icons h3 text-muted"><i class="uil uil-transaction"></i></span>
                                         <h6 class="title text-dark h6 my-0">Paiement</h6>
                                     </a>
