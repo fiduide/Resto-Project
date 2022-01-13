@@ -149,28 +149,47 @@
                             <div class="col-md-6 mt-4 pt-2 pt-sm-0">
                                 <h5>Dernière commandes :</h5>
 
-                                <?php foreach ($commandes as $commande) { ?>
+                                <?php if (empty($commandes)) { ?>
                                     <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
-                                        <!--<img src="images/job/Circleci.svg" class="avatar avatar-ex-sm" alt="">-->
                                         <div class="media-body content ml-3">
-                                            <h4 class="title mb-0"><?php echo $commande->getDate_orderFR(); ?></h4>
-
-                                            <?php if (!empty($commande->getCommande_pizza())) { ?>
-                                                <p class="text-primary mb-0"><i class="mdi mdi-pizza"></i> Pizza(s)</p>
-                                                <p class="text-muted"><?php echo $commande->getPizzaList(); ?></p>
-                                            <?php } ?>
-
-                                            <?php if (!empty($commande->getCommande_boisson())) { ?>
-                                                <p class="text-primary mb-0"><i class="mdi mdi-bottle-soda-classic"></i> Boisson(s)</p>
-                                                <p class="text-muted"><?php echo $commande->getBoissonList(); ?></p>
-                                            <?php } ?>
-
-                                            <?php if (!empty($commande->getCommande_dessert())) { ?>
-                                                <p class="text-primary mb-0"><i class="mdi mdi-ice-cream"></i> Dessert(s)</p>
-                                                <p class="text-muted"><?php echo $commande->getDessertList(); ?></p>
-                                            <?php } ?>
+                                            <h4 class="title mb-0">Aucune commande !</h4>
                                         </div>
                                     </div>
+                                <?php } else { ?>
+                                    <?php foreach ($commandes as $commande) { ?>
+                                        <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
+                                            <div class="media-body content ml-3">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4 class="title mb-0"><?php echo $commande->getDate_orderFR(); ?></h4>
+                                                    </div>
+
+                                                    <div class="col-md-6 text-right">
+                                                        <?php if ($commande->getEtat() == 0) { ?>
+                                                            <span class="badge badge-pill badge-warning">En cours</span>
+                                                        <?php } else { ?>
+                                                            <span class="badge badge-pill badge-success">Terminée</span>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
+
+                                                <?php if (!empty($commande->getCommande_pizza())) { ?>
+                                                    <p class="text-primary mb-0"><i class="mdi mdi-pizza"></i> Pizza(s)</p>
+                                                    <p class="text-muted"><?php echo $commande->getPizzaList(); ?></p>
+                                                <?php } ?>
+
+                                                <?php if (!empty($commande->getCommande_boisson())) { ?>
+                                                    <p class="text-primary mb-0"><i class="mdi mdi-bottle-soda-classic"></i> Boisson(s)</p>
+                                                    <p class="text-muted"><?php echo $commande->getBoissonList(); ?></p>
+                                                <?php } ?>
+
+                                                <?php if (!empty($commande->getCommande_dessert())) { ?>
+                                                    <p class="text-primary mb-0"><i class="mdi mdi-ice-cream"></i> Dessert(s)</p>
+                                                    <p class="text-muted"><?php echo $commande->getDessertList(); ?></p>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                 <?php } ?>
 
                             </div>
