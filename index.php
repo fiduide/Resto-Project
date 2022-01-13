@@ -6,6 +6,7 @@ use app\Controller\MainController;
 use app\Controller\ChoixController;
 use app\Controller\CheckoutController;
 use app\Controller\AdminController;
+use app\Controller\sendMailController;
 
 
 ini_set('display_errors', 1);
@@ -67,6 +68,22 @@ try {
 
             if (isset($_GET['add']) && $_GET['add'] == 1) {
                 $checkoutController->addCheckout();
+            }
+            break;
+
+        case 'envoiemessage':
+            $sendMail = new sendMailController();
+
+            if (isset($_POST['statut_message']) && $_POST['statut_message'] == 1) {
+                if (isset($_POST['name']) && $_POST['name'] && $_POST['comments']) {
+                $nom = $_POST['name'];
+                $mail = $_POST['name'];
+                $message = $_POST['comments'];
+
+                $sendMail->sendMailTo($nom, $mail, $message);
+                }else{
+                    header("Location: index.php?forgetThing");
+                }
             }
             break;
 

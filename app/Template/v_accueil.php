@@ -240,7 +240,8 @@
 
                             <div class="custom-form mt-4">
                                 <div id="message"></div>
-                                <form method="post" action="php/contact.php" name="contact-form" id="contact-form">
+                                <form method="post" action="index.php?action=envoiemessage">
+                                <input type="hidden" name="statut_message" value="1">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
@@ -319,6 +320,21 @@
             var params = search_params.get('registered');
             console.log(params)
             Notify("Vous êtes maintennant inscrit et connecté", "primary");
+        }
+        else if(search_params.has('sendMail')){
+            var params = search_params.get('sendMail');
+            console.log(params);
+            Notify("Votre formulaire de contact a été envoyé !", "primary");
+        }
+        else if(search_params.has('sendMailNot')){
+            var params = search_params.get('sendMailNot');
+            console.log(params);
+            Notify("Votre formulaire de contact n'a pas été envoyé !", "primary");
+        }
+        else if(search_params.has('forgetThing')){
+            var params = search_params.get('sendMailNot');
+            console.log(params);
+            Notify("Vous avez oubliez un ou plusieurs champs !", "primary");
         }
     </script>
 </body>
