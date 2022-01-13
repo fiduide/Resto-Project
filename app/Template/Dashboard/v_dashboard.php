@@ -60,6 +60,13 @@
                                     </div>
                                 </a><!--end nav link-->
                             </li><!--end nav item-->
+                            <li class="nav-item mt-2">
+                                <a class="nav-link rounded" id="menu-modif" data-toggle="pill" href="#menu" role="tab" aria-controls="menu" aria-selected="false">
+                                    <div class="text-left py-1 px-3">
+                                        <h6 class="mb-0"><i class="uil uil-list-ul h5 align-middle mr-2 mb-0"></i> Gestions utilisateurs</h6>
+                                    </div>
+                                </a><!--end nav link-->
+                            </li><!--end nav item-->
                         </ul><!--end nav pills-->
                     </div><!--end col-->
 
