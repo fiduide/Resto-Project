@@ -8,8 +8,8 @@
 </head>
 
 <body>
-    <div class="back-to-home rounded d-none d-sm-block">
-        <a href="index.php" class="btn btn-icon btn-primary"><i data-feather="home" class="icons"></i></a>
+<div class="back-to-home rounded d-none d-sm-block">
+        <a href="index.php" class="btn btn-icon btn-primary"><i data-feather="home" class="icons">Home</i></a>
     </div>
 
     <!-- Hero Start -->
@@ -80,17 +80,6 @@
                                         </div>
                                     </div>
                                     <!--end col-->
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1">J'accepte <a href="#" class="text-primary">les CGU & CGV</a></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--end col-->
-
                                     <div class="col-md-12">
                                         <button class="btn btn-primary btn-block">Inscription</button>
                                     </div>
