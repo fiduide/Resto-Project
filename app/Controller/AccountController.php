@@ -3,6 +3,7 @@
 namespace app\Controller;
 
 use app\Entity\Utilisateur;
+use app\Manager\CommandeManager;
 use app\Manager\UtilisateurManager;
 use DateTime;
 
@@ -22,6 +23,10 @@ class AccountController extends MainController
     {
         $utilisateurManager = new UtilisateurManager();
         $utilisateur = $utilisateurManager->find($_SESSION['id_utilisateur']);
+
+        $commandeManager = new CommandeManager();
+        $commandes = $commandeManager->findByUtilisateur(1, 3);
+
         include(ROOT . "/app/Template/Account/v_profile.php");
     }
 

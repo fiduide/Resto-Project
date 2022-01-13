@@ -1,4 +1,5 @@
 <?php
+
 namespace app\Manager;
 
 use core\Database\Database;
@@ -12,7 +13,7 @@ class MenuManager
     {
         $this->pdo = (new Database())->pdo;
 
-        if(is_null($this->pdo)){
+        if (is_null($this->pdo)) {
             throw new \Exception("Erreur dans les identifiants de connexion à la BDD");
         }
     }
@@ -34,7 +35,7 @@ class MenuManager
                             `pizza` AS p
                         INNER JOIN pizza_ingredient AS PI
                         ON
-                            p.id = PI.id_plat
+                            p.id = PI.id_pizza
                         INNER JOIN ingredient AS ig
                         ON
                             PI.id_ingredient = ig.id_ingredient
@@ -78,43 +79,43 @@ class MenuManager
     }
 
 
-     /**
+    /**
      * Page d'article affichant les données en fonction de l'id de la pizza sélectionné
      * @return void
      */
-    public function getOnePizza($id) : Pizza
+    public function getOnePizza($id): Pizza
     {
-            $statement = "SELECT * FROM pizza WHERE id = $id";
-            $query = $this->pdo->query($statement , \PDO::FETCH_CLASS, 'app\Entity\Menu\Pizza');
+        $statement = "SELECT * FROM pizza WHERE id = $id";
+        $query = $this->pdo->query($statement, \PDO::FETCH_CLASS, 'app\Entity\Menu\Pizza');
 
-            $pizza = $query->fetch();
-            $query->closeCursor();
-            return $pizza;
+        $pizza = $query->fetch();
+        $query->closeCursor();
+        return $pizza;
     }
-     /**
+    /**
      * Page d'article affichant les données en fonction de l'id de la boisson sélectionné
      * @return void
      */
-    public function getOneBoisson($id) : Boisson
+    public function getOneBoisson($id): Boisson
     {
-            $statement = "SELECT * FROM boisson WHERE id = $id";
-            $query = $this->pdo->query($statement, \PDO::FETCH_CLASS, 'app\Entity\Menu\Boisson');
+        $statement = "SELECT * FROM boisson WHERE id = $id";
+        $query = $this->pdo->query($statement, \PDO::FETCH_CLASS, 'app\Entity\Menu\Boisson');
 
-            $boisson = $query->fetch();
-            $query->closeCursor();
-            return $boisson;
+        $boisson = $query->fetch();
+        $query->closeCursor();
+        return $boisson;
     }
-     /**
+    /**
      * Page d'article affichant les données en fonction de l'id de la dessert sélectionné
      * @return void
      */
-    public function getOneDessert($id) : Dessert
+    public function getOneDessert($id): Dessert
     {
-            $statement = "SELECT * FROM dessert WHERE id = $id";
-            $query = $this->pdo->query($statement, \PDO::FETCH_CLASS, 'app\Entity\Menu\Dessert');
+        $statement = "SELECT * FROM dessert WHERE id = $id";
+        $query = $this->pdo->query($statement, \PDO::FETCH_CLASS, 'app\Entity\Menu\Dessert');
 
-            $dessert = $query->fetch();
-            $query->closeCursor();
-            return $dessert;
+        $dessert = $query->fetch();
+        $query->closeCursor();
+        return $dessert;
     }
 }

@@ -139,7 +139,7 @@
                                         <i data-feather="gift" class="fea icon-ex-md text-muted mr-3"></i>
                                         <div class="media-body">
                                             <h6 class="text-primary mb-0">Date d'inscritpion :</h6>
-                                            <p class="text-muted mb-0"><?php echo $utilisateur->getDate_registerFR() ?></p>
+                                            <p class="text-muted mb-0"><?php echo $utilisateur->getDate_registerFR(); ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -149,32 +149,30 @@
                             <div class="col-md-6 mt-4 pt-2 pt-sm-0">
                                 <h5>Dernière commandes :</h5>
 
-                                <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
-                                    <img src="images/job/Circleci.svg" class="avatar avatar-ex-sm" alt="">
-                                    <div class="media-body content ml-3">
-                                        <h4 class="title mb-0">Senior Web Developer</h4>
-                                        <p class="text-muted mb-0">3 Years Experience</p>
-                                        <p class="text-muted mb-0"><a href="javascript:void(0)" class="text-primary">CircleCi</a> @London, UK</p>
-                                    </div>
-                                </div>
+                                <?php foreach ($commandes as $commande) { ?>
+                                    <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
+                                        <img src="images/job/Circleci.svg" class="avatar avatar-ex-sm" alt="">
+                                        <div class="media-body content ml-3">
+                                            <h4 class="title mb-0"><?php echo $commande->getDate_orderFR(); ?></h4>
 
-                                <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
-                                    <img src="images/job/Codepen.svg" class="avatar avatar-ex-sm" alt="">
-                                    <div class="media-body content ml-3">
-                                        <h4 class="title mb-0">Web Designer</h4>
-                                        <p class="text-muted mb-0">2 Years Experience</p>
-                                        <p class="text-muted mb-0"><a href="javascript:void(0)" class="text-primary">Codepen</a> @Washington D.C, USA</p>
-                                    </div>
-                                </div>
+                                            <?php if (!empty($commande->getCommande_pizza())) { ?>
+                                                <p class="text-primary mb-0">Pizza(s)</p>
+                                                <p class="text-muted"><?php echo $commande->getPizzaList(); ?></p>
+                                            <?php } ?>
 
-                                <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
-                                    <img src="images/job/Gitlab.svg" class="avatar avatar-ex-sm" alt="">
-                                    <div class="media-body content ml-3">
-                                        <h4 class="title mb-0">UI Designer</h4>
-                                        <p class="text-muted mb-0">2 Years Experience</p>
-                                        <p class="text-muted mb-0"><a href="javascript:void(0)" class="text-primary">Gitlab</a> @Perth, Australia</p>
+                                            <?php if (!empty($commande->getCommande_boisson())) { ?>
+                                                <p class="text-primary mb-0">Boisson(s)</p>
+                                                <p class="text-muted"><?php echo $commande->getBoissonList(); ?></p>
+                                            <?php } ?>
+
+                                            <?php if (!empty($commande->getCommande_dessert())) { ?>
+                                                <p class="text-primary mb-0">Dessert(s)</p>
+                                                <p class="text-muted"><?php echo $commande->getDessertList(); ?></p>
+                                            <?php } ?>
+                                        </div>
                                     </div>
-                                </div>
+                                <?php } ?>
+
                             </div>
                             <!--end col-->
                         </div>

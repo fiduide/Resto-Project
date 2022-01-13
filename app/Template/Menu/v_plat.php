@@ -73,7 +73,7 @@
                                         echo $pizza->getNom() . "<br>";
                                         echo "<i>";
                                         echo "<p><u>Ingrédients :</u></p>";
-                                        echo str_replace(",", ", ", $pizza->getIngredient()) . "<br></p>";
+                                        echo str_replace(",", ", ", $pizza->getListIngredient()) . "<br></p>";
                                         echo $pizza->getPrix() . "€<br></p>";
 
                                         echo "</i>";
