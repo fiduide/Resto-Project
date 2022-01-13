@@ -36,6 +36,11 @@ class Commande extends DefaultEntity
     private \DateTime|string $date_order;
 
     /**
+     * @var float
+     */
+    private float $total;
+
+    /**
      * @var Utilisateur
      */
     private Utilisateur $utilisateur;
@@ -317,5 +322,29 @@ class Commande extends DefaultEntity
         }
 
         return implode(", ", $arDessert);
+    }
+
+    /**
+     * Get the value of total
+     *
+     * @return  float
+     */ 
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    /**
+     * Set the value of total
+     *
+     * @param  float  $total
+     *
+     * @return  self
+     */ 
+    public function setTotal($total)
+    {
+        $this->total = $total;
+
+        return $this;
     }
 }

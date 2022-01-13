@@ -57,35 +57,40 @@ class ChoixController extends MainController
             foreach ($_SESSION['commande'] as $commande => $quantity) {
                 $menuManager = new MenuManager();
                 $str = preg_split("/_/", $commande);
-                $commande_type = $str[0];
-                $commande_id = $str[1];
+                if($str[0] != "total"){
+                    $commande_type = $str[0];
+                    $commande_id = $str[1];
+                
+    
+                    if ($commande_type == "pizza") {
+                        $uneCommande = $menuManager->getOnePizza($commande_id);
+                    } else if ($commande_type == "boisson") {
+                        $uneCommande = $menuManager->getOneBoisson($commande_id);
+                    } else if ($commande_type == "dessert") {
+                        $uneCommande = $menuManager->getOneDessert($commande_id);
+                    }
+                    
+                    $totalUneCommande = $quantity * $uneCommande->getPrix();
+                    $totalCommande = $totalCommande + $totalUneCommande;
 
-                if ($commande_type == "pizza") {
 
-                    $uneCommande = $menuManager->getOnePizza($commande_id);
-                } else if ($commande_type == "boisson") {
-                    $uneCommande = $menuManager->getOneBoisson($commande_id);
-                } else if ($commande_type == "dessert") {
-                    $uneCommande = $menuManager->getOneDessert($commande_id);
+                    $html .= '<tr>
+                    <td class="h6"><a href="index.php?action=deleteAllProduit&type=' . $commande_type . '&idProduit=' . $uneCommande->getId() . '" class="text-danger">X</a></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="public/img/' . $commande_type . '/' . $uneCommande->getId() . '.png" class="img-fluid avatar avatar-small rounded shadow" style="height:auto;" alt="">
+                            <h6 class="mb-0 ml-3">' . $uneCommande->getNom() . '</h6>
+                        </div>
+                    </td>
+                    <td class="text-center">' . $uneCommande->getPrix() . '</td>
+                    <td class="text-center"><a class="minus btn btn-icon btn-soft-primary font-weight-bold" href="index.php?action=deleteProduit&type=' . $commande_type . '&idProduit=' . $uneCommande->getId() . '" class="text-danger">-</a>
+                    <input type="text" step="1" min="0" name="" value=' . $quantity . '  class="disable btn btn-icon btn-soft-primary font-weight-bold">
+                    <a class="plus btn btn-icon btn-soft-primary font-weight-bold" href="index.php?action=ajoutProduit&type=' . $commande_type . '&idProduit=' . $uneCommande->getId() . '" class="text-danger">+</a>
+                    <td class="text-center font-weight-bold">' . $totalUneCommande . ' €</td>
+                </tr>';
                 }
-                $totalUneCommande = $quantity * $uneCommande->getPrix();
-                $totalCommande = $totalCommande + $totalUneCommande;
-
-                $html .= '<tr>
-                <td class="h6"><a href="index.php?action=deleteAllProduit&type=' . $commande_type . '&idProduit=' . $uneCommande->getId() . '" class="text-danger">X</a></td>
-                <td>
-                    <div class="d-flex align-items-center">
-                        <img src="public/img/' . $commande_type . '/' . $uneCommande->getId() . '.png" class="img-fluid avatar avatar-small rounded shadow" style="height:auto;" alt="">
-                        <h6 class="mb-0 ml-3">' . $uneCommande->getNom() . '</h6>
-                    </div>
-                </td>
-                <td class="text-center">' . $uneCommande->getPrix() . '</td>
-                <td class="text-center"><a class="minus btn btn-icon btn-soft-primary font-weight-bold" href="index.php?action=deleteProduit&type=' . $commande_type . '&idProduit=' . $uneCommande->getId() . '" class="text-danger">-</a>
-                <input type="text" step="1" min="0" name="" value=' . $quantity . '  class="disable btn btn-icon btn-soft-primary font-weight-bold">
-                <a class="plus btn btn-icon btn-soft-primary font-weight-bold" href="index.php?action=ajoutProduit&type=' . $commande_type . '&idProduit=' . $uneCommande->getId() . '" class="text-danger">+</a>
-                <td class="text-center font-weight-bold">' . $totalUneCommande . ' €</td>
-            </tr>';
             }
+            $_SESSION['commande']['total'] = $totalCommande;
         } else {
             $html = "<th class='text-danger'>Le panier est vide</th>";
         }

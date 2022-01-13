@@ -26,8 +26,8 @@ class CheckoutManager
     public function AddCheckout(array $data)
     {
         //INSERT COMMAND
-        $statementArt = "INSERT INTO commande (id_utilisateur, etat, date_order)
-        VALUES (:id_user, :etat, :date_order)";
+        $statementArt = "INSERT INTO commande (id_utilisateur, etat, date_order, total)
+        VALUES (:id_user, :etat, :date_order, :total)";
 
         $prepare = $this->pdo->prepare($statementArt);
         

@@ -82,4 +82,83 @@ class CommandeManager extends Database
 
         return $arCommande;
     }
+
+
+    public function allCommand(): array
+    {
+        $query = "SELECT *
+            FROM commande ORDER BY etat";
+
+        $stmt = $this->pdo->query($query, \PDO::FETCH_CLASS, "app\Entity\Commande");
+
+        $arCommande = $stmt->fetchAll();
+
+        foreach ($arCommande as $commande) {
+            $id_commande = $commande->getId_commande();
+
+            // Initialisation de la variable $commande_pizza
+            $commande_pizza = (new CommandePizzaManager)->find($id_commande);
+            $commande->setCommande_pizza($commande_pizza);
+
+            // Initialisation de la variable $commande_boisson
+            $commande_boisson = (new CommandeBoissonManager)->find($id_commande);
+            $commande->setCommande_boisson($commande_boisson);
+
+            // Initialisation de la variable $commande_dessert
+            $commande_dessert = (new CommandeDessertManager)->find($id_commande);
+            $commande->setCommande_dessert($commande_dessert);
+        }
+
+        return $arCommande;
+    }
+
+    public function getCountAllCommand(): int
+    {
+        $query = "SELECT count(*) as count
+        FROM commande WHERE etat = 1";
+        $stmt = $this->pdo->query($query);
+
+
+        $count = $stmt->fetch();
+        return $count['count'];
+    }
+
+    public function getCountInProgressCommand(): int
+    {
+        $query = "SELECT count(*) as count
+        FROM commande WHERE etat = 0";
+        $stmt = $this->pdo->query($query);
+
+
+        $count = $stmt->fetch();
+        return $count['count'];
+    }
+
+    public function getTotalCommand(): float
+    {
+        $query = "SELECT SUM(total) as total
+        FROM commande";
+        $stmt = $this->pdo->query($query);
+
+
+        $count = $stmt->fetch();
+        return $count['total'];
+    }
+
+    public function setCommandDelivered($commandId) {
+        $statementArt = "UPDATE commande SET 
+                             etat = 1
+                             WHERE id_commande = $commandId";
+
+        $prepare = $this->pdo->prepare($statementArt);
+        $prepare->execute();
+    }
+    public function setCommandWaiting($commandId) {
+        $statementArt = "UPDATE commande SET 
+                             etat = 0
+                             WHERE id_commande = $commandId";
+
+        $prepare = $this->pdo->prepare($statementArt);
+        $prepare->execute();
+    }
 }

@@ -12,14 +12,17 @@ class CheckoutController extends MainController
         if(isset($_SESSION['commande']) && !empty($_SESSION['commande'])){
             $checkoutManager = new checkoutManager();
 
-            $arCheckout = ["id_user" => $_SESSION['id_utilisateur'], "etat" => 0, "date_order" => (new \DateTime)->format("Y-m-d H:i:s")];
+            $arCheckout = ["id_user" => $_SESSION['id_utilisateur'], "etat" => 0, "date_order" => (new \DateTime)->format("Y-m-d H:i:s"), "total" => $_SESSION['commande']['total']];
             $id = $checkoutManager->addCheckout($arCheckout);
 
             foreach ($_SESSION['commande'] as $commande => $quantite) {
+                
                 $str = preg_split("/_/", $commande);
                 $commande_type = $str[0];
-                $commande_id = $str[1];
-
+                if($str[0] != "total"){
+                    $commande_id = $str[1];
+                }
+                
                 if($commande_type == "pizza"){
                     $arCheckoutPizza = ["id_commande" => $id, "id_pizza" => $commande_id, "quantite" => $quantite];
                     $checkoutManager->AddCheckoutPizza($arCheckoutPizza);

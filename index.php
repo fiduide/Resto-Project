@@ -101,6 +101,14 @@ try {
             
         case 'adminBoard':
             $adminController = new AdminController();
+            if(isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "postCommand" )
+            {
+                $adminController->setCommandDelivered($_GET['commandId']);
+            }
+            else if(isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "waitingCommand")
+            {
+                $adminController->setCommandWaiting($_GET['commandId']);
+            }
             $adminController->affichage();
             break;
 
