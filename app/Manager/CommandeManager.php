@@ -150,7 +150,8 @@ class CommandeManager extends Database
         return $count['total'];
     }
 
-    public function setCommandDelivered($commandId) {
+    public function setCommandDelivered($commandId)
+    {
         $statementArt = "UPDATE commande SET 
                              etat = 1
                              WHERE id_commande = $commandId";
@@ -158,7 +159,8 @@ class CommandeManager extends Database
         $prepare = $this->pdo->prepare($statementArt);
         $prepare->execute();
     }
-    public function setCommandWaiting($commandId) {
+    public function setCommandWaiting($commandId)
+    {
         $statementArt = "UPDATE commande SET 
                              etat = 0
                              WHERE id_commande = $commandId";
