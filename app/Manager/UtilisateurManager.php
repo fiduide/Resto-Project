@@ -19,7 +19,8 @@ class UtilisateurManager extends Database
         $query = "SELECT *
             FROM utilisateur
             WHERE email LIKE :email
-                AND mot_de_passe = :motDePasse;";
+                AND mot_de_passe = :motDePasse
+                AND statut_account = 1";
 
         $arDataQuery = array(
             ":email" => $email,
@@ -73,7 +74,8 @@ class UtilisateurManager extends Database
                 telephone = :telephone,
                 email = :email,
                 mot_de_passe = :mot_de_passe,
-                niveau_acces = :niveau_acces;";
+                niveau_acces = :niveau_acces,
+                statut_account = :statut_account;";
 
         $stmt = $this->pdo->prepare($query);
         $stmt->execute($data);
@@ -87,23 +89,21 @@ class UtilisateurManager extends Database
      * @param array $data
      * @return integer identifiant de l'utilisateur créé
      */
-    public function update(array $data, int $id, string $new_password, string $new_password2)
+    public function update(array $data, int $id)
     {
-        if($new_password === $new_password2){
             $query = "UPDATE utilisateur
-            SET id_utilisateur = : $id,
-                nom = :nom,
+            SET nom = :nom,
                 prenom = :prenom,
                 telephone = :telephone,
                 email = :email,
                 date_register = :date_register,
                 mot_de_passe = :mot_de_passe,
                 niveau_acces = :niveau_acces,
+                statut_account = :statut_account
             WHERE  id_utilisateur = $id";
 
         $stmt = $this->pdo->prepare($query);
         $stmt->execute($data);
-        } 
     }
 
     /**
@@ -112,10 +112,11 @@ class UtilisateurManager extends Database
      */
     public function deleteAccountClient(int $id)
     {
-            $query = "DELETE FROM utilisateur
-            WHERE  id_utilisateur = $id";
+        $query = "UPDATE utilisateur
+        SET statut_account = 0
+        WHERE  id_utilisateur = $id";
 
-        $stmt = $this->pdo->execute($query);
-        //$result->execute($stmt);
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute($data);
     }
 }

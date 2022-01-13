@@ -25,7 +25,8 @@ class Utilisateur extends DefaultEntity
             "telephone" => $this->telephone,
             "email" => $this->email,
             "mot_de_passe" => $this->mot_de_passe,
-            "niveau_acces" => $this->niveau_acces
+            "niveau_acces" => $this->niveau_acces,
+            "statut_account" => $this->statut_account
         ];
     }
 
@@ -69,6 +70,10 @@ class Utilisateur extends DefaultEntity
      */
     private int $niveau_acces;
 
+    /**
+     * @var integer
+     */
+    private int $statut_account;
 
     /**
      * Get the value of id_utilisateur
@@ -244,6 +249,30 @@ class Utilisateur extends DefaultEntity
     public function setNiveau_acces($niveau_acces)
     {
         $this->niveau_acces = $niveau_acces;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of statut_account
+     *
+     * @return  integer
+     */
+    public function getStatut_account()
+    {
+        return $this->statut_account;
+    }
+
+    /**
+     * Set the value of statut_account
+     *
+     * @param  integer  $statut_account
+     *
+     * @return  self
+     */
+    public function setStatut_account($statut_account)
+    {
+        $this->statut_account = $statut_account;
 
         return $this;
     }
