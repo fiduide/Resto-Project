@@ -25,7 +25,7 @@ class AccountController extends MainController
         $utilisateur = $utilisateurManager->find($_SESSION['id_utilisateur']);
 
         $commandeManager = new CommandeManager();
-        $commandes = $commandeManager->findByUtilisateur(1, 3);
+        $commandes = $commandeManager->findByUtilisateur($_SESSION['id_utilisateur'], 3);
 
         include(ROOT . "/app/Template/Account/v_profile.php");
     }
@@ -109,14 +109,14 @@ class AccountController extends MainController
     {
         $utilisateurManager = new UtilisateurManager();
         $utilisateur = $utilisateurManager->find($_SESSION['id_utilisateur']);
-        
+
         include(ROOT . "/app/Template/Account/v_parametre.php");
     }
 
     public function updateInformation()
     {
         $utilisateurManager = new UtilisateurManager();
-        
+
         $utilisateur = new Utilisateur($_POST);
 
         $id_utilisateur = $_POST['id_utilisateur'];
@@ -130,7 +130,7 @@ class AccountController extends MainController
     public function deleteAccount()
     {
         $utilisateurManager = new UtilisateurManager();
-        
+
         $utilisateur = new Utilisateur($_POST);
 
         $id_utilisateur = $_POST['id_utilisateur'];
