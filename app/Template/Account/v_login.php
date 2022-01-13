@@ -48,13 +48,6 @@
                                     </div>
                                     <!--end col-->
 
-                                    <div class="col-lg-12">
-                                        <div class="text-center">
-                                            <p class="forgot-pass mb-0"><a href="auth-re-password-three.html" class="text-dark font-weight-bold">Mot de passe oublié ?</a></p>
-                                        </div>
-                                    </div>
-                                    <!--end col-->
-
                                     <div class="col-lg-12 mb-0">
                                         <button class="btn btn-primary btn-block">Se connecter</button>
                                     </div>
