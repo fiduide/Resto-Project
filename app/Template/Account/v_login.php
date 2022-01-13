@@ -16,11 +16,6 @@
     <section class="bg-home bg-circle-gradiant d-flex align-items-center">
         <div class="bg-overlay bg-overlay-white"></div>
         <div class="container">
-            <?php if (isset($_POST['login']) && $_POST['login'] == 1) { ?>
-                <div class="alert alert-danger text-center" role="alert">
-                    Les indentifiants transmis sont inconnus!
-                </div>
-            <?php } ?>
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-8">
                     <div class="card login-page bg-white shadow rounded border-0">
@@ -84,6 +79,14 @@
     </section>
     <!--end section-->
     <!-- Hero End -->
+
+    <?php include("app/Template/v_footer.php"); ?>
+
+    <?php if (isset($_POST['login']) && $_POST['login'] == 1) { ?>
+        <script>
+            Notify("Les indentifiants transmis sont inconnus!", "danger");
+        </script>
+    <?php } ?>
 </body>
 
 </html>
