@@ -117,7 +117,8 @@
                                             <input type="hidden" name="update" value="1">
                                             <input type="hidden" name="id_utilisateur" value="<?php echo $utilisateur->getId_utilisateur();?>">
                                             <input type="hidden" name="niveau_acces" value="<?php echo $utilisateur->getNiveau_acces();?>">
-                                            <input type="hidden" name="date_register" value="<?php echo $utilisateur->getDate_registerFR();?>">
+                                            <input type="hidden" name="date_register" value="<?php echo $utilisateur->getDate_register()->format("Y-m-d H:i:s");?>">
+                                            <input type="hidden" name="statut_account" value="<?php echo $utilisateur->getStatut_account();?>">
                                             <div class="row mt-4">
                                                     <div class="col-md-12">
                                                     <div class="form-group">
@@ -169,7 +170,7 @@
                                                         <label>Nouveau mot de passe :</label>
                                                         <div class="position-relative">
                                                             <i data-feather="key" class="fea icon-sm icons"></i>
-                                                            <input type="password" name="new_password" class="form-control pl-5" placeholder="Nouveau mot de passe" required="">
+                                                            <input type="password" name="mot_de_passe" class="form-control pl-5" placeholder="Nouveau mot de passe" required="">
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->

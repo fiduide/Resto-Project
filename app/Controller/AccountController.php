@@ -40,6 +40,7 @@ class AccountController extends MainController
 
         $_POST['date_register'] = (new DateTime)->format("Y-m-d H:i:s");
         $_POST['niveau_acces'] = 1;
+        $_POST['statut_account'] = 1;
 
         $utilisateur = new Utilisateur($_POST);
 
@@ -120,9 +121,8 @@ class AccountController extends MainController
         $utilisateur = new Utilisateur($_POST);
 
         $id_utilisateur = $_POST['id_utilisateur'];
-        $new_password = $_POST['new_password'];
-        $new_password2 = $_POST['new_password2'];
-        $utilisateurManager->update($utilisateur(), $id_utilisateur, $new_password, $new_password2);
+
+        $utilisateurManager->update($utilisateur(), $id_utilisateur);
 
         header("Location: index.php?action=account");
     }
@@ -130,12 +130,9 @@ class AccountController extends MainController
     public function deleteAccount()
     {
         $utilisateurManager = new UtilisateurManager();
-
-        $utilisateur = new Utilisateur($_POST);
-
         $id_utilisateur = $_POST['id_utilisateur'];
-        $utilisateurManager->deleteAccountClient($utilisateur());
+        $utilisateurManager->deleteAccountClient($id_utilisateur);
 
-        header("Location: index.php?action=account");
+        $this->disconnectUtilisateur();
     }
 }
