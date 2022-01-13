@@ -1,5 +1,5 @@
  <!-- favicon -->
- <link rel="shortcut icon" href="public/img/favicon.ico">
+ <link rel="shortcut icon" href="public/img/logo/favicon.ico">
         <!-- Bootstrap -->
         <link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons -->

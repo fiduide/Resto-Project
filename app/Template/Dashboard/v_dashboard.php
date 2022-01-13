@@ -188,7 +188,6 @@
                                 </div>
                             </div><!--end teb pane-->
 
-                            
                             <div class="tab-pane fade bg-white shadow rounded p-4" id="gestionUtilisateurs" role="tabpanel" aria-labelledby="gestionUtilisateurs">
                                 <div class="widget">
                                     METTRE CRUD UTILSIATEURS HERE
@@ -213,6 +212,7 @@
                     if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
                 }
             });
+
         </script>
     </body>
 </html>
