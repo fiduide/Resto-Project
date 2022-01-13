@@ -87,7 +87,7 @@ class CommandeManager extends Database
     public function allCommand(): array
     {
         $query = "SELECT *
-            FROM commande ORDER BY etat";
+            FROM commande ORDER BY etat, date_order DESC";
 
         $stmt = $this->pdo->query($query, \PDO::FETCH_CLASS, "app\Entity\Commande");
 
@@ -130,7 +130,7 @@ class CommandeManager extends Database
         $stmt = $this->pdo->query($query);
 
 
-        $count = $stmt->fetch();
+        $count = $stmt->fetch(\PDO::FETCH_ASSOC);
         return $count['count'];
     }
 
@@ -140,8 +140,8 @@ class CommandeManager extends Database
         FROM commande";
         $stmt = $this->pdo->query($query);
 
+        $count = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        $count = $stmt->fetch();
         return $count['total'];
     }
 

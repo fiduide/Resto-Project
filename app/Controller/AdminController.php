@@ -37,10 +37,10 @@ class AdminController extends MainController
       return $count;
    }
 
-   public function getTotalCommand() : float {
+   public function getTotalCommand() {
       $commandeManager = new CommandeManager();
       $total = $commandeManager->getTotalCommand();
-      return  number_format($total, 2);
+      return number_format($total, 2);
    }
 
    public function setCommandDelivered($commandId) {

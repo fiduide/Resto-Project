@@ -56,7 +56,7 @@
                 <div class="col-lg-4 col-md-6 mt-4 pt-2">
                     <div class="card blog rounded border-0 shadow">
                         <div class="position-relative">
-                            <img src="public/img/Pizza/2.png" class="card-img-top rounded-top" alt="...">
+                            <img src="public/img/restaurant/chevre.jpg" class="card-img-top rounded-top" alt="...">
                             <div class="overlay rounded-top bg-dark"></div>
                         </div>
                         <div class="card-body content">
@@ -76,13 +76,13 @@
                 <div class="col-lg-4 col-md-6 mt-4 pt-2">
                     <div class="card blog rounded border-0 shadow">
                         <div class="position-relative">
-                            <img src="public/img/Pizza/3.png" class="card-img-top rounded-top" alt="...">
+                            <img src="public/img/restaurant/calzone.jpg" class="card-img-top rounded-top" alt="...">
                             <div class="overlay rounded-top bg-dark"></div>
                         </div>
                         <div class="card-body content">
-                            <h5><a href="index.php?action=choix&menu=2" class="card-title title text-dark">Calzone</a></h5>
+                            <h5><a href="index.php?action=choix" class="card-title title text-dark">Calzone</a></h5>
                             <div class="post-meta d-flex justify-content-between mt-3">
-                                <a href="index.php?action=choix&menu=2" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
+                                <a href="index.php?action=choix" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
                             </div>
                         </div>
                         <div class="author">
@@ -96,13 +96,13 @@
                 <div class="col-lg-4 col-md-6 mt-4 pt-2">
                     <div class="card blog rounded border-0 shadow">
                         <div class="position-relative">
-                            <img src="public/img/Pizza/4.png" class="card-img-top rounded-top" alt="...">
+                            <img src="public/img/restaurant/chevre_miel.jpg" class="card-img-top rounded-top" alt="...">
                             <div class="overlay rounded-top bg-dark"></div>
                         </div>
                         <div class="card-body content">
-                            <h5><a href="index.php?action=choix&menu=3" class="card-title title text-dark">Chèvre miel</a></h5>
+                            <h5><a href="index.php?action=choix" class="card-title title text-dark">Chèvre miel</a></h5>
                             <div class="post-meta d-flex justify-content-between mt-3">
-                                <a href="index.php?action=choix&menu=3" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
+                                <a href="index.php?action=choix" class="text-muted readmore">Découvrir <i class="mdi mdi-chevron-right"></i></a>
                             </div>
                         </div>
                         <div class="author">
@@ -314,6 +314,11 @@
             var params = search_params.get('connect');
             console.log(params)
             Notify("Vous êtes maintennant connecté", "primary");
+        }
+        else if(search_params.has('registered')){
+            var params = search_params.get('registered');
+            console.log(params)
+            Notify("Vous êtes maintennant inscrit et connecté", "primary");
         }
     </script>
 </body>
