@@ -29,16 +29,5 @@
             </div> <!--end container-->
         </section><!--end section-->
         <!-- Hero End -->
-
-        <!-- javascript -->
-        <script src="js/jquery-3.5.1.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/jquery.easing.min.js"></script>
-        <script src="js/scrollspy.min.js"></script>
-        <!-- Icons -->
-        <script src="js/feather.min.js"></script>
-        <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
-        <!-- Main Js -->
-        <script src="js/app.js"></script>
     </body>
 </html>

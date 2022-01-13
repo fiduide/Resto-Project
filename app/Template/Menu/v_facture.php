@@ -104,24 +104,6 @@
         </div>
         <!-- Wishlist Popup End -->
 
-        <!-- Back to top -->
-        <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
-        <!-- Back to top -->
-
-        <!-- javascript -->
-        <script src="public/js/jquery-3.5.1.min.js"></script>
-        <script src="public/js/bootstrap.bundle.min.js"></script>
-        <script src="public/js/jquery.easing.min.js"></script>
-        <script src="public/js/scrollspy.min.js"></script>
-        <!-- SLIDER -->
-        <script src="public/js/owl.carousel.min.js "></script>
-        <script src="public/js/owl.init.js "></script>
-        <!-- Icons -->
-        <script src="public/js/feather.min.js"></script>
-        <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
-        <!-- Main Js -->
-        <script src="public/js/app.js"></script>
-
         <!-- Quantity Plus Minus JS -->
         <script>
             $('.plus').click(function () {

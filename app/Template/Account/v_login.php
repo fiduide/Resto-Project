@@ -84,15 +84,6 @@
     </section>
     <!--end section-->
     <!-- Hero End -->
-
-    <!-- javascript -->
-    <script src="public/js/jquery-3.5.1.min.js"></script>
-    <script src="public/js/bootstrap.bundle.min.js"></script>
-    <!-- Icons -->
-    <script src="public/js/feather.min.js"></script>
-    <script src="https://unicons.iconscout.com/release/v3.0.3/script/monochrome/bundle.js"></script>
-    <!-- Main Js -->
-    <script src="public/js/app.js"></script>
 </body>
 
 </html>
