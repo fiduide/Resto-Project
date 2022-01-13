@@ -87,14 +87,19 @@ class CommandeManager extends Database
     public function allCommand(): array
     {
         $query = "SELECT *
-            FROM commande ORDER BY etat";
+            FROM commande ORDER BY etat, date_order DESC";
 
         $stmt = $this->pdo->query($query, \PDO::FETCH_CLASS, "app\Entity\Commande");
 
         $arCommande = $stmt->fetchAll();
 
         foreach ($arCommande as $commande) {
+
             $id_commande = $commande->getId_commande();
+
+            //Initialisation de l'utilisateur
+            $utilisateur = (new UtilisateurManager)->find($commande->getId_utilisateur());
+            $commande->setUtilisateur($utilisateur);
 
             // Initialisation de la variable $commande_pizza
             $commande_pizza = (new CommandePizzaManager)->find($id_commande);
@@ -130,7 +135,7 @@ class CommandeManager extends Database
         $stmt = $this->pdo->query($query);
 
 
-        $count = $stmt->fetch();
+        $count = $stmt->fetch(\PDO::FETCH_ASSOC);
         return $count['count'];
     }
 
@@ -140,8 +145,8 @@ class CommandeManager extends Database
         FROM commande";
         $stmt = $this->pdo->query($query);
 
+        $count = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        $count = $stmt->fetch();
         return $count['total'];
     }
 

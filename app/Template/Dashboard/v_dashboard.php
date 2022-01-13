@@ -111,7 +111,7 @@
                                                  }else{
                                                     echo '<tr>';
                                                  } ?>
-                                                    <th scope="row"><?php echo $commande->getId_commande(); ?></th>
+                                                    <th scope="row"><?php echo $commande->getId_commande(); ?> </th>
                                                     <td><?php echo $commande->getDate_orderFR(); ?></td>
                                                     <?php
                                                         if($commande->getEtat() == 0){
@@ -130,20 +130,34 @@
                                                                 <div class="modal-content rounded shadow-lg border-0 ">
                                                                     <div class="modal-header">
                                                                         <div class="modal-title">N° de Commande : <?php echo $commande->getId_commande(); ?></div>
+                                                                        <div><b><i><?php echo $commande->getUtilisateur()->getNom()." ".$commande->getUtilisateur()->getPrenom(); ?></i></b></div>
                                                                     </div>
                                                                     <div class="modal-body py-3 pb-3">
                                                                         <div>
                                                                             <div class="mt-1">
                                                                                 <h4><i class="mdi mdi-arrow-right-thin align-middle"></i> Pizzas</h4>
-                                                                                <p class="text-primary"><?php echo $commande->getPizzaList(); ?></p>
+                                                                                <?php if($commande->getPizzaList() == ""){
+                                                                                        echo ' <p class="text-secondary">Pas de pizza</p>';
+                                                                                    }else{
+                                                                                        echo  '<p class="text-primary">'.$commande->getPizzaList().'</p>';
+                                                                                    } ?>
                                                                             </div>
                                                                             <div class="mt-1">
                                                                                 <h4><i class="mdi mdi-arrow-right-thin align-middle"></i> Boissons</h4>
-                                                                                <p class="text-primary"><?php echo $commande->getBoissonList(); ?></p>
+                                                                                    <?php if($commande->getBoissonList() == ""){
+                                                                                        echo ' <p class="text-secondary">Pas de boisson</p>';
+                                                                                    }else{
+                                                                                        echo  '<p class="text-primary">'.$commande->getBoissonList().'</p>';
+                                                                                    } ?>
+                                                                                </p>
                                                                             </div>
                                                                             <div class="mt-1">
                                                                                 <h4><i class="mdi mdi-arrow-right-thin align-middle"></i> Desserts</h4>
-                                                                                <p class="text-primary"><?php echo $commande->getDessertList(); ?></p>
+                                                                                <?php if($commande->getDessertList() == ""){
+                                                                                        echo ' <p class="text-secondary">Pas de dessert</p>';
+                                                                                    }else{
+                                                                                        echo  '<p class="text-primary">'.$commande->getDessertList().'</p>';
+                                                                                    } ?>
                                                                             </div>
                                                                         </div>
                                                                         <div class="action">

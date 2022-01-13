@@ -53,7 +53,7 @@ class AccountController extends MainController
             $_SESSION['acces'] = $utilisateur->getNiveau_acces();
             $_SESSION['id_utilisateur'] = $utilisateur->getId_utilisateur();
         }
-        header("Location: index.php");
+        header("Location: index.php?registered=1");
     }
 
     public function connectUtilisateur()
