@@ -29,10 +29,10 @@ try {
                 $accountController->disconnectUtilisateur();
             } else if (isset($_GET['register']) && $_GET['register'] == 1) {
                 $accountController->register();
-
             } else if (isset($_GET['payment']) && $_GET['payment'] == 1) {
                 $accountController->affichagePaiement();
-
+            } else if (isset($_GET['parametre']) && $_GET['parametre'] == 1) {
+                $accountController->affichageParametre();
             } else if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1) {
                 $accountController->profile();
             } else if (isset($_POST['register']) && $_POST['register'] == 1) {

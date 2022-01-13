@@ -101,7 +101,15 @@ class AccountController extends MainController
     {
         $utilisateurManager = new UtilisateurManager();
         $utilisateur = $utilisateurManager->find($_SESSION['id_utilisateur']);
-        
+
         include(ROOT . "/app/Template/Account/v_paiement.php");
+    }
+
+    public function affichageParametre()
+    {
+        $utilisateurManager = new UtilisateurManager();
+        $utilisateur = $utilisateurManager->find($_SESSION['id_utilisateur']);
+        
+        include(ROOT . "/app/Template/Account/v_parametre.php");
     }
 }
