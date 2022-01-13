@@ -33,6 +33,10 @@ try {
                 $accountController->affichagePaiement();
             } else if (isset($_GET['parametre']) && $_GET['parametre'] == 1) {
                 $accountController->affichageParametre();
+            } else if (isset($_POST['update']) && $_POST['update'] == 1) {
+                $accountController->updateInformation();
+            } else if (isset($_POST['delete']) && $_POST['delete'] == 1) {
+                $accountController->deleteAccount();
             } else if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1) {
                 $accountController->profile();
             } else if (isset($_POST['register']) && $_POST['register'] == 1) {

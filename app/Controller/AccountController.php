@@ -112,4 +112,30 @@ class AccountController extends MainController
         
         include(ROOT . "/app/Template/Account/v_parametre.php");
     }
+
+    public function updateInformation()
+    {
+        $utilisateurManager = new UtilisateurManager();
+        
+        $utilisateur = new Utilisateur($_POST);
+
+        $id_utilisateur = $_POST['id_utilisateur'];
+        $new_password = $_POST['new_password'];
+        $new_password2 = $_POST['new_password2'];
+        $utilisateurManager->update($utilisateur(), $id_utilisateur, $new_password, $new_password2);
+
+        header("Location: index.php?action=account");
+    }
+
+    public function deleteAccount()
+    {
+        $utilisateurManager = new UtilisateurManager();
+        
+        $utilisateur = new Utilisateur($_POST);
+
+        $id_utilisateur = $_POST['id_utilisateur'];
+        $utilisateurManager->deleteAccountClient($utilisateur());
+
+        header("Location: index.php?action=account");
+    }
 }

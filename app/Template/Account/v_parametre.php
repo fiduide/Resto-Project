@@ -69,7 +69,7 @@
                         <div class="widget">
                             <div class="row">
                                 <div class="col-6 mt-4 pt-2">
-                                    <a href="index.php?action=affichageProfil" class="accounts active rounded d-block shadow text-center py-3">
+                                    <a href="index.php?action=affichageProfil" class="accounts rounded d-block shadow text-center py-3">
                                         <span class="pro-icons h3 text-muted"><i class="uil uil-dashboard"></i></span>
                                         <h6 class="title text-dark h6 my-0">Profil</h6>
                                     </a>
@@ -85,7 +85,7 @@
                                 <!--end col-->
 
                                 <div class="col-6 mt-4 pt-2">
-                                    <a href="index.php?action=account&parametre=1" class="accounts rounded d-block shadow text-center py-3">
+                                    <a href="index.php?action=account&parametre=1" class="accounts active rounded d-block shadow text-center py-3">
                                         <span class="pro-icons h3 text-muted"><i class="uil uil-setting"></i></span>
                                         <h6 class="title text-dark h6 my-0">Paramètres</h6>
                                     </a>
@@ -109,88 +109,67 @@
                     <div class="col-lg-8 col-12">
                         <div class="card border-0 rounded shadow">
                             <div class="card-body">
-                                <h5 class="text-md-left text-center">Détails personnel :</h5>
-                                <form>
-                                    <div class="row mt-4">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Nom</label>
-                                                <div class="position-relative">
-                                                    <i data-feather="user" class="fea icon-sm icons"></i>
-                                                    <input name="name" id="first" type="text" class="form-control pl-5" placeholder="Nom :">
-                                                </div>
-                                            </div>
-                                        </div><!--end col-->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Prénom</label>
-                                                <div class="position-relative">
-                                                    <i data-feather="user-check" class="fea icon-sm icons"></i>
-                                                    <input name="name" id="last" type="text" class="form-control pl-5" placeholder="Prénom :">
-                                                </div>
-                                            </div>
-                                        </div><!--end col-->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <div class="position-relative">
-                                                    <i data-feather="mail" class="fea icon-sm icons"></i>
-                                                    <input name="email" id="email" type="email" class="form-control pl-5" placeholder="email :">
-                                                </div>
-                                            </div> 
-                                        </div><!--end col-->
-                                    </div><!--end row-->
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <input type="submit" id="submit" name="send" class="btn btn-primary" value="Enregistrer">
-                                        </div><!--end col-->
-                                    </div><!--end row-->
-                                </form><!--end form-->
-
-                                
                                 <div class="row">
                                     <div class="col-md-6 mt-4 pt-2">
-                                        <h5>Information de contact :</h5>
+                                        <h5>Informations :</h5>
 
-                                        <form>
+                                        <form action="index.php?action=account" method="post">
+                                            <input type="hidden" name="update" value="1">
+                                            <input type="hidden" name="id_utilisateur" value="<?php echo $utilisateur->getId_utilisateur();?>">
+                                            <input type="hidden" name="niveau_acces" value="<?php echo $utilisateur->getNiveau_acces();?>">
+                                            <input type="hidden" name="date_register" value="<?php echo $utilisateur->getDate_registerFR();?>">
                                             <div class="row mt-4">
+                                                    <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Nom</label>
+                                                        <div class="position-relative">
+                                                            <i data-feather="user" class="fea icon-sm icons"></i>
+                                                            <input name="nom" id="first" type="text" class="form-control pl-5" placeholder="Nom :" required="">
+                                                        </div>
+                                                    </div>
+                                                </div><!--end col-->
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Prénom</label>
+                                                        <div class="position-relative">
+                                                            <i data-feather="user-check" class="fea icon-sm icons"></i>
+                                                            <input name="prenom" id="last" type="text" class="form-control pl-5" placeholder="Prénom :" required="">
+                                                        </div>
+                                                    </div>
+                                                </div><!--end col-->
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Email</label>
+                                                        <div class="position-relative">
+                                                            <i data-feather="mail" class="fea icon-sm icons"></i>
+                                                            <input name="email" id="email" type="email" class="form-control pl-5" placeholder="email :" required="">
+                                                        </div>
+                                                    </div> 
+                                                </div><!--end col-->
+
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
                                                         <label>Téléphone :</label>
                                                         <div class="position-relative">
                                                             <i data-feather="phone" class="fea icon-sm icons"></i>
-                                                            <input name="number" id="number" type="number" class="form-control pl-5" placeholder="Téléphone :">
+                                                            <input name="telephone" id="number" type="text" class="form-control pl-5" placeholder="Téléphone :" required="">
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->
 
                                                 <div class="col-lg-12 mt-2 mb-0">
-                                                    <button class="btn btn-primary">Ajouter</button>
                                                 </div><!--end col-->
                                             </div><!--end row-->
-                                        </form>
                                     </div><!--end col-->
-                                    
                                     <div class="col-md-6 mt-4 pt-2"> 
-                                        <h5>Changer le mot de passe :</h5>
-                                        <form>
+                                    <h5 style="color:white" >I</h5>
                                             <div class="row mt-4">
-                                                <div class="col-lg-12">
-                                                    <div class="form-group">
-                                                        <label>Ancien mot de passe :</label>
-                                                        <div class="position-relative">
-                                                            <i data-feather="key" class="fea icon-sm icons"></i>
-                                                            <input type="password" class="form-control pl-5" placeholder="Ancien mot de passe" required="">
-                                                        </div>
-                                                    </div>
-                                                </div><!--end col-->
-            
-                                                <div class="col-lg-12">
+                                               <div class="col-lg-12">
                                                     <div class="form-group">
                                                         <label>Nouveau mot de passe :</label>
                                                         <div class="position-relative">
                                                             <i data-feather="key" class="fea icon-sm icons"></i>
-                                                            <input type="password" class="form-control pl-5" placeholder="Nouveau mot de passe" required="">
+                                                            <input type="password" name="new_password" class="form-control pl-5" placeholder="Nouveau mot de passe" required="">
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->
@@ -200,13 +179,13 @@
                                                         <label>Retaper le nouveau mot de passe :</label>
                                                         <div class="position-relative">
                                                             <i data-feather="key" class="fea icon-sm icons"></i>
-                                                            <input type="password" class="form-control pl-5" placeholder="Retaper le nouveau mot de passe" required="">
+                                                            <input type="password" name="new_password2" class="form-control pl-5" placeholder="Retaper le nouveau mot de passe" required="">
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->
             
                                                 <div class="col-lg-12 mt-2 mb-0">
-                                                    <button class="btn btn-primary">Enregistrer le mot de passe</button>
+                                                    <button class="btn btn-primary">Mettre à jour</button>
                                                 </div><!--end col-->
                                             </div><!--end row-->
                                         </form>
@@ -222,7 +201,11 @@
                             <div class="p-4">
                                 <h6 class="mb-0">Voulez-vous vraiment suprimer votre compte ?</h6>
                                 <div class="mt-4">
+                                <form action="index.php?action=account" method="post">
+                                    <input type="hidden" name="delete" value="1">
+                                    <input type="hidden" name="id_utilisateur" value="<?php echo $utilisateur->getId_utilisateur();?>">      
                                     <button class="btn btn-danger">Suprimer mon compte</button>
+                                </form>
                                 </div><!--end col-->
                             </div>
                         </div>
