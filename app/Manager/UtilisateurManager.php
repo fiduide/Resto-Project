@@ -91,7 +91,7 @@ class UtilisateurManager extends Database
      */
     public function update(array $data, int $id)
     {
-            $query = "UPDATE utilisateur
+        $query = "UPDATE utilisateur
             SET nom = :nom,
                 prenom = :prenom,
                 telephone = :telephone,
@@ -117,6 +117,6 @@ class UtilisateurManager extends Database
         WHERE  id_utilisateur = $id";
 
         $stmt = $this->pdo->prepare($query);
-        $stmt->execute($data);
+        $stmt->execute();
     }
 }
