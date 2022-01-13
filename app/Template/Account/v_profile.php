@@ -156,17 +156,17 @@
                                             <h4 class="title mb-0"><?php echo $commande->getDate_orderFR(); ?></h4>
 
                                             <?php if (!empty($commande->getCommande_pizza())) { ?>
-                                                <p class="text-primary mb-0">Pizza(s)</p>
+                                                <p class="text-primary mb-0"><i class="mdi mdi-pizza"></i> Pizza(s)</p>
                                                 <p class="text-muted"><?php echo $commande->getPizzaList(); ?></p>
                                             <?php } ?>
 
                                             <?php if (!empty($commande->getCommande_boisson())) { ?>
-                                                <p class="text-primary mb-0">Boisson(s)</p>
+                                                <p class="text-primary mb-0"><i class="mdi mdi-bottle-soda-classic"></i> Boisson(s)</p>
                                                 <p class="text-muted"><?php echo $commande->getBoissonList(); ?></p>
                                             <?php } ?>
 
                                             <?php if (!empty($commande->getCommande_dessert())) { ?>
-                                                <p class="text-primary mb-0">Dessert(s)</p>
+                                                <p class="text-primary mb-0"><i class="mdi mdi-ice-cream"></i> Dessert(s)</p>
                                                 <p class="text-muted"><?php echo $commande->getDessertList(); ?></p>
                                             <?php } ?>
                                         </div>
