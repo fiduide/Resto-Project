@@ -80,4 +80,11 @@ class AdminController extends MainController
       $list = $boissonManager->findAll();
       return $list;
    }
+
+   public function getListDessert()
+   {
+      $dessertManager = new DessertManager();
+      $list = $dessertManager->findAll();
+      return $list;
+   }
 }

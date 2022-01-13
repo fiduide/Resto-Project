@@ -256,17 +256,16 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <th scope="row"><?php echo $commande->getId_commande(); ?> </th>
-                                                            <td><?php echo $commande->getDate_orderFR(); ?></td>
-                                                            <?php
+                                                        <?php foreach ($listPizza as $pizza) { ?>
+                                                            <tr>
+                                                                <th scope="row"><?php echo $pizza->getNom(); ?> </th>
+                                                                <td><?php echo $pizza->getListIngredient(); ?></td>
+                                                                <td><?php echo $pizza->getPrix(); ?>€</td>
+                                                                <td>
 
-                                                            ?>
-                                                            <td><?php echo $commande->getTotal(); ?>€</td>
-                                                            <td>
-                                                                <a href="#" class="text-primary" data-toggle="modal" data-target="#pop_<?php echo $commande->getId_commande(); ?>">Détails</a>
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
                                                     </tbody>
                                                 </table>
                                                 <!--end row-->
@@ -283,14 +282,15 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <th scope="row"><?php echo $commande->getId_commande(); ?> </th>
-                                                            <td><?php echo $commande->getDate_orderFR(); ?></td>
-                                                            <?php
+                                                        <?php foreach ($listBoisson as $boisson) { ?>
+                                                            <tr>
+                                                                <th scope="row"><?php echo ucfirst(strtolower($boisson->getNom())); ?> </th>
+                                                                <td><?php echo $boisson->getPrix(); ?>€</td>
+                                                                <td>
 
-                                                            ?>
-                                                            <td><?php echo $commande->getTotal(); ?>€</td>
-                                                        </tr>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
                                                     </tbody>
                                                 </table>
                                                 <!--end row-->
@@ -307,14 +307,15 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <th scope="row"><?php echo $commande->getId_commande(); ?> </th>
-                                                            <td><?php echo $commande->getDate_orderFR(); ?></td>
-                                                            <?php
+                                                        <?php foreach ($listDessert as $dessert) { ?>
+                                                            <tr>
+                                                                <th scope="row"><?php echo ucfirst(strtolower($dessert->getNom())); ?> </th>
+                                                                <td><?php echo $dessert->getPrix(); ?>€</td>
+                                                                <td>
 
-                                                            ?>
-                                                            <td><?php echo $commande->getTotal(); ?>€</td>
-                                                        </tr>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
                                                     </tbody>
                                                 </table>
                                                 <!--end row-->
