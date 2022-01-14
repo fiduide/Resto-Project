@@ -181,4 +181,15 @@ class AccountController extends MainController
 
         $this->disconnectUtilisateur();
     }
+
+    public function history()
+    {
+        $utilisateurManager = new UtilisateurManager();
+        $utilisateur = $utilisateurManager->find($_SESSION['id_utilisateur']);
+
+        $commandeManager = new CommandeManager();
+        $commandes = $commandeManager->findByUtilisateur($_SESSION['id_utilisateur']);
+
+        include(ROOT . "/app/Template/Account/v_history.php");
+    }
 }

@@ -35,6 +35,8 @@ try {
                 $accountController->affichagePaiement();
             } else if (isset($_GET['parametre']) && $_GET['parametre'] == 1) {
                 $accountController->affichageParametre();
+            } else if (isset($_GET['history']) && $_GET['history'] == 1) {
+                $accountController->history();
             } else if (isset($_POST['update']) && $_POST['update'] == 1) {
                 $accountController->updateInformation();
             } else if (isset($_POST['delete']) && $_POST['delete'] == 1) {

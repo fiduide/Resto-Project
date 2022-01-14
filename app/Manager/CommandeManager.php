@@ -58,10 +58,11 @@ class CommandeManager extends Database
     {
         $query = "SELECT *
             FROM commande
-            WHERE id_utilisateur = $id";
+            WHERE id_utilisateur = $id
+            ORDER BY date_order DESC";
 
         if ($limit != null) {
-            $query .= " ORDER BY date_order DESC LIMIT $limit;";
+            $query .= " LIMIT $limit;";
         }
 
         $stmt = $this->pdo->query($query, \PDO::FETCH_CLASS, "app\Entity\Commande");
