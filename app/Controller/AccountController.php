@@ -9,16 +9,31 @@ use DateTime;
 
 class AccountController extends MainController
 {
+    /**
+     * Charge la page de connexion
+     *
+     * @return void
+     */
     public function login()
     {
         include(ROOT . "/app/Template/Account/v_login.php");
     }
 
+    /**
+     * Charge la page d'enregistrement
+     *
+     * @return void
+     */
     public function register()
     {
         include(ROOT . "/app/Template/Account/v_register.php");
     }
 
+    /**
+     * Charge la page de profil
+     *
+     * @return void
+     */
     public function profile()
     {
         $utilisateurManager = new UtilisateurManager();
@@ -30,10 +45,11 @@ class AccountController extends MainController
         include(ROOT . "/app/Template/Account/v_profile.php");
     }
 
-    public function resetPassword()
-    {
-    }
-
+    /**
+     * Enregistre un nouvel utilisateur
+     *
+     * @return void
+     */
     public function createUtilisateur()
     {
         $utilisateurManager = new UtilisateurManager();
@@ -56,6 +72,11 @@ class AccountController extends MainController
         header("Location: index.php?registered=1");
     }
 
+    /**
+     * Connecte un utilisateur
+     *
+     * @return void
+     */
     public function connectUtilisateur()
     {
         $email = trim($_POST['email']);
@@ -75,6 +96,11 @@ class AccountController extends MainController
         }
     }
 
+    /**
+     * Déconnecte un utilisateur
+     *
+     * @return void
+     */
     public function disconnectUtilisateur()
     {
         $_SESSION = array();
@@ -97,7 +123,11 @@ class AccountController extends MainController
         header("Location: index.php?disconnect=1");
     }
 
-
+    /**
+     * Affiche la page des moyens de paiement
+     *
+     * @return void
+     */
     public function affichagePaiement()
     {
         $utilisateurManager = new UtilisateurManager();
@@ -106,6 +136,11 @@ class AccountController extends MainController
         include(ROOT . "/app/Template/Account/v_paiement.php");
     }
 
+    /**
+     * Affiche la page des paramètres
+     *
+     * @return void
+     */
     public function affichageParametre()
     {
         $utilisateurManager = new UtilisateurManager();
@@ -114,6 +149,11 @@ class AccountController extends MainController
         include(ROOT . "/app/Template/Account/v_parametre.php");
     }
 
+    /**
+     * Met à jour les informations d'un utilisateur
+     *
+     * @return void
+     */
     public function updateInformation()
     {
         $utilisateurManager = new UtilisateurManager();
@@ -127,6 +167,12 @@ class AccountController extends MainController
         header("Location: index.php?action=account");
     }
 
+    /**
+     * "Supprime" le compte d'un utilisateur.
+     * (`statut_account` passe à 2)
+     *
+     * @return void
+     */
     public function deleteAccount()
     {
         $utilisateurManager = new UtilisateurManager();

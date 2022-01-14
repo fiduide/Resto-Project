@@ -16,7 +16,12 @@ class Utilisateur extends DefaultEntity
         }
     }
 
-    public function __invoke()
+    /**
+     * Retourne un tableau contenant les propriétés de l'utilisateur lorsqu'on l'appel comme une méthode
+     *
+     * @return array
+     */
+    public function __invoke(): array
     {
         return [
             "date_register" => $this->date_register->format("Y-m-d H:i:s"),
@@ -300,6 +305,11 @@ class Utilisateur extends DefaultEntity
         return $libelle;
     }
 
+    /**
+     * Retourne la date d'enregistrement au format "dd/mm/YYYY"
+     *
+     * @return string
+     */
     public function getDate_registerFR(): string
     {
         return $this->date_register->format("d/m/Y");

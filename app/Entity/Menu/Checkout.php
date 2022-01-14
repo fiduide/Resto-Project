@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Entity\Menu;
+
 use core\Entity\DefaultEntity;
 
-class Checkout extends DefaultEntity {
+class Checkout extends DefaultEntity
+{
 
 
-     /**
+    /**
      * @var int
      */
     private int $id;
@@ -30,7 +32,7 @@ class Checkout extends DefaultEntity {
      * Get the value of etat
      *
      * @return  bool
-     */ 
+     */
     public function getEtat()
     {
         return $this->etat;
@@ -42,7 +44,7 @@ class Checkout extends DefaultEntity {
      * @param  bool  $etat
      *
      * @return  self
-     */ 
+     */
     public function setEtat(bool $etat)
     {
         $this->etat = $etat;
@@ -54,7 +56,7 @@ class Checkout extends DefaultEntity {
      * Get the value of id_user
      *
      * @return  int
-     */ 
+     */
     public function getId_user()
     {
         return $this->id_user;
@@ -66,7 +68,7 @@ class Checkout extends DefaultEntity {
      * @param  int  $id_user
      *
      * @return  self
-     */ 
+     */
     public function setId_user(int $id_user)
     {
         $this->id_user = $id_user;
@@ -78,7 +80,7 @@ class Checkout extends DefaultEntity {
      * Get the value of date_order
      *
      * @return  \DateTime
-     */ 
+     */
     public function getDate_order()
     {
         return $this->date_order;
@@ -90,7 +92,7 @@ class Checkout extends DefaultEntity {
      * @param  \DateTime  $date_order
      *
      * @return  self
-     */ 
+     */
     public function setDate_order(\DateTime $date_order)
     {
         $this->date_order = $date_order;
@@ -98,7 +100,13 @@ class Checkout extends DefaultEntity {
         return $this;
     }
 
-    public function __invoke() {
+    /**
+     * Retourne un tableau contenant les propriétés du checkout lorsqu'on l'appel comme une méthode
+     *
+     * @return array
+     */
+    public function __invoke()
+    {
         return [
             "id_user" => $this->id_user,
             "etat" => $this->etat,

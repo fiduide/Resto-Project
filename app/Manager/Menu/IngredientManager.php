@@ -27,6 +27,12 @@ class IngredientManager extends Database
         return $ingredient;
     }
 
+    /**
+     * Récupère la liste des ingrédients d'une pizza
+     *
+     * @param integer $id
+     * @return array
+     */
     public function findPizzaIngredient(int $id): array
     {
         $query = "SELECT i.*
@@ -42,6 +48,11 @@ class IngredientManager extends Database
         return $ingredient;
     }
 
+    /**
+     * Récupère tous les ingredients
+     *
+     * @return array
+     */
     public function findAll(): array
     {
         $query = "SELECT *
@@ -54,16 +65,27 @@ class IngredientManager extends Database
         return $ingredient;
     }
 
-
-
-    public function deletePizzaIngredient($id_pizza)
+    /**
+     * Supprime tous les ingrédients d'une pizza
+     *
+     * @param int $id_pizza
+     * @return void
+     */
+    public function deletePizzaIngredient(int $id_pizza)
     {
         $statementArt = "DELETE FROM pizza_ingredient WHERE id_pizza = $id_pizza";
         $prepare = $this->pdo->prepare($statementArt);
         $prepare->execute();
     }
 
-    public function insertIngredientInPizza($id_pizza, $id_ingredient)
+    /**
+     * Établi le lien entre une pizza et un ingrédient
+     *
+     * @param integer $id_pizza
+     * @param integer $id_ingredient
+     * @return void
+     */
+    public function insertIngredientInPizza(int $id_pizza, int $id_ingredient)
     {
         //INSERT COMMAND
         $obj = [':id_pizza' => $id_pizza, ':id_ingredient' => $id_ingredient];

@@ -37,7 +37,7 @@ class AdminManager
     }
 
     /**
-     * Modification des items
+     * Insertion des items
      *
      * @return boolean
      */
