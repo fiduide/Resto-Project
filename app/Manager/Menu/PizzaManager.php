@@ -52,4 +52,39 @@ class PizzaManager extends Database
 
         return $pizzas;
     }
+
+    public function updatePizza($id, $nom, $prix)
+    {
+        $obj = [':nom' => $nom, ':prix' => $prix];
+        $statementArt = "UPDATE pizza SET
+                                nom = :nom,
+                                prix = :prix
+                                WHERE id = $id";
+        $prepare = $this->pdo->prepare($statementArt);
+        $prepare->execute($obj);
+    }
+
+    /**
+     * Add des pizzas
+     *
+     * @return boolean
+     */
+    public function addPizza($nom, $prix, $ingredient)
+    {
+        $obj = [':nom' => $nom, ':prix' => $prix];
+        //INSERT COMMAND
+        $statementArt = "INSERT INTO pizza (nom, prix)
+        VALUES (:nom, :prix)";
+
+        $prepare = $this->pdo->prepare($statementArt);
+
+        $prepare->execute($obj);
+
+        $id_pizza = $this->pdo->lastInsertId();
+        //Ajout des incrédients en fonction d'un id pizza
+        $ingredientManager = new IngredientManager();
+        foreach ($ingredient as $id_ingredient => $value) {
+            $ingredientManager->insertIngredientInPizza($id_pizza, $id_ingredient);
+        }
+    }
 }

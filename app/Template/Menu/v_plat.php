@@ -68,7 +68,11 @@
                                 <div class="row align-items-center">
                                     <?php foreach ($pizzas as $pizza) {
                                         echo "<div class='col-4 text-center mt-5'>";
-                                        echo "<img style='height: 300px;width: 370px' src='public/img/pizza/" . $pizza->getId() . ".png'>";
+                                        if (!file_exists("public/img/Pizza/" . $pizza->getId() . ".png")) {
+                                            echo "<img style='height: 200px;width: 370px' src='public/img/Pizza/pizza_default.png'>";
+                                        } else {
+                                            echo "<img style='height: 200px;width: 370px' src='public/img/Pizza/" . $pizza->getId() . ".png'>";
+                                        }
                                         echo "<br>";
                                         echo $pizza->getNom() . "<br>";
                                         echo "<i>";
@@ -91,7 +95,11 @@
                                 <div class="row align-items-center">
                                     <?php foreach ($boissons as $boisson) {
                                         echo "<div class='col-4 text-center mt-5'>";
-                                        echo "<img style='height: 200px;width: 370px' src='public/img/boisson/" . $boisson->getId() . ".png'>";
+                                        if (!file_exists("public/img/boisson/" . $boisson->getId() . ".png")) {
+                                            echo "<img style='height: 200px;width: 370px' src='public/img/boisson/soda_default.png'>";
+                                        } else {
+                                            echo "<img style='height: 200px;width: 370px' src='public/img/boisson/" . $boisson->getId() . ".png'>";
+                                        }
                                         echo "<br>";
                                         echo $boisson->getNom() . "<br>";
                                         echo $boisson->getPrix() . "€<br></p>";
@@ -109,7 +117,11 @@
                                 <div class="row align-items-center">
                                     <?php foreach ($desserts as $dessert) {
                                         echo "<div class='col-4 text-center mt-5'>";
-                                        echo "<img style='height: 250px;width: 370px' src='public/img/dessert/" . $dessert->getId() . ".png'>";
+                                        if (!file_exists("public/img/dessert/" . $dessert->getId() . ".png")) {
+                                            echo "<img style='height: 200px;width: 370px' src='public/img/dessert/dessert_default.png'>";
+                                        } else {
+                                            echo "<img style='height: 200px;width: 370px' src='public/img/dessert/" . $dessert->getId() . ".png'>";
+                                        }
                                         echo "<br>";
                                         echo $dessert->getNom() . "<br>";
                                         echo $dessert->getPrix() . "€<br></p>";

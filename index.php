@@ -99,6 +99,13 @@ try {
 
             break;
 
+        case 'OpenFacture':
+            $choixController = new ChoixController();
+
+            $choixController->openFacture();
+
+            break;
+
         case 'ajoutProduit':
             $choixController = new ChoixController();
 
@@ -129,7 +136,9 @@ try {
                 $adminController->setCommandWaiting($_GET['commandId']);
             } else if (isset($_GET['admin']) && isset($_GET['itemId']) && isset($_GET['type']) && $_GET['admin'] == "updateItem") {
                 //action = adminBoard & admin = updateItem & type = dessert & itemId
-                $adminController->updateItem($_GET['type'], $_GET['itemId']);
+                $adminController->updateItem();
+            } else if (isset($_GET['admin']) && isset($_GET['type']) && $_GET['admin'] == "addItem") {
+                $adminController->addItem();
             }
             $adminController->affichage();
             break;

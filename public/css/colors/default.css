@@ -188,11 +188,11 @@
 
 a.text-primary:hover, 
 a.text-primary:focus {
-    color: #284bc1 !important;
+    color: #d85123 !important;
 }
 
 .social-icon li a:hover .fea-social {
-    fill: #2f55d4;
+    fill: #d85123;
 }
 
 .bg-overlay-gradient {

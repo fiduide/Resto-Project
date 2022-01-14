@@ -59,11 +59,11 @@ class ChoixController extends MainController
         if (isset($_SESSION['commande'])) {
             foreach ($_SESSION['commande'] as $commande => $quantity) {
                 $str = preg_split("/_/", $commande);
-                if($str[0] != "total"){
+                if ($str[0] != "total") {
                     $commande_type = $str[0];
                     $commande_id = $str[1];
-                
-    
+
+
                     $pizzaManager = new PizzaManager();
                     $boissonManager = new BoissonManager();
                     $dessertManager = new DessertManager();
@@ -75,7 +75,7 @@ class ChoixController extends MainController
                     } else if ($commande_type == "dessert") {
                         $uneCommande = $dessertManager->find($commande_id);
                     }
-                    
+
                     $totalUneCommande = $quantity * $uneCommande->getPrix();
                     $totalCommande = $totalCommande + $totalUneCommande;
 
@@ -90,7 +90,7 @@ class ChoixController extends MainController
                     </td>
                     <td class="text-center">' . $uneCommande->getPrix() . '</td>
                     <td class="text-center"><a class="minus btn btn-icon btn-soft-primary font-weight-bold" href="index.php?action=deleteProduit&type=' . $commande_type . '&idProduit=' . $uneCommande->getId() . '" class="text-danger">-</a>
-                    <input type="text" step="1" min="0" name="" value=' . $quantity . '  class="disable btn btn-icon btn-soft-primary font-weight-bold">
+                    <p  class="disable btn btn-icon btn-soft-primary font-weight-bold">' . $quantity . ' </p>
                     <a class="plus btn btn-icon btn-soft-primary font-weight-bold" href="index.php?action=ajoutProduit&type=' . $commande_type . '&idProduit=' . $uneCommande->getId() . '" class="text-danger">+</a>
                     <td class="text-center font-weight-bold">' . $totalUneCommande . ' €</td>
                 </tr>';
@@ -132,5 +132,10 @@ class ChoixController extends MainController
             unset($_SESSION['commande'][$type . '_' . $idProduit]);
             $this->getCommand();
         }
+    }
+
+    public function openFacture()
+    {
+        include(ROOT . "/app/Template/Account/v_factureHtml.php");
     }
 }

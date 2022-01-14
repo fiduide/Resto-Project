@@ -124,4 +124,16 @@ class Pizza extends DefaultEntity
 
         return implode(", ", $arIngredient);
     }
+
+    public function existIngredient(int $id_ingredient): bool
+    {
+        $isIngredient = false;
+
+        foreach ($this->ingredients as $ingredient) {
+            if ($ingredient->getId_ingredient() === $id_ingredient) {
+                $isIngredient = true;
+            }
+        }
+        return $isIngredient;
+    }
 }
