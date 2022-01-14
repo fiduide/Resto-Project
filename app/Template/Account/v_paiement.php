@@ -23,7 +23,7 @@
 
 <body>
     <?php include("app/Template/v_menu.php"); ?>
-        <!-- Hero Start -->
+    <!-- Hero Start -->
     <section class="bg-profile d-table w-100 bg-primary" style="background: url('images/account/bg.png') center center;">
         <div class="container">
             <div class="row">
@@ -67,9 +67,9 @@
     </section>
     <!--end section-->
     <!-- Hero End -->
-  <!-- Profile Start -->
+    <!-- Profile Start -->
 
-  <section class="section mt-60">
+    <section class="section mt-60">
         <div class="container mt-lg-3">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-12 d-lg-block d-none">
@@ -77,17 +77,9 @@
                         <div class="widget">
                             <div class="row">
                                 <div class="col-6 mt-4 pt-2">
-                                    <a href="index.php?action=account" class="accounts  rounded d-block shadow text-center py-3">
+                                    <a href="index.php?action=account" class="accounts rounded d-block shadow text-center py-3">
                                         <span class="pro-icons h3 text-muted"><i class="uil uil-dashboard"></i></span>
                                         <h6 class="title text-dark h6 my-0">Profil</h6>
-                                    </a>
-                                </div>
-                                <!--end col-->
-
-                                <div class="col-6 mt-4 pt-2">
-                                    <a href="index.php?action=account&payment=1" class="accounts active rounded d-block shadow text-center py-3">
-                                        <span class="pro-icons h3 text-muted"><i class="uil uil-transaction"></i></span>
-                                        <h6 class="title text-dark h6 my-0">Paiement</h6>
                                     </a>
                                 </div>
                                 <!--end col-->
@@ -96,6 +88,22 @@
                                     <a href="index.php?action=account&parametre=1" class="accounts rounded d-block shadow text-center py-3">
                                         <span class="pro-icons h3 text-muted"><i class="uil uil-setting"></i></span>
                                         <h6 class="title text-dark h6 my-0">Paramètres</h6>
+                                    </a>
+                                </div>
+                                <!--end col-->
+
+                                <div class="col-6 mt-4 pt-2">
+                                    <a href="index.php?action=account&history=1" class="accounts rounded d-block shadow text-center py-3">
+                                        <span class="pro-icons h3 text-muted"><i class="uil uil-history"></i></span>
+                                        <h6 class="title text-dark h6 my-0">Historique</h6>
+                                    </a>
+                                </div>
+                                <!--end col-->
+
+                                <div class="col-6 mt-4 pt-2">
+                                    <a href="index.php?action=account&payment=1" class="accounts active rounded d-block shadow text-center py-3">
+                                        <span class="pro-icons h3 text-muted"><i class="uil uil-transaction"></i></span>
+                                        <h6 class="title text-dark h6 my-0">Paiement</h6>
                                     </a>
                                 </div>
                                 <!--end col-->
@@ -115,55 +123,62 @@
                 </div>
                 <!--end col-->
 
-                    <div class="col-lg-8 col-12">
-                        <div class="rounded shadow p-4">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h5 class="mb-0">Méthode de paiement :</h5>
-                                <a href="javascript:void(0)" data-toggle="modal" data-target="#addnewcard" class="btn btn-primary"><i data-feather="plus" class="fea icon-sm"></i> Ajouter un nouveau moyen de paiement</a>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 mt-4 pt-2">
-                                    <a href="javascript:void(0)">
-                                        <div class="card rounded shadow bg-light border-0">
-                                            <div class="card-body">
-                                                <img src="images/payments/payment/master.png" height="60" class="text-right" alt="">
-                                                <div class="mt-4">
-                                                    <h5 class="text-dark">•••• •••• •••• 4559</h5>
-                                                    <div class="d-flex justify-content-between">
-                                                        <h6 class="h6 text-muted mb-0">Exp: <span class="text-muted">10/22</span></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div><!--end col-->
-    
-                                <div class="col-md-6 mt-4 pt-2">
-                                    <a href="javascript:void(0)">
-                                        <div class="card rounded shadow bg-dark border-0">
-                                            <div class="card-body">
-                                                <img src="images/payments/payment/visaa.png" height="60" class="text-right" alt="">
-                                                <div class="mt-4">
-                                                    <h5 class="text-light">•••• •••• •••• 9856</h5>
-                                                    <div class="d-flex justify-content-between">
-                                                        <h6 class="h6 text-muted mb-0">Exp: <span class="text-muted">01/24</span></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div><!--end col-->
-                            </div>
+                <div class="col-lg-8 col-12">
+                    <div class="rounded shadow p-4">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Méthode de paiement :</h5>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#addnewcard" class="btn btn-primary"><i data-feather="plus" class="fea icon-sm"></i> Ajouter un nouveau moyen de paiement</a>
                         </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </section><!--end section-->
-        <!-- Profile End -->
 
-        <!-- Footer Start -->
-        <?php include("app/Template/v_footer.php"); ?>
-        <!-- Footer End -->
-    </body>
+                        <div class="row">
+                            <div class="col-md-6 mt-4 pt-2">
+                                <a href="javascript:void(0)">
+                                    <div class="card rounded shadow bg-light border-0">
+                                        <div class="card-body">
+                                            <img src="images/payments/payment/master.png" height="60" class="text-right" alt="">
+                                            <div class="mt-4">
+                                                <h5 class="text-dark">•••• •••• •••• 4559</h5>
+                                                <div class="d-flex justify-content-between">
+                                                    <h6 class="h6 text-muted mb-0">Exp: <span class="text-muted">10/22</span></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!--end col-->
+
+                            <div class="col-md-6 mt-4 pt-2">
+                                <a href="javascript:void(0)">
+                                    <div class="card rounded shadow bg-dark border-0">
+                                        <div class="card-body">
+                                            <img src="images/payments/payment/visaa.png" height="60" class="text-right" alt="">
+                                            <div class="mt-4">
+                                                <h5 class="text-light">•••• •••• •••• 9856</h5>
+                                                <div class="d-flex justify-content-between">
+                                                    <h6 class="h6 text-muted mb-0">Exp: <span class="text-muted">01/24</span></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!--end col-->
+                        </div>
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+    </section>
+    <!--end section-->
+    <!-- Profile End -->
+
+    <!-- Footer Start -->
+    <?php include("app/Template/v_footer.php"); ?>
+    <!-- Footer End -->
+</body>
+
 </html>

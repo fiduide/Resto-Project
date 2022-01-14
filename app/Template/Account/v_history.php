@@ -77,7 +77,7 @@
                         <div class="widget">
                             <div class="row">
                                 <div class="col-6 mt-4 pt-2">
-                                    <a href="index.php?action=account" class="accounts active rounded d-block shadow text-center py-3">
+                                    <a href="index.php?action=account" class="accounts rounded d-block shadow text-center py-3">
                                         <span class="pro-icons h3 text-muted"><i class="uil uil-dashboard"></i></span>
                                         <h6 class="title text-dark h6 my-0">Profil</h6>
                                     </a>
@@ -93,7 +93,7 @@
                                 <!--end col-->
 
                                 <div class="col-6 mt-4 pt-2">
-                                    <a href="index.php?action=account&history=1" class="accounts rounded d-block shadow text-center py-3">
+                                    <a href="index.php?action=account&history=1" class="accounts active rounded d-block shadow text-center py-3">
                                         <span class="pro-icons h3 text-muted"><i class="uil uil-history"></i></span>
                                         <h6 class="title text-dark h6 my-0">Historique</h6>
                                     </a>
@@ -126,83 +126,62 @@
                 <div class="col-lg-8 col-12">
                     <div class="border-bottom pb-4">
                         <div class="row">
-                            <div class="col-md-6 mt-4">
-                                <h5>Détails personnel :</h5>
-                                <div class="mt-4">
-                                    <div class="media align-items-center mt-3">
-                                        <i data-feather="phone" class="fea icon-ex-md text-muted mr-3"></i>
-                                        <div class="media-body">
-                                            <h6 class="text-primary mb-0">Téléphone :</h6>
-                                            <a href="javascript:void(0)" class="text-muted"><?php echo $utilisateur->getTelephone(); ?></a>
-                                        </div>
-                                    </div>
-                                    <div class="media align-items-center mt-3">
-                                        <i data-feather="mail" class="fea icon-ex-md text-muted mr-3"></i>
-                                        <div class="media-body">
-                                            <h6 class="text-primary mb-0">Email :</h6>
-                                            <a href="javascript:void(0)" class="text-muted"><?php echo $utilisateur->getEmail(); ?></a>
-                                        </div>
-                                    </div>
-                                    <div class="media align-items-center mt-3">
-                                        <i data-feather="gift" class="fea icon-ex-md text-muted mr-3"></i>
-                                        <div class="media-body">
-                                            <h6 class="text-primary mb-0">Date d'inscritpion :</h6>
-                                            <p class="text-muted mb-0"><?php echo $utilisateur->getDate_registerFR(); ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-
-                            <div class="col-md-6 mt-4 pt-2 pt-sm-0">
-                                <h5>Dernière commandes :</h5>
-
-                                <?php if (empty($commandes)) { ?>
-                                    <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
-                                        <div class="media-body content ml-3">
-                                            <h4 class="title mb-0">Aucune commande !</h4>
-                                        </div>
-                                    </div>
-                                <?php } else { ?>
-                                    <?php foreach ($commandes as $commande) { ?>
-                                        <div class="media key-feature align-items-center p-3 rounded shadow mt-4">
-                                            <div class="media-body content ml-3">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <h4 class="title mb-0"><?php echo $commande->getDate_orderFR(); ?></h4>
-                                                    </div>
-
-                                                    <div class="col-md-6 text-right">
+                            <div class="col-12">
+                                <div class="table-responsive bg-white shadow rounded">
+                                    <table class="table mb-0 table-center table-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">N° Commande</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Total</th>
+                                                <th scope="col">Pizza(s)</th>
+                                                <th scope="col">Boisson(s)</th>
+                                                <th scope="col">Dessert(s)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($commandes as $commande) { ?>
+                                                <?php
+                                                $style = "";
+                                                if ($commande->getEtat() == 1) {
+                                                    $style = "style=\"color: rgba(0, 0, 0, 0.5);\"";
+                                                }
+                                                ?>
+                                                <tr <?php echo $style ?>>
+                                                    <td>
+                                                        <?php echo $commande->getId_commande(); ?>
                                                         <?php if ($commande->getEtat() == 0) { ?>
                                                             <span class="badge badge-pill badge-soft-warning">En cours</span>
                                                         <?php } else { ?>
                                                             <span class="badge badge-pill badge-soft-success">Terminée</span>
                                                         <?php } ?>
-                                                        <span class="badge badge-pill badge-warning"><i class="mdiDownload"><a style="color:white" target="_blank" href="index.php?action=OpenFacture">Télécharger Facture</a></i></span>
-                                                    </div>
-                                                </div>
+                                                    </td>
 
-                                                <?php if (!empty($commande->getCommande_pizza())) { ?>
-                                                    <p class="text-primary mb-0"><i class="mdi mdi-pizza"></i> Pizza(s)</p>
-                                                    <p class="text-muted"><?php echo $commande->getPizzaList(); ?></p>
-                                                <?php } ?>
+                                                    <td>
+                                                        <?php echo $commande->getDate_orderFR(); ?>
+                                                    </td>
 
-                                                <?php if (!empty($commande->getCommande_boisson())) { ?>
-                                                    <p class="text-primary mb-0"><i class="mdi mdi-bottle-soda-classic"></i> Boisson(s)</p>
-                                                    <p class="text-muted"><?php echo $commande->getBoissonList(); ?></p>
-                                                <?php } ?>
+                                                    <td>
+                                                        <?php echo $commande->getTotal(); ?>€
+                                                    </td>
 
-                                                <?php if (!empty($commande->getCommande_dessert())) { ?>
-                                                    <p class="text-primary mb-0"><i class="mdi mdi-ice-cream"></i> Dessert(s)</p>
-                                                    <p class="text-muted"><?php echo $commande->getDessertList(); ?></p>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
-                                    <?php } ?>
-                                <?php } ?>
+                                                    <td>
+                                                        <?php echo $commande->getPizzaList(); ?>
+                                                    </td>
 
+                                                    <td>
+                                                        <?php echo $commande->getBoissonList(); ?>
+                                                    </td>
+
+                                                    <td>
+                                                        <?php echo $commande->getDessertList(); ?>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <!--end col-->
                         </div>
                         <!--end row-->
                     </div>
