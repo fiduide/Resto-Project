@@ -12,7 +12,11 @@ use app\Manager\Menu\PizzaManager;
 class ChoixController extends MainController
 {
 
-
+    /**
+     * Affichage complet des pizzas, boissons, desserts
+     *
+     * @return void
+     */
     public function affichage()
     {
         $pizzaManager = new PizzaManager();
@@ -27,7 +31,14 @@ class ChoixController extends MainController
         include(ROOT . "/app/Template/Menu/v_plat.php");
     }
 
-
+    /**
+     *  Ajout d'une commande au panier
+     *
+     * @param array $pizzas
+     * @param array $boissons
+     * @param array $desserts
+     * @return void
+     */
     public function addCommand($pizzas, $boissons, $desserts)
     {
         if (!isset($_SESSION['commande'])) {
@@ -51,6 +62,11 @@ class ChoixController extends MainController
         }
     }
 
+    /**
+     *  Récupérer les infos d'une commande dans le panier et affichage
+     *
+     * @return void
+     */
     public function getCommand()
     {
         $html = "";
@@ -104,6 +120,13 @@ class ChoixController extends MainController
         include(ROOT . "/app/Template/Menu/v_facture.php");
     }
 
+    /**
+     * Supprimer une quantité d'un produit du panier
+     *
+     * @param string $type
+     * @param int $idProduit
+     * @return void
+     */
     public function deleteProduit($type, $idProduit)
     {
         if (isset($type) && isset($idProduit)) {
@@ -116,6 +139,13 @@ class ChoixController extends MainController
         }
     }
 
+    /**
+     * Ajouter une quantité d'un produit du panier
+     *
+     * @param string $type
+     * @param int $idProduit
+     * @return void
+     */
     public function ajoutProduit($type, $idProduit)
     {
         if (isset($type) && isset($idProduit)) {
@@ -126,6 +156,13 @@ class ChoixController extends MainController
         }
     }
 
+    /**
+     * Supprimer tous les quantités d'un produit du panier
+     *
+     * @param string $type
+     * @param int $idProduit
+     * @return void
+     */
     public function deleteAllProduit($type, $idProduit)
     {
         if (isset($type) && isset($idProduit)) {
@@ -134,6 +171,9 @@ class ChoixController extends MainController
         }
     }
 
+    /**
+     * Ouvrir facture ?
+     */
     public function openFacture()
     {
         include(ROOT . "/app/Template/Account/v_factureHtml.php");

@@ -14,6 +14,12 @@ use app\Manager\UtilisateurManager;
 
 class AdminController extends MainController
 {
+
+   /**
+    * Affichage complet de la partie administration avec récupération des commandes, de stats, liste des pizzas, liste des desserts; liste des boissons et liste ingrédients
+    *
+    * @return void
+    */
    public function affichage()
    {
       $commandeManager = new CommandeManager();
@@ -32,7 +38,11 @@ class AdminController extends MainController
       include(ROOT . "/app/Template/Dashboard/v_dashboard.php");
    }
 
-
+   /**
+    * Récupération de toutes les commandes
+    *
+    * @return array
+    */
    public function getAllCommand(): array
    {
       $commandeManager = new CommandeManager();
@@ -40,6 +50,11 @@ class AdminController extends MainController
       return $listDesCommandes;
    }
 
+   /**
+    * Récupération du nombre de commande passé
+    *
+    * @return integer
+    */
    public function getCountAllCommand(): int
    {
       $commandeManager = new CommandeManager();
@@ -47,6 +62,11 @@ class AdminController extends MainController
       return $count;
    }
 
+   /**
+    * Récupération du nombre de commande en cours
+    *
+    * @return integer
+    */
    public function getCountInProgressCommand(): int
    {
       $commandeManager = new CommandeManager();
@@ -54,6 +74,11 @@ class AdminController extends MainController
       return $count;
    }
 
+   /**
+    * Récupération de la somme total des commandes réunies
+    *
+    * @return void
+    */
    public function getTotalCommand()
    {
       $commandeManager = new CommandeManager();
@@ -61,19 +86,35 @@ class AdminController extends MainController
       return number_format($total, 2);
    }
 
+   /**
+    * Changer l'état de la commande en livrée
+    *
+    * @param int $commandId
+    * @return void
+    */
    public function setCommandDelivered($commandId)
    {
       $commandeManager = new CommandeManager();
       $commandeManager->setCommandDelivered($commandId);
    }
 
+   /**
+    * Changer l'état de la commande en "en attente"
+    *
+    * @param int $commandId
+    * @return void
+    */
    public function setCommandWaiting($commandId)
    {
       $commandeManager = new CommandeManager();
       $commandeManager->setCommandWaiting($commandId);
    }
 
-
+   /**
+    * Récupération de la liste des pizzas
+    *
+    * @return void
+    */
    public function getListPizza()
    {
       $pizzaManager = new PizzaManager();
@@ -81,6 +122,11 @@ class AdminController extends MainController
       return $list;
    }
 
+   /**
+    * Récupération de la liste des boissons
+    *
+    * @return void
+    */
    public function getListBoisson()
    {
       $boissonManager = new BoissonManager();
@@ -88,6 +134,11 @@ class AdminController extends MainController
       return $list;
    }
 
+   /**
+    * Récupération de la liste des desserts
+    *
+    * @return void
+    */
    public function getListDessert()
    {
       $dessertManager = new DessertManager();
@@ -95,6 +146,12 @@ class AdminController extends MainController
       return $list;
    }
 
+
+   /**
+    * Modifier un item(boisson, dessert, pizza) avec nom et prix, liste ingrédient pour les pizzas
+    *
+    * @return void
+    */
    public function updateItem()
    {
       $adminManager = new AdminManager();
@@ -109,6 +166,11 @@ class AdminController extends MainController
       }
    }
 
+   /**
+    *  Ajouter un item(boisson, dessert, pizza) avec nom et prix, liste ingrédient pour les pizzas
+    *
+    * @return void
+    */
    public function addItem()
    {
       $pizzaManager = new PizzaManager();
@@ -127,6 +189,11 @@ class AdminController extends MainController
       }
    }
 
+   /**
+    * Récupérer la liste des ingrédients
+    *
+    * @return void
+    */
    public function getListIngredient()
    {
       $ingredientManager = new IngredientManager();
@@ -134,6 +201,11 @@ class AdminController extends MainController
       return $listIngredient;
    }
 
+   /**
+    * Récupérer tous les utilisateurs
+    *
+    * @return void
+    */
    public function getAllUser()
    {
       $userManager = new UtilisateurManager();
