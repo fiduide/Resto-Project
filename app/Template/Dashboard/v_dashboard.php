@@ -677,6 +677,10 @@
                                                 <div class="accordion" id="accordionExample">
                                                     <?php
                                                     foreach ($listUser as $user) {
+                                                        $total = 0;
+                                                        foreach ($commandeManager->findByUtilisateur($user->getId_utilisateur()) as $commande) {
+                                                            $total += $commande->getTotal();
+                                                        }
                                                     ?>
                                                         <div class="card border-0 rounded mb-2">
                                                             <a data-toggle="collapse" href="#collaps_<?= $user->getNom(); ?>" class="faq position-relative" aria-expanded="true" aria-controls="collaps_<?= $user->getNom(); ?>">
@@ -696,7 +700,7 @@
                                                                     </div>
                                                                     <div class="row">
                                                                         <p class="col"><span class='text-primary'>Nombre de commande passé :</span> <?php echo count($commandeManager->findByUtilisateur($user->getId_utilisateur())); ?></p>
-                                                                        <p class="col"><span class='text-primary'>Nombre d'argent dépensé :</span> <?php echo $user->getTelephone(); ?></p>
+                                                                        <p class="col"><span class='text-primary'>Nombre d'argent dépensé :</span> <?php echo $total; ?>€</p>
                                                                     </div>
                                                                     <div class="row">
                                                                         <p class="col"><span class='text-primary'>Date d'inscription :</span> <?php echo $user->getDate_registerFR(); ?></p>
