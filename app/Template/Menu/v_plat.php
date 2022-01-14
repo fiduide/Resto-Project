@@ -135,7 +135,7 @@
                             </div>
                             <!--end teb pane-->
                             <?php if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1) { ?>
-                                <button type="submit" class="btn btn-primary mt-5">Ajouter à ma commande</button>
+                                <button type="submit" class="btn btn-primary mt-5">Ajouter au panier</button>
                             <?php } else { ?>
                                 <button type="button" class="btn btn-primary mt-5" disabled>Vous n'êtes pas connecté</button>
                             <?php } ?>
