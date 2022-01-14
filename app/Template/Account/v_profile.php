@@ -170,6 +170,7 @@
                                                         <?php } else { ?>
                                                             <span class="badge badge-pill badge-success">Terminée</span>
                                                         <?php } ?>
+                                                        <span class="badge badge-pill badge-warning"><i class="mdiDownload"><a style="color:white" target="_blank" href="index.php?action=OpenFacture">Télécharger Facture</a></i></span>
                                                     </div>
                                                 </div>
 

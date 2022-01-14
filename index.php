@@ -76,11 +76,11 @@ try {
 
             if (isset($_POST['statut_message']) && $_POST['statut_message'] == 1) {
                 if (isset($_POST['name']) && $_POST['name'] && $_POST['comments']) {
-                $nom = $_POST['name'];
-                $mail = $_POST['name'];
-                $message = $_POST['comments'];
+                    $nom = $_POST['name'];
+                    $mail = $_POST['name'];
+                    $message = $_POST['comments'];
 
-                $sendMail->sendMailTo($nom, $mail, $message);
+                    $sendMail->sendMailTo($nom, $mail, $message);
                 }else{
                     header("Location: index.php?forgetThing");
                 }
@@ -95,6 +95,13 @@ try {
             } else {
                 $choixController->affichage();
             }
+
+            break;
+
+        case 'OpenFacture':
+            $choixController = new ChoixController();
+
+            $choixController->openFacture();
 
             break;
 
