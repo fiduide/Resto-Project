@@ -61,7 +61,7 @@ try {
                 $choixController->affichage();
             }
 
-                break;
+            break;
 
         case 'checkout':
             $checkoutController = new CheckoutController();
@@ -81,7 +81,7 @@ try {
                     $message = $_POST['comments'];
 
                     $sendMail->sendMailTo($nom, $mail, $message);
-                }else{
+                } else {
                     header("Location: index.php?forgetThing");
                 }
             }
@@ -126,16 +126,18 @@ try {
             }
 
             break;
-            
+
         case 'adminBoard':
             $adminController = new AdminController();
-            if(isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "postCommand" )
-            {
+            if (isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "postCommand") {
                 $adminController->setCommandDelivered($_GET['commandId']);
-            }
-            else if(isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "waitingCommand")
-            {
+            } else if (isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "waitingCommand") {
                 $adminController->setCommandWaiting($_GET['commandId']);
+            } else if (isset($_GET['admin']) && isset($_GET['itemId']) && isset($_GET['type']) && $_GET['admin'] == "updateItem") {
+                //action = adminBoard & admin = updateItem & type = dessert & itemId
+                $adminController->updateItem();
+            } else if (isset($_GET['admin']) && isset($_GET['type']) && $_GET['admin'] == "addItem") {
+                $adminController->addItem();
             }
             $adminController->affichage();
             break;

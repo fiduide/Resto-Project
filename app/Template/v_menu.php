@@ -26,31 +26,27 @@
              <!-- Navigation Menu-->
              <ul class="navigation-menu">
                  <li class="has-submenu"><a href="index.php?action=choix">Notre Carte</a></li>
-                 <li class="has-submenu">
-                     <a href="javascript:void(0)">Notre restaurant</a></span>
-                     <ul class="submenu megamenu">
-                         <li>
-                             <ul>
-                                 <li><a class="dropdown-item text-dark" href="index.php?action=account"><i class="uil uil-user align-middle mr-1"></i> Reserver une table</a></li>
-                             </ul>
-                         </li>
-                     </ul>
-                 </li>
-                 <li class="has-submenu">
+                
+                <?php if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1) { ?>
+                    <li class="has-submenu"><a href="#" class="text-dark" data-toggle="modal" data-target="#pop_reservation"><i class="mdi mdi-calendar-month"></i> Reserver une table</a></li>
+                <?php } ?>
+                
+                <li class="has-submenu">
                      <a href="javascript:void(0)"><i class="mdi mdi-account"></i></a><span class="menu-arrow"></span>
                      <ul class="submenu megamenu">
                          <li>
                              <ul>
                                  <li><a class="dropdown-item text-dark" href="index.php?action=account"><i class="mdi mdi-account align-middle mr-1"></i> Mon compte</a></li>
                                  <?php if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1) { ?>
-                                     <div class="dropdown-divider my-3 border-top"></div>
                                      <li><a class="dropdown-item text-dark" href="index.php?action=choix&command=1"><i class="mdi mdi-basket align-middle mr-1"></i> Mon Panier</a></li>
-                                     <li><a class="dropdown-item text-dark" href="index.php?action=account&disconnect=1"><i class="mdi mdi-login-variant align-middle mr-1"></i> Se déconnecter</a></li>
-                                 <?php }
-                                    if (isset($_SESSION['acces']) && $_SESSION['acces'] == 2) { ?>
-                                     <div class="dropdown-divider my-3 border-top"></div>
+                                 <?php } ?>
+                                 <?php if (isset($_SESSION['acces']) && $_SESSION['acces'] == 2) { ?>
                                      <li><a class="dropdown-item text-dark" href="index.php?action=adminBoard"><i class="mdi mdi-cog align-middle mr-1"></i> Administration</a></li>
                                  <?php } ?>
+                                 <?php if (isset($_SESSION['isConnected']) && $_SESSION['isConnected'] == 1) { ?>
+                                    <div class="dropdown-divider my-3 border-top"></div>
+                                    <li><a class="dropdown-item text-dark" href="index.php?action=account&disconnect=1"><i class="mdi mdi-login-variant align-middle mr-1"></i> Se déconnecter</a></li>
+                                <?php } ?>
                              </ul>
                          </li>
                      </ul>
@@ -64,3 +60,5 @@
  </header>
  <!--end header-->
  <!-- Navbar End -->
+
+ <?php include("app/Component/reservation.php"); ?>

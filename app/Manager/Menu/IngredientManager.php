@@ -41,4 +41,37 @@ class IngredientManager extends Database
 
         return $ingredient;
     }
+
+    public function findAll(): array
+    {
+        $query = "SELECT *
+            FROM ingredient";
+        $stmt = $this->pdo->query($query, \PDO::FETCH_CLASS, "app\Entity\Menu\Ingredient");
+
+        $ingredient = $stmt->fetchAll();
+        $stmt->closeCursor();
+
+        return $ingredient;
+    }
+
+
+
+    public function deletePizzaIngredient($id_pizza)
+    {
+        $statementArt = "DELETE FROM pizza_ingredient WHERE id_pizza = $id_pizza";
+        $prepare = $this->pdo->prepare($statementArt);
+        $prepare->execute();
+    }
+
+    public function insertIngredientInPizza($id_pizza, $id_ingredient)
+    {
+        //INSERT COMMAND
+        $obj = [':id_pizza' => $id_pizza, ':id_ingredient' => $id_ingredient];
+        $statementArt = "INSERT INTO pizza_ingredient (id_pizza, id_ingredient)
+        VALUES (:id_pizza, :id_ingredient)";
+
+        $prepare = $this->pdo->prepare($statementArt);
+
+        $prepare->execute($obj);
+    }
 }

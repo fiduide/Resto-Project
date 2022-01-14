@@ -63,7 +63,16 @@
                         <li class="nav-item mt-2">
                             <a class="nav-link rounded" id="menu-modif" data-toggle="pill" href="#menu" role="tab" aria-controls="menu" aria-selected="false">
                                 <div class="text-left py-1 px-3">
-                                    <h6 class="mb-0"><i class="uil uil-list-ul h5 align-middle mr-2 mb-0"></i> Modification de la carte</h6>
+                                    <h6 class="mb-0"><i class="uil uil-list-ul h5 align-middle mr-2 mb-0"></i> Gestion de la carte</h6>
+                                </div>
+                            </a>
+                            <!--end nav link-->
+                        </li>
+                        <!--end nav item-->
+                        <li class="nav-item mt-2">
+                            <a class="nav-link rounded" id="menu-add" data-toggle="pill" href="#addItem" role="tab" aria-controls="addItem" aria-selected="false">
+                                <div class="text-left py-1 px-3">
+                                    <h6 class="mb-0"><i class="uil uil-list-ul h5 align-middle mr-2 mb-0"></i> Ajouter à la carte</h6>
                                 </div>
                             </a>
                             <!--end nav link-->
@@ -136,7 +145,7 @@
                                             <td><?php echo $commande->getDate_orderFR(); ?></td>
                                             <?php
                                             if ($commande->getEtat() == 0) {
-                                                echo '<td class="text-warning">En attente</td>';
+                                                echo '<td class="text-danger">En attente</td>';
                                             } else {
                                                 echo '<td class="text-success">Livrée</td>';
                                             }
@@ -259,12 +268,52 @@
                                                         <?php foreach ($listPizza as $pizza) { ?>
                                                             <tr>
                                                                 <th scope="row"><?php echo $pizza->getNom(); ?> </th>
-                                                                <td><?php echo $pizza->getListIngredient(); ?></td>
+                                                                <td class="text-small"><i><?php echo $pizza->getListIngredient(); ?></i></td>
                                                                 <td><?php echo $pizza->getPrix(); ?>€</td>
-                                                                <td>
 
+                                                                <td>
+                                                                    <a class="btn btn-soft-primary" data-toggle="modal" data-target="#pizza_<?= $pizza->getId(); ?>">Modifier</a>
                                                                 </td>
                                                             </tr>
+                                                            <!-- Modal -->
+                                                            <!-- Wishlist Popup Start -->
+                                                            <div class="modal fade" id="pizza_<?php echo $pizza->getId(); ?>" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content rounded shadow-lg border-0 ">
+                                                                        <div class="modal-header">
+                                                                            <div class="modal-title">Modification de <b>"<?php echo $pizza->getNom(); ?>"</b></div>
+                                                                            <div><b><i>n° :<?php echo $pizza->getId(); ?></i></b></div>
+                                                                        </div>
+                                                                        <div class="modal-body py-3 pb-3">
+                                                                            <form action="index.php?action=adminBoard&admin=updateItem&type=pizza&itemId=<?= $pizza->getId() ?>" method="POST">
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">Nom</span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="nom" name="nom" value="<?php echo $pizza->getNom(); ?>">
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">Prix</span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" placeholder="Prix" aria-label="prix" id="prix" name="prix" value="<?php echo $pizza->getPrix(); ?>">
+                                                                                </div>
+                                                                                <div class="container row mx-auto">
+                                                                                    <?php
+                                                                                    foreach ($listIngredient as $ingredients) { ?>
+                                                                                        <div class="col-6 form-group form-check">
+                                                                                            <input type="checkbox" class="form-check-input" <?= $pizza->existIngredient($ingredients->getId_ingredient()) ? "checked" : "" ?> id="<?= $ingredients->getId_ingredient() ?>" name="ingredient[<?= $ingredients->getId_ingredient() ?>]">
+                                                                                            <label class="form-check-label" for="exampleCheck1"><?= $ingredients->getNom_ingredient() ?></label>
+                                                                                        </div>
+                                                                                    <?php } ?>
+                                                                                </div>
+                                                                                <button type="submit" class="btn btn-soft-primary">Valider ma modification</button><br>
+                                                                                <small style="font-size:9px"><i>*Attention toutes modifications est irréversible</i></small>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         <?php } ?>
                                                     </tbody>
                                                 </table>
@@ -287,9 +336,39 @@
                                                                 <th scope="row"><?php echo ucfirst(strtolower($boisson->getNom())); ?> </th>
                                                                 <td><?php echo $boisson->getPrix(); ?>€</td>
                                                                 <td>
-
+                                                                    <a class="btn btn-soft-primary" data-toggle="modal" data-target="#boisson_<?= $boisson->getId(); ?>">Modifier</a>
                                                                 </td>
                                                             </tr>
+                                                            <!-- Modal -->
+                                                            <!-- Wishlist Popup Start -->
+                                                            <div class="modal fade" id="boisson_<?php echo $boisson->getId(); ?>" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content rounded shadow-lg border-0 ">
+                                                                        <div class="modal-header">
+                                                                            <div class="modal-title"><?php echo $boisson->getNom(); ?></div>
+                                                                            <div><b><i>n° :<?php echo $boisson->getId(); ?></i></b></div>
+                                                                        </div>
+                                                                        <div class="modal-body py-3 pb-3">
+                                                                            <form action="index.php?action=adminBoard&admin=updateItem&type=boisson&itemId=<?= $boisson->getId() ?>" method="POST">
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">Nom</span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="nom" name="nom" value="<?php echo $boisson->getNom(); ?>">
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">Prix</span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" placeholder="Prix" aria-label="prix" id="prix" name="prix" value="<?php echo $boisson->getPrix(); ?>">
+                                                                                </div>
+                                                                                <button type="submit" class="btn btn-soft-primary">Valider ma modification</button><br>
+                                                                                <small style="font-size:9px"><i>*Attention toutes modifications est irréversible</i></small>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         <?php } ?>
                                                     </tbody>
                                                 </table>
@@ -312,9 +391,39 @@
                                                                 <th scope="row"><?php echo ucfirst(strtolower($dessert->getNom())); ?> </th>
                                                                 <td><?php echo $dessert->getPrix(); ?>€</td>
                                                                 <td>
-
+                                                                    <a class="btn btn-soft-primary" data-toggle="modal" data-target="#dessert_<?= $dessert->getId(); ?>">Modifier</a>
                                                                 </td>
                                                             </tr>
+                                                            <!-- Modal -->
+                                                            <!-- Wishlist Popup Start -->
+                                                            <div class="modal fade" id="dessert_<?php echo $dessert->getId(); ?>" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content rounded shadow-lg border-0 ">
+                                                                        <div class="modal-header">
+                                                                            <div class="modal-title"><?php echo $dessert->getNom(); ?></div>
+                                                                            <div><b><i>n° :<?php echo $dessert->getId(); ?></i></b></div>
+                                                                        </div>
+                                                                        <div class="modal-body py-3 pb-3">
+                                                                            <form action="index.php?action=adminBoard&admin=updateItem&type=dessert&itemId=<?= $dessert->getId() ?>" method="POST">
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">Nom</span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="nom" name="nom" value="<?php echo $dessert->getNom(); ?>">
+                                                                                </div>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <span class="input-group-text">Prix</span>
+                                                                                    </div>
+                                                                                    <input type="text" class="form-control" placeholder="Prix" aria-label="prix" id="prix" name="prix" value="<?php echo $dessert->getPrix(); ?>">
+                                                                                </div>
+                                                                                <button type="submit" class="btn btn-soft-primary">Valider ma modification</button><br>
+                                                                                <small style="font-size:9px"><i>*Attention toutes modifications est irréversible</i></small>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         <?php } ?>
                                                     </tbody>
                                                 </table>
@@ -324,13 +433,242 @@
                                     </div>
                                 </div>
                                 <!--end teb pane-->
+
+                                <div class="tab-pane fade bg-white shadow rounded p-4" id="menu" role="tabpanel" aria-labelledby="menu">
+                                    <div class="widget">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-8 col-md-12 mt-4 pt-2 text-center">
+                                                <ul class="nav nav-pills nav-justified flex-column flex-sm-row rounded" id="pills-tab" role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link rounded active" id="pills-cloud-tab" data-toggle="pill" href="#pills-cloud" role="tab" aria-controls="pills-cloud" aria-selected="false">
+                                                            <div class="text-center py-2">
+                                                                <h6 class="mb-0">Pizzas</h6>
+                                                            </div>
+                                                        </a>
+                                                        <!--end nav link-->
+                                                    </li>
+                                                    <!--end nav item-->
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link rounded" id="pills-smart-tab" data-toggle="pill" href="#pills-smart" role="tab" aria-controls="pills-smart" aria-selected="false">
+                                                            <div class="text-center py-2">
+                                                                <h6 class="mb-0">Boissons</h6>
+                                                            </div>
+                                                        </a>
+                                                        <!--end nav link-->
+                                                    </li>
+                                                    <!--end nav item-->
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link rounded" id="pills-apps-tab" data-toggle="pill" href="#pills-apps" role="tab" aria-controls="pills-apps" aria-selected="false">
+                                                            <div class="text-center py-2">
+                                                                <h6 class="mb-0">Desserts</h6>
+                                                            </div>
+                                                        </a>
+                                                        <!--end nav link-->
+                                                    </li>
+                                                    <!--end nav item-->
+                                                </ul>
+                                                <!--end nav pills-->
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-12 mt-4 pt-2">
+                                                <div class="tab-content" id="pills-tabContent">
+                                                    <div class="tab-pane fade show active" id="pills-cloud" role="tabpanel" aria-labelledby="pills-cloud-tab">
+                                                        <table class="table mb-0 table-center table-nowrap">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">Nom</th>
+                                                                    <th scope="col">Ingrédients</th>
+                                                                    <th scope="col">Prix</th>
+                                                                    <th scope="col">Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php foreach ($listPizza as $pizza) { ?>
+                                                                    <tr>
+                                                                        <th scope="row"><?php echo $pizza->getNom(); ?> </th>
+                                                                        <td class="text-small"><i><?php echo $pizza->getListIngredient(); ?></i></td>
+                                                                        <td><?php echo $pizza->getPrix(); ?>€</td>
+
+                                                                        <td>
+                                                                            <a class="btn btn-soft-primary" data-toggle="modal" data-target="#pizza_<?= $pizza->getId(); ?>">Modifier</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <!-- Modal -->
+                                                                    <!-- Wishlist Popup Start -->
+                                                                    <div class="modal fade" id="pizza_<?php echo $pizza->getId(); ?>" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                            <div class="modal-content rounded shadow-lg border-0 ">
+                                                                                <div class="modal-header">
+                                                                                    <div class="modal-title">Modification de <b>"<?php echo $pizza->getNom(); ?>"</b></div>
+                                                                                    <div><b><i>n° :<?php echo $pizza->getId(); ?></i></b></div>
+                                                                                </div>
+                                                                                <div class="modal-body py-3 pb-3">
+                                                                                    <form action="index.php?action=adminBoard&admin=updateItem&type=pizza&itemId=<?= $pizza->getId() ?>" method="POST">
+                                                                                        <div class="input-group mb-3">
+                                                                                            <div class="input-group-prepend">
+                                                                                                <span class="input-group-text">Nom</span>
+                                                                                            </div>
+                                                                                            <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="nom" name="nom" value="<?php echo $pizza->getNom(); ?>">
+                                                                                        </div>
+                                                                                        <div class="input-group mb-3">
+                                                                                            <div class="input-group-prepend">
+                                                                                                <span class="input-group-text">Prix</span>
+                                                                                            </div>
+                                                                                            <input type="text" class="form-control" placeholder="Prix" aria-label="prix" id="prix" name="prix" value="<?php echo $pizza->getPrix(); ?>">
+                                                                                        </div>
+                                                                                        <div class="container row mx-auto">
+                                                                                            <?php
+                                                                                            foreach ($listIngredient as $ingredients) { ?>
+                                                                                                <div class="col-6 form-group form-check">
+                                                                                                    <input type="checkbox" class="form-check-input" <?= $pizza->existIngredient($ingredients->getId_ingredient()) ? "checked" : "" ?> id="<?= $ingredients->getId_ingredient() ?>" name="ingredient[<?= $ingredients->getId_ingredient() ?>]">
+                                                                                                    <label class="form-check-label" for="exampleCheck1"><?= $ingredients->getNom_ingredient() ?></label>
+                                                                                                </div>
+                                                                                            <?php } ?>
+                                                                                        </div>
+                                                                                        <button type="submit" class="btn btn-soft-primary">Valider ma modification</button><br>
+                                                                                        <small style="font-size:9px"><i>*Attention toutes modifications est irréversible</i></small>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <?php } ?>
+                                                            </tbody>
+                                                        </table>
+                                                        <!--end row-->
+                                                    </div>
+                                                    <!--end teb pane-->
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                        </div>
+                                        <!--end row-->
+                                    </div>
+                                    <!--end container-->
+                                </div>
                             </div>
                         </div>
-                        <!--end col-->
-                    </div>
-                    <!--end row-->
-                </div>
-                <!--end container-->
+                        <div class="tab-pane fade bg-white shadow rounded p-4" id="addItem" role="tabpanel" aria-labelledby="addItem">
+                            <div class="widget">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-8 col-md-12 mt-4 pt-2 text-center">
+                                        <ul class="nav nav-pills nav-justified flex-column flex-sm-row rounded" id="pills-tab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link rounded active" id="pills-cloud-tab" data-toggle="pill" href="#pills-pizza" role="tab" aria-controls="pills-pizza" aria-selected="false">
+                                                    <div class="text-center py-2">
+                                                        <h6 class="mb-0">Pizzas</h6>
+                                                    </div>
+                                                </a>
+                                                <!--end nav link-->
+                                            </li>
+                                            <!--end nav item-->
+
+                                            <li class="nav-item">
+                                                <a class="nav-link rounded" id="pills-smart-tab" data-toggle="pill" href="#pills-boisson" role="tab" aria-controls="pills-boisson" aria-selected="false">
+                                                    <div class="text-center py-2">
+                                                        <h6 class="mb-0">Boissons</h6>
+                                                    </div>
+                                                </a>
+                                                <!--end nav link-->
+                                            </li>
+                                            <!--end nav item-->
+
+                                            <li class="nav-item">
+                                                <a class="nav-link rounded" id="pills-apps-tab" data-toggle="pill" href="#pills-dessert" role="tab" aria-controls="pills-dessert" aria-selected="false">
+                                                    <div class="text-center py-2">
+                                                        <h6 class="mb-0">Desserts</h6>
+                                                    </div>
+                                                </a>
+                                                <!--end nav link-->
+                                            </li>
+                                            <!--end nav item-->
+                                        </ul>
+                                        <!--end nav pills-->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 mt-4 pt-2">
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-pane fade show active" id="pills-pizza" role="tabpanel" aria-labelledby="pills-pizza-tab">
+                                                <form action="index.php?action=adminBoard&admin=addItem&type=pizza" method="POST">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">Nom</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="nom" name="nom">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">Prix</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Prix" aria-label="prix" id="prix" name="prix">
+                                                    </div>
+                                                    <div class="container row mx-auto">
+                                                        <?php
+                                                        foreach ($listIngredient as $ingredients) { ?>
+                                                            <div class="col-6 form-group form-check">
+                                                                <input type="checkbox" class="form-check-input" name="ingredient[<?= $ingredients->getId_ingredient() ?>]">
+                                                                <label class="form-check-label" for="exampleCheck1"><?= $ingredients->getNom_ingredient() ?></label>
+                                                            </div>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-soft-primary">Valider</button><br>
+                                                </form>
+                                                <!--end row-->
+                                            </div>
+                                            <!--end teb pane-->
+
+                                            <div class="tab-pane fade" id="pills-boisson" role="tabpanel" aria-labelledby="pills-boisson-tab">
+                                                <form action="index.php?action=adminBoard&admin=addItem&type=boisson" method="POST">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">Nom</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="nom" name="nom">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">Prix</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Prix" aria-label="prix" id="prix" name="prix">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-soft-primary">Valider </button><br>
+                                                </form>
+                                                <!--end row-->
+                                            </div>
+                                            <!--end teb pane-->
+
+                                            <div class="tab-pane fade" id="pills-dessert" role="tabpanel" aria-labelledby="pills-dessert-tab">
+                                                <form action="index.php?action=adminBoard&admin=addItem&type=dessert" method="POST">
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">Nom</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="nom" name="nom">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">Prix</span>
+                                                        </div>
+                                                        <input type="text" class="form-control" placeholder="Prix" aria-label="prix" id="prix" name="prix">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-soft-primary">Valider</button><br>
+                                                </form>
+                                                <!--end row-->
+                                            </div>
+                                            <!--end teb pane-->
+                                        </div>
+                                    </div>
+                                    <!--end col-->
+                                </div>
+                                <!--end row-->
+                            </div>
+                        </div>
     </section>
     <!--end section-->
     <!-- End -->
@@ -347,6 +685,15 @@
                 if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
             }
         });
+        var search_params = new URLSearchParams(window.location.search);
+
+        if (search_params.has('success')) {
+            Notify("<span class='text-success'><b>Votre modification a été acceptée</b></span>", "primary");
+        } else if (search_params.has('successAdd')) {
+            Notify("<span class='text-success'><b>Votre ajout a été acceptée</b></span>", "primary");
+        } else if (search_params.has('errorAdd')) {
+            Notify("<span class='text-danger'><b>Erreur dans l'ajout de votre item</b></span>", "primary");
+        }
     </script>
 </body>
 
