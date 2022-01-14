@@ -1,4 +1,5 @@
 <?php
+
 namespace app\Manager;
 
 use core\Database\Database;
@@ -13,7 +14,7 @@ class CheckoutManager
     {
         $this->pdo = (new Database())->pdo;
 
-        if(is_null($this->pdo)){
+        if (is_null($this->pdo)) {
             throw new \Exception("Erreur dans les identifiants de connexion à la BDD");
         }
     }
@@ -30,12 +31,18 @@ class CheckoutManager
         VALUES (:id_user, :etat, :date_order, :total)";
 
         $prepare = $this->pdo->prepare($statementArt);
-        
+
         $prepare->execute($data);
 
         return $this->pdo->lastInsertId();
     }
 
+    /**
+     * Lie une pizza à une commande
+     *
+     * @param array $data
+     * @return void
+     */
     public function AddCheckoutPizza(array $data)
     {
         //INSERT COMMAND
@@ -46,6 +53,12 @@ class CheckoutManager
         $prepare->execute($data);
     }
 
+    /**
+     * Lie une boisson à une commande
+     *
+     * @param array $data
+     * @return void
+     */
     public function AddCheckoutBoisson(array $data)
     {
         //INSERT COMMAND
@@ -56,6 +69,12 @@ class CheckoutManager
         $prepare->execute($data);
     }
 
+    /**
+     * Lie un dessert à une commande
+     *
+     * @param array $data
+     * @return void
+     */
     public function AddCheckoutDessert(array $data)
     {
         //INSERT COMMAND

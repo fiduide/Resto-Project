@@ -249,6 +249,30 @@ class Commande extends DefaultEntity
     }
 
     /**
+     * Get the value of total
+     *
+     * @return  float
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    /**
+     * Set the value of total
+     *
+     * @param  float  $total
+     *
+     * @return  self
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    /**
      * Retoune la date de commande au format français
      *
      * @return string
@@ -322,29 +346,5 @@ class Commande extends DefaultEntity
         }
 
         return implode(", ", $arDessert);
-    }
-
-    /**
-     * Get the value of total
-     *
-     * @return  float
-     */ 
-    public function getTotal()
-    {
-        return $this->total;
-    }
-
-    /**
-     * Set the value of total
-     *
-     * @param  float  $total
-     *
-     * @return  self
-     */ 
-    public function setTotal($total)
-    {
-        $this->total = $total;
-
-        return $this;
     }
 }

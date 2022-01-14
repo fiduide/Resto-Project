@@ -46,7 +46,15 @@ class CommandeManager extends Database
         return $commande;
     }
 
-    public function findByUtilisateur(int $id, int $limit = null): array
+    /**
+     * Récupère les commandes d'un utilisateur.
+     * Possibilité d'y passer une limite de commande.
+     *
+     * @param integer $id
+     * @param integer|null $limit
+     * @return array
+     */
+    public function findByUtilisateur(int $id, int|null $limit = null): array
     {
         $query = "SELECT *
             FROM commande
@@ -83,7 +91,11 @@ class CommandeManager extends Database
         return $arCommande;
     }
 
-
+    /**
+     * Récupère toutes les commandes
+     *
+     * @return array
+     */
     public function allCommand(): array
     {
         $query = "SELECT *
@@ -117,6 +129,11 @@ class CommandeManager extends Database
         return $arCommande;
     }
 
+    /**
+     * Récupère le nombre de commandes terminées
+     *
+     * @return integer
+     */
     public function getCountAllCommand(): int
     {
         $query = "SELECT count(*) as count
@@ -128,6 +145,11 @@ class CommandeManager extends Database
         return $count['count'];
     }
 
+    /**
+     * Récupère le nombre de commande en cours
+     *
+     * @return integer
+     */
     public function getCountInProgressCommand(): int
     {
         $query = "SELECT count(*) as count
@@ -139,6 +161,11 @@ class CommandeManager extends Database
         return $count['count'];
     }
 
+    /**
+     * Récupère la somme total générée par les commandes
+     *
+     * @return float
+     */
     public function getTotalCommand(): float
     {
         $query = "SELECT SUM(total) as total
@@ -150,7 +177,13 @@ class CommandeManager extends Database
         return $count['total'];
     }
 
-    public function setCommandDelivered($commandId)
+    /**
+     * Marque un commande comme "Terminée".
+     *
+     * @param int $commandId
+     * @return void
+     */
+    public function setCommandDelivered(int $commandId)
     {
         $statementArt = "UPDATE commande SET 
                              etat = 1
@@ -159,7 +192,14 @@ class CommandeManager extends Database
         $prepare = $this->pdo->prepare($statementArt);
         $prepare->execute();
     }
-    public function setCommandWaiting($commandId)
+
+    /**
+     * Marque une commande comme "En cours".
+     *
+     * @param int $commandId
+     * @return void
+     */
+    public function setCommandWaiting(int $commandId)
     {
         $statementArt = "UPDATE commande SET 
                              etat = 0

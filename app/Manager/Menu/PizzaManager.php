@@ -53,7 +53,15 @@ class PizzaManager extends Database
         return $pizzas;
     }
 
-    public function updatePizza($id, $nom, $prix)
+    /**
+     * Met à jour une pizza
+     *
+     * @param integer $id
+     * @param string $nom
+     * @param float $prix
+     * @return void
+     */
+    public function updatePizza(int $id, string $nom, float $prix)
     {
         $obj = [':nom' => $nom, ':prix' => $prix];
         $statementArt = "UPDATE pizza SET
@@ -65,11 +73,14 @@ class PizzaManager extends Database
     }
 
     /**
-     * Add des pizzas
+     * Ajoute une pizza et la lie à ses ingrédients
      *
-     * @return boolean
+     * @param string $nom
+     * @param float $prix
+     * @param array $ingredient
+     * @return void
      */
-    public function addPizza($nom, $prix, $ingredient)
+    public function addPizza(string $nom, float $prix, array $ingredient)
     {
         $obj = [':nom' => $nom, ':prix' => $prix];
         //INSERT COMMAND

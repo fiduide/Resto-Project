@@ -6,6 +6,7 @@ use app\Controller\MainController;
 use app\Controller\ChoixController;
 use app\Controller\CheckoutController;
 use app\Controller\AdminController;
+use app\Controller\ReservationController;
 use app\Controller\sendMailController;
 
 
@@ -98,6 +99,13 @@ try {
 
             break;
 
+        case 'OpenFacture':
+            $choixController = new ChoixController();
+
+            $choixController->openFacture();
+
+            break;
+
         case 'ajoutProduit':
             $choixController = new ChoixController();
 
@@ -135,6 +143,11 @@ try {
             $adminController->affichage();
             break;
 
+        case 'reservation':
+            $reservationController = new ReservationController();
+
+            $reservationController->save();
+            break;
 
         default:
             $mainController = new MainController();

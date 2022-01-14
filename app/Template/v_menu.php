@@ -61,4 +61,4 @@
  <!--end header-->
  <!-- Navbar End -->
 
- <?php include("app/Component/reservation.php"); ?>
+ <?php include("app/Component/modal_reservation.php"); ?>

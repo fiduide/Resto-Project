@@ -133,4 +133,9 @@ class ChoixController extends MainController
             $this->getCommand();
         }
     }
+
+    public function openFacture()
+    {
+        include(ROOT . "/app/Template/Account/v_factureHtml.php");
+    }
 }

@@ -84,10 +84,11 @@ class UtilisateurManager extends Database
     }
 
     /**
-     * Créé un nouvel utilisateur
+     * Met à jour un utilisateur
      *
      * @param array $data
-     * @return integer identifiant de l'utilisateur créé
+     * @param integer $id
+     * @return void
      */
     public function update(array $data, int $id)
     {
@@ -107,8 +108,10 @@ class UtilisateurManager extends Database
     }
 
     /**
-     * Suprimer un utilisateur
+     * Supprime un utilisateur en fonction de son identifiant
      *
+     * @param integer $id
+     * @return void
      */
     public function deleteAccountClient(int $id)
     {

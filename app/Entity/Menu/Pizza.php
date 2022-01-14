@@ -125,6 +125,12 @@ class Pizza extends DefaultEntity
         return implode(", ", $arIngredient);
     }
 
+    /**
+     * Vérifie qu'un ingrédient est bien dans la pizza
+     *
+     * @param integer $id_ingredient
+     * @return boolean
+     */
     public function existIngredient(int $id_ingredient): bool
     {
         $isIngredient = false;

@@ -306,34 +306,32 @@
         var search_params = new URLSearchParams(window.location.search);
 
         if (search_params.has('disconnect')) {
-            var params = search_params.get('disconnect');
-            console.log(params);
-            Notify("Vous êtes maintennant déconnecté", "primary");
+            Notify("Vous êtes maintennant déconnecté");
 
         } else if (search_params.has('connect')) {
-            var params = search_params.get('connect');
-            console.log(params)
-            Notify("Vous êtes maintennant connecté", "primary");
+            Notify("Vous êtes maintennant connecté");
         } else if (search_params.has('registered')) {
-            var params = search_params.get('registered');
-            console.log(params)
-            Notify("Vous êtes maintennant inscrit et connecté", "primary");
+            Notify("Vous êtes maintennant inscrit et connecté");
         }
         else if(search_params.has('sendMail')){
-            var params = search_params.get('sendMail');
-            console.log(params);
-            Notify("Votre formulaire de contact a été envoyé !", "primary");
+            Notify("Votre formulaire de contact a été envoyé !");
         }
         else if(search_params.has('sendMailNot')){
-            var params = search_params.get('sendMailNot');
-            console.log(params);
-            Notify("Votre formulaire de contact n'a pas été envoyé !", "primary");
+            Notify("Votre formulaire de contact n'a pas été envoyé !");
         }
         else if(search_params.has('forgetThing')){
-            var params = search_params.get('sendMailNot');
-            console.log(params);
-            Notify("Vous avez oubliez un ou plusieurs champs !", "primary");
-        }
+            Notify("Vous avez oubliez un ou plusieurs champs !");
+        } 
+        else if(search_params.has('reservation_save')){
+            var params = search_params.get('reservation_save');
+            if(params == 0){
+                Notify("Une erreur est survenue lors de l'enregistrement !");
+            } else if (params == 1){
+                Notify("Votre table a bien été réservée !");
+            } else if (params == 2){
+                Notify("Nous n'avons plus de place pour ce soir, Revenez demain ! ;-)");
+            }
+        } 
     </script>
 </body>
 
