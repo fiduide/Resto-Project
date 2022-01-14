@@ -12,7 +12,9 @@ use app\Manager\Menu\PizzaManager;
 class ChoixController extends MainController
 {
 
-
+    /**
+     * Affichage complet des pizzas, boissons, desserts
+     */
     public function affichage()
     {
         $pizzaManager = new PizzaManager();
@@ -27,7 +29,9 @@ class ChoixController extends MainController
         include(ROOT . "/app/Template/Menu/v_plat.php");
     }
 
-
+    /**
+     * Ajout d'une commande au panier
+     */
     public function addCommand($pizzas, $boissons, $desserts)
     {
         if (!isset($_SESSION['commande'])) {
@@ -51,6 +55,9 @@ class ChoixController extends MainController
         }
     }
 
+    /**
+     * Récupérer les infos d'une commande dans le panier et affichage
+     */
     public function getCommand()
     {
         $html = "";
@@ -104,6 +111,9 @@ class ChoixController extends MainController
         include(ROOT . "/app/Template/Menu/v_facture.php");
     }
 
+    /**
+     * Supprimer une quantité d'un produit du panier
+     */
     public function deleteProduit($type, $idProduit)
     {
         if (isset($type) && isset($idProduit)) {
@@ -116,6 +126,9 @@ class ChoixController extends MainController
         }
     }
 
+    /**
+     * Ajouter une quantité d'un produit du panier
+     */
     public function ajoutProduit($type, $idProduit)
     {
         if (isset($type) && isset($idProduit)) {
@@ -126,6 +139,9 @@ class ChoixController extends MainController
         }
     }
 
+    /**
+     * Supprimer tous les quantités d'un produit du panier
+     */
     public function deleteAllProduit($type, $idProduit)
     {
         if (isset($type) && isset($idProduit)) {
@@ -134,6 +150,9 @@ class ChoixController extends MainController
         }
     }
 
+    /**
+     * Ouvrir 
+     */
     public function openFacture()
     {
         include(ROOT . "/app/Template/Account/v_factureHtml.php");

@@ -14,6 +14,9 @@ use app\Manager\UtilisateurManager;
 
 class AdminController extends MainController
 {
+   /**
+    * Affichage complet de la partie administration avec récupération des commandes, de stats, liste des pizzas, liste des desserts; liste des boissons et liste ingrédients
+    */
    public function affichage()
    {
       $commandeManager = new CommandeManager();
@@ -32,7 +35,9 @@ class AdminController extends MainController
       include(ROOT . "/app/Template/Dashboard/v_dashboard.php");
    }
 
-
+   /**
+    * Récupération de toutes les commandes
+    */
    public function getAllCommand(): array
    {
       $commandeManager = new CommandeManager();
@@ -40,6 +45,9 @@ class AdminController extends MainController
       return $listDesCommandes;
    }
 
+   /**
+    * Récupération du nombre de commande passé
+    */
    public function getCountAllCommand(): int
    {
       $commandeManager = new CommandeManager();
@@ -47,6 +55,9 @@ class AdminController extends MainController
       return $count;
    }
 
+   /**
+    * Récupération du nombre de commande en cours
+    */
    public function getCountInProgressCommand(): int
    {
       $commandeManager = new CommandeManager();
@@ -54,6 +65,9 @@ class AdminController extends MainController
       return $count;
    }
 
+   /**
+    * Récupération de la somme total des commandes réunies
+    */
    public function getTotalCommand()
    {
       $commandeManager = new CommandeManager();
@@ -61,19 +75,27 @@ class AdminController extends MainController
       return number_format($total, 2);
    }
 
+   /**
+    * Changer l'état de la commande en livrée
+    */
    public function setCommandDelivered($commandId)
    {
       $commandeManager = new CommandeManager();
       $commandeManager->setCommandDelivered($commandId);
    }
 
+   /**
+    * Changer l'état de la commande en "en attente"
+    */
    public function setCommandWaiting($commandId)
    {
       $commandeManager = new CommandeManager();
       $commandeManager->setCommandWaiting($commandId);
    }
 
-
+   /**
+    * Récupération de la liste des pizzas
+    */
    public function getListPizza()
    {
       $pizzaManager = new PizzaManager();
@@ -81,6 +103,9 @@ class AdminController extends MainController
       return $list;
    }
 
+   /**
+    * Récupération de la liste des boissons
+    */
    public function getListBoisson()
    {
       $boissonManager = new BoissonManager();
@@ -88,6 +113,9 @@ class AdminController extends MainController
       return $list;
    }
 
+   /**
+    * Récupération de la liste des desserts
+    */
    public function getListDessert()
    {
       $dessertManager = new DessertManager();
@@ -95,6 +123,10 @@ class AdminController extends MainController
       return $list;
    }
 
+
+   /**
+    * Modifier un item(boisson, dessert, pizza) avec nom et prix, liste ingrédient pour les pizzas
+    */
    public function updateItem()
    {
       $adminManager = new AdminManager();
@@ -109,6 +141,9 @@ class AdminController extends MainController
       }
    }
 
+   /**
+    * Ajouter un item(boisson, dessert, pizza) avec nom et prix, liste ingrédient pour les pizzas
+    */
    public function addItem()
    {
       $pizzaManager = new PizzaManager();
@@ -127,6 +162,9 @@ class AdminController extends MainController
       }
    }
 
+   /**
+    * Récupérer la liste des ingrédients
+    */
    public function getListIngredient()
    {
       $ingredientManager = new IngredientManager();
@@ -134,6 +172,9 @@ class AdminController extends MainController
       return $listIngredient;
    }
 
+   /**
+    * Récupérer tous les utilisateurs
+    */
    public function getAllUser()
    {
       $userManager = new UtilisateurManager();
