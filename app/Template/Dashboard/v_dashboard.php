@@ -79,7 +79,7 @@
                         </li>
                         <!--end nav item-->
                         <li class="nav-item mt-2">
-                            <a class="nav-link rounded" id="gestion" data-toggle="pill" href="#gestionUtilisateurs" role="tab" aria-controls="menu" aria-selected="false">
+                            <a class="nav-link rounded" id="gestion" data-toggle="pill" href="#gestionUser" role="tab" aria-controls="gestionUser" aria-selected="false">
                                 <div class="text-left py-1 px-3">
                                     <h6 class="mb-0"><i class="uil uil-list-ul h5 align-middle mr-2 mb-0"></i> Gestions utilisateurs</h6>
                                 </div>
@@ -661,14 +661,71 @@
                                                 </form>
                                                 <!--end row-->
                                             </div>
-                                            <!--end teb pane-->
                                         </div>
                                     </div>
-                                    <!--end col-->
                                 </div>
-                                <!--end row-->
                             </div>
                         </div>
+                        <!--end teb pane-->
+                        <div class="tab-pane fade bg-white shadow rounded p-4" id="gestionUser" role="tabpanel" aria-labelledby="gestionUser">
+                            <div class="widget">
+                                <!-- Accordions Start -->
+                                <div id="accordions">
+                                    <div class="component-wrapper rounded shadow">
+                                        <div class="p-4">
+                                            <div class="faq-content">
+                                                <div class="accordion" id="accordionExample">
+                                                    <?php
+                                                    foreach ($listUser as $user) {
+                                                    ?>
+                                                        <div class="card border-0 rounded mb-2">
+                                                            <a data-toggle="collapse" href="#collaps_<?= $user->getNom(); ?>" class="faq position-relative" aria-expanded="true" aria-controls="collaps_<?= $user->getNom(); ?>">
+                                                                <div class="card-header border-0 bg-light p-3 pr-5" id="headingfifone">
+                                                                    <h6 class="title mb-0"> <?php echo $user->getNom(); ?> <?php echo $user->getPrenom(); ?></h6>
+                                                                </div>
+                                                            </a>
+                                                            <div id="collaps_<?= $user->getNom(); ?>" class="collapse" aria-labelledby="headingfifone" data-parent="#accordionExample">
+                                                                <div class="card-body px-2 py-4">
+                                                                    <div class="row">
+                                                                        <p class="col"><span class='text-primary'>Nom :</span> <?php echo $user->getNom(); ?></p>
+                                                                        <p class="col"><span class='text-primary'>Prenom :</span> <?php echo $user->getPrenom(); ?></p>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <p class="col"><span class='text-primary'>Email :</span> <?php echo $user->getEmail(); ?></p>
+                                                                        <p class="col"><span class='text-primary'>Téléphone :</span> <?php echo $user->getTelephone(); ?></p>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <p class="col"><span class='text-primary'>Nombre de commande passé :</span> <?php echo count($commandeManager->findByUtilisateur($user->getId_utilisateur())); ?></p>
+                                                                        <p class="col"><span class='text-primary'>Nombre d'argent dépensé :</span> <?php echo $user->getTelephone(); ?></p>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <p class="col"><span class='text-primary'>Date d'inscription :</span> <?php echo $user->getDate_registerFR(); ?></p>
+                                                                        <p class="col"><span class='text-primary'>Téléphone :</span> <?php echo $user->getTelephone(); ?></p>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <p class="col"><span class='text-primary'>Niveau d'accès :</span> <?php echo $user->getNiveau_accesLibelle(); ?></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end col-->
+                                <!-- Accordions End -->
+                            </div>
+                        </div>
+                        <!--end teb pane-->
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        </div>
     </section>
     <!--end section-->
     <!-- End -->

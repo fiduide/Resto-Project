@@ -8,6 +8,7 @@ use app\Manager\Menu\PizzaManager;
 use app\Manager\Menu\IngredientManager;
 use app\Manager\Menu\BoissonManager;
 use app\Manager\Menu\DessertManager;
+use app\Manager\UtilisateurManager;
 
 // use app\Manager\AdminManager;
 
@@ -15,6 +16,7 @@ class AdminController extends MainController
 {
    public function affichage()
    {
+      $commandeManager = new CommandeManager();
       $allCommand = $this->getAllCommand();
       $countAllCommand = $this->getCountAllCommand();
       $countInProgressCommand = $this->getCountInProgressCommand();
@@ -24,6 +26,9 @@ class AdminController extends MainController
       $listBoisson = $this->getListBoisson();
       $listDessert = $this->getListDessert();
       $listIngredient = $this->getListIngredient();
+
+      $listUser = $this->getAllUser();
+
       include(ROOT . "/app/Template/Dashboard/v_dashboard.php");
    }
 
@@ -127,5 +132,12 @@ class AdminController extends MainController
       $ingredientManager = new IngredientManager();
       $listIngredient = $ingredientManager->findAll();
       return $listIngredient;
+   }
+
+   public function getAllUser()
+   {
+      $userManager = new UtilisateurManager();
+      $listUser = $userManager->getAllUser();
+      return $listUser;
    }
 }

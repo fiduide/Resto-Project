@@ -119,4 +119,16 @@ class UtilisateurManager extends Database
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
     }
+
+    public function getAllUser()
+    {
+        $stmt = "SELECT *
+            FROM utilisateur";
+        $query = $this->pdo->query($stmt, \PDO::FETCH_CLASS, "app\Entity\Utilisateur");
+
+        $utilisateur = $query->fetchAll();
+        $query->closeCursor();
+
+        return $utilisateur;
+    }
 }

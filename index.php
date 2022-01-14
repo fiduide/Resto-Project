@@ -122,14 +122,14 @@ try {
 
         case 'adminBoard':
             $adminController = new AdminController();
-            if (isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "postCommand") {
+            if (isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "postCommand" && $_SESSION['acces'] == 2) {
                 $adminController->setCommandDelivered($_GET['commandId']);
-            } else if (isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "waitingCommand") {
+            } else if (isset($_GET['admin']) && isset($_GET['commandId']) && $_GET['admin'] == "waitingCommand" && $_SESSION['acces'] == 2) {
                 $adminController->setCommandWaiting($_GET['commandId']);
-            } else if (isset($_GET['admin']) && isset($_GET['itemId']) && isset($_GET['type']) && $_GET['admin'] == "updateItem") {
+            } else if (isset($_GET['admin']) && isset($_GET['itemId']) && isset($_GET['type']) && $_GET['admin'] == "updateItem" && $_SESSION['acces'] == 2) {
                 //action = adminBoard & admin = updateItem & type = dessert & itemId
                 $adminController->updateItem();
-            } else if (isset($_GET['admin']) && isset($_GET['type']) && $_GET['admin'] == "addItem") {
+            } else if (isset($_GET['admin']) && isset($_GET['type']) && $_GET['admin'] == "addItem" && $_SESSION['acces'] == 2) {
                 $adminController->addItem();
             }
             $adminController->affichage();
