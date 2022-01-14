@@ -14,8 +14,11 @@ use app\Manager\UtilisateurManager;
 
 class AdminController extends MainController
 {
+
    /**
     * Affichage complet de la partie administration avec récupération des commandes, de stats, liste des pizzas, liste des desserts; liste des boissons et liste ingrédients
+    *
+    * @return void
     */
    public function affichage()
    {
@@ -37,6 +40,8 @@ class AdminController extends MainController
 
    /**
     * Récupération de toutes les commandes
+    *
+    * @return array
     */
    public function getAllCommand(): array
    {
@@ -47,6 +52,8 @@ class AdminController extends MainController
 
    /**
     * Récupération du nombre de commande passé
+    *
+    * @return integer
     */
    public function getCountAllCommand(): int
    {
@@ -57,6 +64,8 @@ class AdminController extends MainController
 
    /**
     * Récupération du nombre de commande en cours
+    *
+    * @return integer
     */
    public function getCountInProgressCommand(): int
    {
@@ -67,6 +76,8 @@ class AdminController extends MainController
 
    /**
     * Récupération de la somme total des commandes réunies
+    *
+    * @return void
     */
    public function getTotalCommand()
    {
@@ -77,6 +88,9 @@ class AdminController extends MainController
 
    /**
     * Changer l'état de la commande en livrée
+    *
+    * @param int $commandId
+    * @return void
     */
    public function setCommandDelivered($commandId)
    {
@@ -86,6 +100,9 @@ class AdminController extends MainController
 
    /**
     * Changer l'état de la commande en "en attente"
+    *
+    * @param int $commandId
+    * @return void
     */
    public function setCommandWaiting($commandId)
    {
@@ -95,6 +112,8 @@ class AdminController extends MainController
 
    /**
     * Récupération de la liste des pizzas
+    *
+    * @return void
     */
    public function getListPizza()
    {
@@ -105,6 +124,8 @@ class AdminController extends MainController
 
    /**
     * Récupération de la liste des boissons
+    *
+    * @return void
     */
    public function getListBoisson()
    {
@@ -115,6 +136,8 @@ class AdminController extends MainController
 
    /**
     * Récupération de la liste des desserts
+    *
+    * @return void
     */
    public function getListDessert()
    {
@@ -126,6 +149,8 @@ class AdminController extends MainController
 
    /**
     * Modifier un item(boisson, dessert, pizza) avec nom et prix, liste ingrédient pour les pizzas
+    *
+    * @return void
     */
    public function updateItem()
    {
@@ -142,7 +167,9 @@ class AdminController extends MainController
    }
 
    /**
-    * Ajouter un item(boisson, dessert, pizza) avec nom et prix, liste ingrédient pour les pizzas
+    *  Ajouter un item(boisson, dessert, pizza) avec nom et prix, liste ingrédient pour les pizzas
+    *
+    * @return void
     */
    public function addItem()
    {
@@ -164,6 +191,8 @@ class AdminController extends MainController
 
    /**
     * Récupérer la liste des ingrédients
+    *
+    * @return void
     */
    public function getListIngredient()
    {
@@ -174,6 +203,8 @@ class AdminController extends MainController
 
    /**
     * Récupérer tous les utilisateurs
+    *
+    * @return void
     */
    public function getAllUser()
    {

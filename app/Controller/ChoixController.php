@@ -14,6 +14,8 @@ class ChoixController extends MainController
 
     /**
      * Affichage complet des pizzas, boissons, desserts
+     *
+     * @return void
      */
     public function affichage()
     {
@@ -30,7 +32,12 @@ class ChoixController extends MainController
     }
 
     /**
-     * Ajout d'une commande au panier
+     *  Ajout d'une commande au panier
+     *
+     * @param array $pizzas
+     * @param array $boissons
+     * @param array $desserts
+     * @return void
      */
     public function addCommand($pizzas, $boissons, $desserts)
     {
@@ -56,7 +63,9 @@ class ChoixController extends MainController
     }
 
     /**
-     * Récupérer les infos d'une commande dans le panier et affichage
+     *  Récupérer les infos d'une commande dans le panier et affichage
+     *
+     * @return void
      */
     public function getCommand()
     {
@@ -113,6 +122,10 @@ class ChoixController extends MainController
 
     /**
      * Supprimer une quantité d'un produit du panier
+     *
+     * @param string $type
+     * @param int $idProduit
+     * @return void
      */
     public function deleteProduit($type, $idProduit)
     {
@@ -128,6 +141,10 @@ class ChoixController extends MainController
 
     /**
      * Ajouter une quantité d'un produit du panier
+     *
+     * @param string $type
+     * @param int $idProduit
+     * @return void
      */
     public function ajoutProduit($type, $idProduit)
     {
@@ -141,6 +158,10 @@ class ChoixController extends MainController
 
     /**
      * Supprimer tous les quantités d'un produit du panier
+     *
+     * @param string $type
+     * @param int $idProduit
+     * @return void
      */
     public function deleteAllProduit($type, $idProduit)
     {
@@ -151,7 +172,7 @@ class ChoixController extends MainController
     }
 
     /**
-     * Ouvrir 
+     * Ouvrir facture ?
      */
     public function openFacture()
     {

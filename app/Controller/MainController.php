@@ -6,6 +6,8 @@ class MainController
 {
     /**
      * Affichage index vue
+     *
+     * @return void
      */
     public function index()
     {

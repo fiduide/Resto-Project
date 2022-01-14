@@ -10,6 +10,8 @@ class CheckoutController extends MainController
 
     /**
      * Ajouter une commande par un utilisateur
+     *
+     * @return void
      */
     public function addCheckout()
     {

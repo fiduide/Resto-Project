@@ -6,6 +6,11 @@ class sendMailController
 {
     /**
      * Send Mail
+     *
+     * @param string $nom
+     * @param string $mail
+     * @param string $message
+     * @return void
      */
     public function sendMailTo($nom, $mail, $message)
     {
